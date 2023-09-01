@@ -1,0 +1,24 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 31 Aug 2023 12:48:23 at https://www.ise.io/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.ise.io/ -O1 "C:\My Web Sites\entrepreneurproject" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+12:48:24	Warning: 	Note: due to https://www.ise.io remote robots.txt rules, links beginning with these path will be forbidden: /wp-content/uploads/2017/07/dlink_script.html (see in the options to disable this)
+12:48:42	Error: 	"Bad Request" (400) at link https://www.googletagmanager.com/gtm.js?id= (from https://www.ise.io/)
+12:57:37	Error: 	"Not Found" (404) at link https://www.ise.io/news/ted.html (from https://www.ise.io/news/)
+12:57:37	Error: 	"Not Found" (404) at link https://www.ise.io/knowledge/papers/freak-advisory-v3.pdf (from https://www.ise.io/news/)
+12:57:37	Error: 	"Not Found" (404) at link https://www.ise.io/images/eff2014.pdf (from https://www.ise.io/news/)
+12:57:37	Error: 	"Not Found" (404) at link https://www.ise.io/knowledge/presentations/Holcomb_ISE_SOHO_DefCon.pdf (from https://www.ise.io/news/)
+12:58:51	Error: 	"Not Found" (404) at link https://www.ise.io/our-link-clicking-csrf-victim-robot/ (from https://www.ise.io/research/)
+12:59:24	Error: 	"Not Found" (404) at link https://www.ise.io/research/knowledge/papers/nessus/connection.html (from https://www.ise.io/research/scanning-ips-protected/)
+12:59:24	Error: 	"Not Found" (404) at link https://www.ise.io/research/scanning-ips-protected/view-source_https_/www.ise.io/knowledge/papers/nessus/qemu-tap-wrapper.html (from https://www.ise.io/research/scanning-ips-protected/)
+12:59:31	Error: 	"Not Found" (404) at link https://www.ise.io/research/knowledge/case_studies/caching/ (from https://www.ise.io/research/https-disk-cache-controller-browser-extensions/)
+12:59:31	Error: 	"Not Found" (404) at link https://www.ise.io/research/knowledge/case_studies/caching/FirefoxExtension_check.html (from https://www.ise.io/research/https-disk-cache-controller-browser-extensions/)
+12:59:31	Error: 	"Not Found" (404) at link https://www.ise.io/research/knowledge/case_studies/caching/FirefoxExtension_X.html (from https://www.ise.io/research/https-disk-cache-controller-browser-extensions/)
+12:59:31	Error: 	"Not Found" (404) at link https://www.ise.io/research/studies-and-papers/netgear_wndr4700/netgear_wnr3500.html (from https://www.ise.io/research/studies-and-papers/netgear_wndr4700/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 11 minutes 9 seconds : 444 links scanned, 431 files written (497714452 bytes overall) [477907401 bytes received at 714360 bytes/sec], 111726065 bytes transferred using HTTP compression in 232 files, ratio 81%, 8.8 requests per connection
+(12 errors, 1 warnings, 0 messages)

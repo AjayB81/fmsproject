@@ -1,0 +1,1139 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/casestudies/industry-wide-misunderstandings-of-https/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:43 GMT -->
+<head>
+    <title>INDUSTRY-WIDE MISUNDERSTANDINGS OF HTTPS - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="ISE identified 21 (70% of sites tested) financial, healthcare, insurance and utility account sites that failed to forbid browsers from storing cached content on disk, and as a result, after visiting these sites, unencrypted sensitive content is left behind on end-users’ machines." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="INDUSTRY-WIDE MISUNDERSTANDINGS OF HTTPS" />
+	<meta property="og:description" content="ISE identified 21 (70% of sites tested) financial, healthcare, insurance and utility account sites that failed to forbid browsers from storing cached content on disk, and as a result, after visiting these sites, unencrypted sensitive content is left behind on end-users’ machines." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+
+<section class="py-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12" id="content">
+                
+
+<article class="post-378 casestudies type-casestudies status-publish entry">
+	<header class="entry-header">
+		<h1 class="entry-title">INDUSTRY-WIDE MISUNDERSTANDINGS OF HTTPS</h1>
+		<p class="entry-meta"><time class="entry-time">July 12, 2017</time> </p>
+	</header>
+	<div class="entry-content">
+		<div id="pl-378" class="panel-layout">
+			<div id="pg-378-0" class="panel-grid panel-no-style">
+				<div id="pgc-378-0-0" class="panel-grid-cell">
+					<div id="panel-378-0-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<p>Most web browsers, historically, were cautious about caching content delivered over
+									an HTTPS connection to disk—to a greater degree than required by the HTTP standard.
+									In recent years, in response to the increased use of HTTPS for non-sensitive data,
+									and the proliferation of bandwidth-hungry AJAX and Web 2.0 sites, some browsers have
+									been changed to strictly follow the standard, and cache HTTPS content far more
+									aggressively than before. HTTPS web servers must explicitly include a response
+									header to block standards-compliant browsers from caching the response to disk—and
+									not all web developers have caught up to the new browser behavior. ISE identified 21
+									(70% of sites tested) financial, healthcare, insurance and utility account sites
+									that failed to forbid browsers from storing cached content on disk, and as a result,
+									after visiting these sites, unencrypted sensitive content is left behind on
+									end-users' machines.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-378-1" class="panel-grid panel-no-style">
+				<div id="pgc-378-1-0" class="panel-grid-cell">
+					<div id="panel-378-1-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="1">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Overview</h2>
+								<p>Users often visit the same web pages more than once, such as checking a news site
+									every day. While some of the page contents may change often, the vast majority of
+									the page and associated resources (such as images) never change. To re-download this
+									unchanged content on every visit of the page would be a waste of time and bandwidth.
+									To avoid this, when a user accesses a web page the web browser caches (saves a copy
+									of) most content locally on the user's machine. This content can either be saved in
+									temporary memory (RAM), which is lost as soon as the user exits the browser, or on
+									disk, which persists after the user exits the browser or reboots the computer. When
+									a user visits a previous page a second time, the content is retrieved from cache
+									instead of over the Internet. Memory caches are lost when the browser exits, so the
+									browser uses the disk cache whenever possible.</p>
+								<p>Secure web sites use the HTTPS and SSL/TLS protocols to encrypt information as it
+									travels over the Internet, to prevent an eavesdropper or man-in-the-middle from
+									seeing or modifying the communication. Although there are no technical constraints
+									preventing content sent over an encrypted connection from being decrypted and
+									written to disk, it is logical to presume that if content is too sensitive to be
+									sent over a network without encryption, then it may also be too sensitive to store
+									unprotected on a hard drive. When HTTPS was first introduced, there was no standard,
+									unambiguous way for a web server to mark content as too sensitive to store in cache.
+									As a result, web browser authors created their own mechanisms for a web server to
+									restrict disk caching <a href="#1d" name="1s">[1]</a>. Some browser authors chose
+									to, by default, <i>never</i> write content transferred over HTTPS to disk <a
+										href="#2d" name="2s">[2]</a>, or did not disk cache content unless a server
+									header explicitly allowed it (“opt-in”) <a href="#3d" name="3s">[3]</a>, while
+									others chose to write this content to the disk cache, unless a server header
+									explicitly prohibited it (“opt-out”) <a href="#4d" name="4s">[4]</a>.</p>
+								<p>In 1999, the HTTP/1.1 standard was published, which standardized the header <a
+										href="#5d" name="5s">[5]</a> that a server must set to prevent content from
+									being written to a disk cache. By that time, all web browser authors had already
+									adopted either an opt-in HTTPS disk caching policy, or an opt-out policy with
+									multiple, non-standard ways to opt out. Despite the new standard, web developers
+									could continue to use the old, non-standard methods and they would continue to work
+									only in the browsers that recognized them <a href="#1d" name="1s">[1]</a>.</p>
+								<p>Between the release of Netscape Navigator 3.0 in 1996, and 2008, when Google Chrome
+									was released, the only browser with a significant market share that used an
+									“opt-out” HTTPS disk caching policy was Internet Explorer. Internet Explorer has
+									always been very forgiving in determining a web server's intention that a response
+									not be written to the disk cache. ISE identified four separate ways <a href="#1d"
+										name="1s">[1]</a> that can a web developer can prevent a response from being
+									cached to disk. Only one of those ways, the header Cache-Control: no-store, is
+									actually standard <a href="#5d" name="5s">[5]</a>.</p>
+								<p>Encrypted web servers (HTTPS) have higher overhead and lower performance than
+									unencrypted servers due to the need to perform encryption, and in the past this
+									overhead was much more pronounced. For this reason, many web sites used HTTPS only
+									when absolutely necessary, such as for sending a password or credit card
+									information. After the sensitive transaction was completed, the sites would switch
+									back to an unencrypted connection. Two examples are Gmail, which transmitted e-mails
+									over unencrypted connections until 2010 <a href="#6d" name="6s">[6]</a>, and
+									Facebook, which continued to use unencrypted connections until 2012 <a href="#7d"
+										name="7s">[7]</a>. Since HTTPS was reserved for only the most sensitive
+									information, an opt-in disk caching policy was a very reasonable design.</p>
+								<p>By 2011, many sites had begun using HTTPS even for non-sensitive content, and Mozilla
+									Corporation recognized that the opt-in HTTPS disk caching policy in Firefox was
+									introducing a performance penalty compared to other browsers, including Google
+									Chrome, which uses an opt-out policy. As a result, Firefox 4.0 and all later
+									versions use an opt-out HTTPS disk caching policy <a href="#8d" name="8s">[8]</a>. A
+									Firefox 3.6 user would be unaffected by this issue, even when browsing HTTPS sites
+									that fail to set the necessary header, but would become affected as soon as that
+									user updated to Firefox 4 or later.</p>
+								<p>Online banking, which is among the most security-sensitive uses of a web browser,
+									exploded in popularity in the early 2000s. This was a time when Internet Explorer
+									had over 90% market share, and before Safari and Chrome even existed. Internet
+									Explorer's only significant competitors at the time (Netscape 3.0 and later,
+									Mozilla, and Firefox) either did not disk cache HTTPS content at all (unless a user
+									manually modified a configuration parameter), or used an opt-in policy, and thus
+									required no special treatment to prevent caching of encrypted bank pages. Many of
+									the web sites that we tested responded with sufficient headers to prevent caching in
+									all versions of Internet Explorer, all versions of Safari, and Firefox 3.6 and
+									earlier, but not Firefox 4.0 and later, or any version of Chrome. We believe that
+									ensuring that sensitive content is not cached on disk by the browser was a design
+									goal in these web applications. While this anti-disk cache functionality worked
+									correctly in the past, it no longer works in two of today's popular browsers:
+									Chrome, and Firefox 4.0 and later. Since this has been an issue in Chrome since its
+									release in 2008, and in Firefox since 2011, the maintainers of these sites do not
+									appear to perform regression testing for this issue.</p>
+								<p>Today, Internet Explorer continues to follow the same HTTPS disk caching policy as it
+									always has: enable disk caching by default, but allow four different ways to disable
+									it. Google Chrome and Firefox, in contrast, enable disk caching by default, but
+									allow only one way to prevent it—the one given in the standard, the header
+									Cache-Control: no-store.</p>
+								<p>Google Chrome and Mozilla Firefox, together, now have over a 60% market share on
+									non-mobile devices <a href="#9d" name="9s"
+										data-wplink-edit="true">[9]</a>, but many web sites still use antiquated,
+									non-standard methods to prevent disk caching of sensitive HTTPS content that only
+									function in Internet Explorer.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-378-2" class="panel-grid panel-no-style">
+				<div id="pgc-378-2-0" class="panel-grid-cell">
+					<div id="panel-378-2-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="2">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Caching Policies by Browser</h2>
+								<p>Disk caching of HTTPS-delivered web pages varies by web browser. Below are the
+									policies of four browsers that we tested.</p>
+								<p><b>Internet Explorer.</b> Microsoft Internet Explorer caches HTTPS-delivered content
+									to disk, unless one or more of the following are present <a href="#1d">[1]</a>:</p>
+								<ul>
+									<li>The HTTP header <b>Cache-Control: no-store</b>.</li>
+									<li>The HTTP header <b>Cache-Control: no-cache</b>.</li>
+									<li>The HTTP header <b>Pragma: no-cache</b>.</li>
+									<li>The HTML tag <b>&lt;META HTTP-EQUIV="Pragma" CONTENT="no-cache"&gt;</b>.
+										Microsoft discourages the use of this method; it may not work properly for pages
+										larger than 32 kilobytes <a href="#10d" name="10s">[10]</a>.</li>
+								</ul>
+								<p> </p>
+								<p>Note that the Cache-Control header <b>cannot</b> be set using an HTML &lt;META
+									HTTP-EQUIV&gt; tag. Additionally, Internet Explorer interprets some of these headers
+									differently, depending upon whether the page was delivered using HTTPS or HTTP.</p>
+								<p>ISE verified that this behavior as described using the 32-bit version of Internet
+									Explorer 10.0.9200.16576 on 64-bit Windows 7.</p>
+								<p><b>Firefox.</b> Prior to version 4.0, Mozilla Firefox (and its predecessors,
+									including Mozilla and Netscape) either <i>never</i> cache HTTPS pages to disk at
+									all, or cache only pages sent with:</p>
+								<ul>
+									<li>The HTTP header <b>Cache-Control: public</b>.</li>
+								</ul>
+								<p>Firefox contains a hidden browser preference,
+									<code>browser.cache.disk_cache_ssl</code>, that when set to <code>true</code>,
+									switches Firefox from the previous, cautious policy above, to a new policy that
+									strictly follows the HTTP standard, disk caching all content unless specifically
+									instructed not to do so by the server. In 2011, the default value of this preference
+									was switched from <code>false</code> to <code>true</code> <a href="#8d">[8]</a>. As
+									a result, Firefox 4.0 and all later versions cache HTTPS-delivered content to disk,
+									unless the following is present:
+								</p>
+								<ul>
+									<li>The HTTP header <b>Cache-Control: no-store</b>.</li>
+								</ul>
+								<p>ISE verified that using the 32-bit version of Mozilla Firefox 3.6.28 on 64-bit
+									Windows 7 (and earlier), HTTPS content is not disk cached unless the server sends
+									the <b>Cache-Control: public</b> header. ISE verified that using the 32-bit version
+									of Mozilla Firefox 21.0 on 64-bit Windows 7, Mozilla Firefox 21.0 on Mac OS X
+									10.7.5, and Mozilla Firefox 21.0 on Android 2.3.6, HTTPS content is disk cached
+									unless the server sends the <b>Cache-Control: no-store</b> header.</p>
+								<p><b>Chrome.</b> Google Chrome caches HTTPS-delivered content to disk, unless the
+									following is present:</p>
+								<ul>
+									<li>The HTTP header <b>Cache-Control: no-store</b>.</li>
+								</ul>
+								<p>ISE verified that using Google Chrome 27.0.1453.94m on Windows 7, and the Browser app
+									in Android 2.3.6 (which is based on Chrome), HTTPS content is disk cached unless the
+									server sends the <b>Cache-Control: no-store</b> header.</p>
+								<p><b>Safari.</b> Apple Safari does <b>not</b> cache HTTPS-delivered content to disk,
+									regardless of any headers sent by the server. ISE tested the mobile version of
+									Safari on an iPad 2, and the HTTPS caching behavior was identical to the desktop
+									version.</p>
+								<p>ISE verified that using Safari 6.0 (7536.25) on Mac OS X 10.7.5, and Mobile Safari on
+									iOS 5.1.1, HTTPS content is never disk cached.</p>
+								<p><i>A word about private browsing modes.</i> Virtually all web browsers now include a
+									“private browsing” mode, that in addition to preventing browsing history from being
+									retained, disables the disk cache entirely. While sufficient for a user to avoid
+									this issue, we do not consider advising users to use private browsing to be a
+									reasonable solution for several reasons. First, private browsing modes are not the
+									default, and must manually be enabled by a user. Second, other aspects of private
+									browsing, such as not retaining persistent cookies, break useful functionality in
+									web sites, such as remembering usernames or remembering the computer to avoid
+									answering security questions on each login. Third, since private browsing disables
+									the disk cache entirely, it has negative side effects on the performance of the
+									Internet as a whole, since even unencrypted HTTP content must be re-downloaded if
+									the browser has been closed.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-378-3" class="panel-grid panel-no-style">
+				<div id="pgc-378-3-0" class="panel-grid-cell">
+					<div id="panel-378-3-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="3">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Site Survey</h2>
+								<h3>Methodology</h3>
+								<p>ISE tested thirty secure, password-protected sites that displayed sensitive personal
+									information in a web browser. This involved accessing SSL-protected websites as an
+									authorized user, logging out of the site, and closing the Firefox browser. Then, ISE
+									reopened the browser, placed it in offline mode, and checked the disk cache for
+									entries containing sensitive data.</p>
+								<h3>Initial Results</h3>
+								<p>As of April 25, 2013, twenty-one of the thirty sites tested were not sending the
+									<b>Cache-Control: no-store</b> header required by the HTTPS standard to prevent disk
+									caching of sensitive data. Some were not sending any caching-related headers at all,
+									while others were sending caching headers that prevent disk caching only in Internet
+									Explorer, or other headers not relevant to web browser caches.
+								</p>
+								<p>The following sites sent sensitive information with both of the headers
+									Cache-Control: no-cache, and Pragma: no-cache, which prevent disk caching in
+									Internet Explorer, but not Firefox or Chrome:</p>
+								<table class="data" width="100%" frame="box" cellpadding="5">
+									<thead>
+										<tr>
+											<th style="width: 151.15px;">Site</th>
+											<th style="width: 746.85px;">Sensitive Information</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle"><b>ADP</b>
+											</td>
+											<td style="width: 746.85px;">Full earnings statements, including names,
+												addresses, the last four digits of the employee's social security
+												number, and financial data</td>
+										</tr>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle"><b>BGE</b>
+											</td>
+											<td style="width: 746.85px;">Customer names, addresses, account numbers, and
+												balances</td>
+										</tr>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle"><b>M &amp;
+													T
+													Bank Wealthcare</b></td>
+											<td style="width: 746.85px;">Customer names, account numbers, and balances
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle">
+												<b>Scottrade</b>
+											</td>
+											<td style="width: 746.85px;">Account numbers and balances</td>
+										</tr>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle">
+												<b>TreasuryDirect</b>
+											</td>
+											<td style="width: 746.85px;">Customer names, the last four digits of the
+												account holder's social security number, addresses, and telephone
+												numbers</td>
+										</tr>
+										<tr>
+											<td style="width: 151.15px;" class="text-center" valign="middle"><b>Verizon
+													Wireless</b></td>
+											<td style="width: 746.85px;">Call details</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><b>Table 1.</b> Sites sending sensitive information with both the headers
+									Cache-Control: no-cache, and Pragma: no-cache, which only prevent disk caching in
+									Internet Explorer.</p>
+								<p>The following sites sent sensitive information with the header Cache-Control:
+									no-cache which prevents disk caching in Internet Explorer, but not Firefox or
+									Chrome:</p>
+								<table class="data" width="100%" frame="box" cellpadding="5">
+									<thead>
+										<tr>
+											<th>Site</th>
+											<th>Sensitive Information</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center" valign="middle"><b>BB&amp;T</b></td>
+											<td>Customer names, email addresses, the last four digits of account
+												numbers, and account balances</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>Liberty Mutual</b></td>
+											<td>Customer names, policy numbers, property addresses, and policy limits
+											</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>PayPal</b></td>
+											<td>Customer names, email addresses, addresses, and phone numbers</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><b>Table 2.</b> Sites sending sensitive information with the header Cache-Control:
+									no-cache, which only prevents disk caching in Internet Explorer.</p>
+								<p>The following sites sent sensitive information with the header Cache-Control:
+									private, which has no effect on whether or not a web browser caches the information
+									to disk:</p>
+								<table class="data" width="100%" frame="box" cellpadding="5">
+									<thead>
+										<tr>
+											<th>Site</th>
+											<th>Sensitive Information</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center" valign="middle"><b>Allstate</b></td>
+											<td>Auto insurance policy documents</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>eBillity</b></td>
+											<td>Worker summary reports</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>eRenterPlan</b></td>
+											<td>Customer names, addresses, and telephone numbers</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><b>Table 3.</b> Sites sending sensitive information with the header Cache-Control:
+									private, which has no effect on disk caching in web browsers.</p>
+								<p>The following sites sent sensitive information without any cache-related HTTP headers
+									at all:</p>
+								<table class="data" width="100%" frame="box" cellpadding="5">
+									<thead>
+										<tr>
+											<th>Site</th>
+											<th>Sensitive Information</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center" valign="middle"><b>Argus Health</b></td>
+											<td>Customer names and pharmacy claims, including the names of prescription
+												medications</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>Boscov's Charge Card</b></td>
+											<td>Full account statements, including the full card number</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>Equifax</b></td>
+											<td>Full credit reports and credit scores</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>GEICO</b></td>
+											<td>Customer names, addresses, the customer date of birth, and the last four
+												digits of the customer's social security number</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>MetLife</b></td>
+											<td>Customer names, policy numbers, policy amounts, and beneficiary names
+											</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>PNC Bank</b></td>
+											<td>Check images</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>T. Rowe Price</b></td>
+											<td>401(k) balances</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>Toyota Financial</b></td>
+											<td>Customer names, addresses, account numbers, and VINs</td>
+										</tr>
+										<tr>
+											<td class="text-center" valign="middle"><b>Trade King</b></td>
+											<td>Account numbers and balances</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><b>Table 4.</b> Sites sending sensitive information without caching-related HTTP
+									headers.</p>
+								<p>Below are screenshots of some of the data we recovered from the disk cache.</p>
+								<p><img src="../../wp-content/uploads/2017/07/equifax2.png" alt="Equifax" /></p>
+								<p><b>Figure 1.</b>Credit report from Equifax.<br /> <img
+										src="../../wp-content/uploads/2017/07/argus2.png" alt="Argus" /></p>
+								<p><b>Figure 2.</b>Prescription history from Argus.<br /> <img
+										src="../../wp-content/uploads/2017/07/adp2.png"  alt="ADP"/></p>
+								<p><b>Figure 3.</b>Earnings statement from ADP.<br /> <img
+										src="../../wp-content/uploads/2017/07/treas2.png"  alt="TreasuryDirect"/></p>
+								<p><b>Figure 4.</b>Account information from TreasuryDirect.<br /> <img
+										src="../../wp-content/uploads/2017/07/hrs2.png" alt="Boscov" /></p>
+								<p><b>Figure 5.</b>Boscov's Charge Card Account statement with account number.<br />
+									<img src="../../wp-content/uploads/2017/07/pnc2.png" />
+								</p>
+								<p><b>Figure 6.</b>Check image from PNC.</p>
+								<p>&nbsp;</p>
+								<h3>Updates</h3>
+								<p>We notified each company by email to the security– or phishing–related email address,
+									or when email was not available, using a web-based contact form. The following
+									companies acknowledged our advisories with a non-automated response:</p>
+								<ol>
+									<li>Argus Health</li>
+									<li>M &amp; T Bank</li>
+									<li>PayPal</li>
+								</ol>
+								<p>The following companies have made at least some progress in correcting the issue:</p>
+								<ol>
+									<li>BB&amp;T. The account summary page is now sending Cache-Control: no-store, but
+										check images are still sent with inadequate protections.</li>
+								</ol>
+								<h3>Observations and Concerns</h3>
+								<p>We believe that the amount of personal data that is currently being written to the
+									disk cache when visiting these sites is alarming. It is important to note, however,
+									the distinction between a user consciously selecting a "save to disk" option, e.g.,
+									to save a bank statement, and content silently being written to the disk cache
+									without users' knowledge. Non-technical users likely believe that if, after visiting
+									a site and viewing personal data, they logout and close their browsers, that their
+									data will be safe. Our findings prove this assumption incorrect in 70% of the cases
+									tested.</p>
+								<p>Based on the quantity of sites (twelve of twenty-one) that sent at least one
+									cache-related header, even if it was not the one mandated by the standard to prevent
+									disk caching, we do not believe that it is intended by these industries that this
+									content be written to the disk cache. More significantly, the maintainers of these
+									sites may erroneously believe that they have set the required headers to prevent
+									disk caching, based on outdated and incorrect information published on the Internet.
+									One tutorial <a href="#11d" name="11s">[11]</a> correctly states the purpose of all
+									of these headers, but does not put them in the proper context with regard to HTTPS,
+									stating “SSL pages are not cached (or decrypted) by proxy caches,” which, while true
+									for proxies, does not address the behavior of browsers. An OWASP page <a href="#12d"
+										name="12s">[12]</a> incorrectly asserts that “If a web page is delivered over
+									SSL, no content can be cached.” When even the security community makes outdated and
+									incorrect assumptions about this issue, it is unrealistic that more
+									generally-focused web developers will do better.</p>
+								<p>Web browser authors, with the most striking example being Mozilla, seem unconcerned
+									with shifting the responsibility of discretion as to which HTTPS pages are safe to
+									disk cache to the server. A comment on the bug report involving the change to
+									Firefox 4's SSL caching policy by a member of Mozilla Corporation's security team
+									stated “Among sites that don't use cache-control:no-store, the correlation between
+									"SSL" and "sensitive" is very low” <a href="#8d">[8]</a>. Our findings show that
+									this assertion does not hold when real-world sites are examined, even two years
+									after the change.</p>
+								<p>The fact that the unencrypted, disk cached data is only stored on the user's personal
+									machine should not be discounted. The possibilities for this information to be
+									exposed are numerous: malware infections, theft of laptops and mobile devices, theft
+									of physical backup media or compromise of “cloud” backup services, shared machines
+									and user accounts, and of course, shared computers in libraries, hotels, and
+									Internet cafes. An Intel-sponsored Ponemon Institute study estimated the cost of
+									recovering from the loss or theft of a single laptop as $49,246 <a href="#13d"
+										name="13s">[13]</a>, and a Lookout Mobile Security study estimated that lost and
+									stolen phones cost consumers more than $30 billion in 2012 <a href="#14d"
+										name="14s">[14]</a>.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-378-4" class="panel-grid panel-no-style">
+				<div id="pgc-378-4-0" class="panel-grid-cell">
+					<div id="panel-378-4-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="4">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h3>Recommendations</h3>
+								<p><b>To Web Developers and Web Framework Authors.</b> Developers of web applications
+									and web frameworks should audit all existing code to ensure that sensitive data is
+									appropriately labeled with caching directives. Professionals in these fields must
+									become more familiar with the fine details of the HTTP standard, and assume that
+									browser software will always make performance vs. security trade-offs against
+									security. Proper security assessments of sites containing sensitive information
+									should be conducted regularly, and an examination of disk cached content across all
+									supported browsers should be part of that assessment process.</p>
+								<p><b>To the Security Community.</b> All existing guidance and advice in regard to the
+									HTTPS caching issue should be revised to reflect the reality of the HTTP standard.
+									Security professionals should be cautious in making assertions or recommendations
+									based on working knowledge alone, and be sure to consult the relevant standards and
+									perform testing to back up their beliefs.</p>
+								<p><b>To Web Browser Authors.</b> In a time where security threats and identity theft
+									are rampant, all browsers should adopt an opt-in only policy for caching sensitive
+									data to disk; and further, users should have an easily accessible option to refuse
+									any or all opt-in directives. At the very least, we recommend that browsers with a
+									very strict opt-out HTTPS disk caching policy, such as Firefox and Chrome, consider
+									interpreting the HTTP headers and meta tag introduced by Internet Explorer, as well.
+									Internet Explorer has been disk caching HTTPS content for far longer than either of
+									these browsers, so many sites seem to have been developed with IE-centric security
+									assumptions in mind.</p>
+								<p><b>To End-Users.</b> Users should make the following configuration changes, depending
+									on each browser:</p>
+								<blockquote>
+									<p><b>Internet Explorer.</b> Internet explorer already abides by most web
+										application attempts to prevent disk caching. To further restrict what can be
+										cached, a user can open Internet Options, choose the Advanced tab, and under
+										Security, check “Do not save encrypted pages to disk”. This option may have
+										unwanted side effects, such as interfering with file downloads from HTTPS sites
+										<a href="#4d">[4]</a>. Alternatively, use InPrivate Browsing
+										mode.
+									</p>
+									<p><b>Firefox.</b> Install <a
+											href="../../research/https-disk-cache-controller-browser-extensions/index.html">our
+											“HTTPS Caching Controller”</a> Firefox add-on, which adds a toolbar button
+										allowing disk caching of SSL content to be disabled or enabled at any time. This
+										add-on works only on the desktop version of Firefox. Manually, or on the mobile
+										version, navigate to <code>about:config</code>, enter the preference
+										<code>browser.cache.disk_cache_ssl</code>, and double-click to switch the value
+										from <code>true</code> to <code>false</code>. Alternatively, use Private
+										Browsing mode.
+									</p>
+									<p><b>Chrome.</b> ISE could not locate any settings in Chrome to easily limit disk
+										caching of HTTPS requests. Instead, use Incognito mode.</p>
+									<p><b>Safari.</b> Safari users (both desktop and mobile) need not take any action,
+										since, as of this writing, Safari does not cache any content transferred over
+										HTTPS.</p>
+								</blockquote>
+								<p>In addition to taking these precautions, never log into account-related or other
+									security-sensitive sites from a computer or other device you do not own and control.
+								</p>
+								<h3>Attribution and Acknowledgements</h3>
+								<p>This research was conducted by Jacob Thompson of Independent Security Evaluators and
+									directed by Stephen Bono. Jacob Holcomb, Kedy Liu, and Ali Jad Khalil made
+									additional contributions.</p>
+								<h3>References</h3>
+								<p><a name="1d">[1]</a> <a
+										href="http://support.microsoft.com/kb/234067" target="_blank">How to prevent
+										caching in Internet Explorer</a><br />
+									Note: this page omits the fourth, standard method to prevent disk caching
+									(Cache-Control: no-store).</p>
+								<p><a name="2d">[2]</a> <a
+										href="http://www.faqs.org/faqs/computer-security/ssl-talk-faq/"
+										target="_blank">SSL-Talk List FAQ, question 6.1.4</a></p>
+								<p><a name="3d">[3]</a> <a
+										href="https://bugzilla.mozilla.org/show_bug.cgi?id=345181"
+										target="_blank">Firefox ignores "Cache-Control: public" header on TLS
+										connections</a></p>
+								<p><a name="4d">[4]</a> <a
+										href="http://support.microsoft.com/kb/254324" target="_blank">Cannot Open Files
+										on Secure Servers</a></p>
+								<p><a name="5d">[5]</a> <a
+										href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.2"
+										target="_blank">HTTP/1.1: Header Field Definitions</a></p>
+								<p><a name="6d">[6]</a> <a
+										href="http://techcrunch.com/2010/01/13/china-hacking-gmail-secure/"
+										target="_blank">China Syndrome: Gmail Now Defaults to Encrypted Access</a></p>
+								<p><a name="7d">[7]</a> <a
+										href="http://www.nbcnews.com/technology/facebook-switches-users-https-secure-slower-connection-1C7155138"
+										target="_blank">Facebook switches users to HTTPS for secure (slower)
+										connection</a></p>
+								<p><a name="8d">[8]</a> <a
+										href="https://bugzilla.mozilla.org/show_bug.cgi?id=531801"
+										target="_blank">Should cache SSL content to disk even without Cache-Control:
+										public</a></p>
+								<p><a name="9d">[9]</a> <a
+										href="http://en.wikipedia.org/wiki/Browser_market_share" target="_blank">Browser
+										market share</a></p>
+								<p><a name="10d">[10]</a> <a
+										href="http://support.microsoft.com/kb/222064" target="_blank">"Pragma: No-cache"
+										Tag May Not Prevent Page from Being Cached</a></p>
+								<p><a name="11d">[11]</a> <a
+										href="http://www.mnot.net/cache_docs/" target="_blank">Caching Tutorial for Web
+										Authors and Webmasters</a></p>
+								<p><a name="12d">[12]</a> <a
+										href="https://www.owasp.org/index.php/OWASP_Application_Security_FAQ#Am_I_totally_safe_with_these_directives.3F"
+										target="_blank">OWASP Application Security FAQ</a></p>
+								<p><a name="13d">[13]</a> <a
+										href="http://www.intel.com/content/www/us/en/enterprise-security/enterprise-security-the-billion-dollar-lost-laptop-problem-paper.html"
+										target="_blank">The Billion Dollar Lost Laptop Problem</a>, page 2.</p>
+								<p><a name="14d">[14]</a> <a
+										href="https://www.lookout.com/news-mobile-security/lookout-lost-phones-30-billion"
+										target="_blank">Lookout Projects Lost and Stolen Phones Could Cost U.S.
+										Consumers Over $30 Billion in 2012</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="entry-footer"></footer>
+</article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/casestudies/industry-wide-misunderstandings-of-https/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:47 GMT -->
+</html>

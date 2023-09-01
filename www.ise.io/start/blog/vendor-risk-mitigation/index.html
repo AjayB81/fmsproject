@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/start/blog/vendor-risk-mitigation/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:06 GMT -->
+<head>
+    <title>Vendor Risk Mitigation | START - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="Vendor risk mitigation is an important step in implementing the VRM program. Learn about common risk mitigation strategies and the best practices." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Vendor Risk Mitigation | START" />
+	<meta property="og:description" content="Vendor risk mitigation is an important step in implementing the VRM program. Learn about common risk mitigation strategies and the best practices." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../../assets/img/start-images/blog-img/vendor-risk-mitigation.png" />
+	<meta name="twitter:card" content="summary" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+
+    <!-- Hotjar Tracking Code for https://www.ise.io/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2535641,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="../../../../js.hs-scripts.com/7197110.js"></script>
+    <!-- End of HubSpot Embed Code --> 
+
+
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../../index.html">
+          <img src="../../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<section class="pt-12">
+    <div class="container">
+        <div class="d-flex">
+            <a href="../../index.html">
+            <img class="img-fluid" width="230px"
+                src="../../../assets/img/start-images/START-logo.svg" alt="START logo">
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Vendor Risk Mitigation Strategies</h1>
+
+                <img src="../../../assets/img/start-images/blog-img/vendor-risk-mitigation.png" style="width: 100%"
+                    alt="Vendor Risk Mitigation">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Book A Demo Modal -->
+<div class="modal fade" id="BookADemoModal" tabindex="-1" role="dialog" aria-labelledby="BookADemoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Book a Demo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "7f59018d-21b4-4782-a77b-a86aee2dfa7f"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Download Modal -->
+<div class="modal fade" id="DownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "d5f0b5f2-cddc-4200-83ce-2032b9fc8a80"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Talk to An Expert -->
+<div class="modal fade" id="TalkToAnExpertModal" tabindex="-1" role="dialog" aria-labelledby="BookADemoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Talk To An Expert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "7f59018d-21b4-4782-a77b-a86aee2dfa7f"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor Risk Assessment Template -->
+<!-- Download Modal -->
+<div class="modal fade" id="VendorRiskAssessmentTemplateDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "fdb5810c-757a-47fb-a7f8-35d3742e13f0"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor Risk Management Checklist -->
+<!-- Download Modal -->
+<div class="modal fade" id="VendorRiskManagementChecklistDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "2f65ddd7-ccc3-4010-8514-a89546c14b77"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 7 Steps to Success -->
+<!-- Download Modal -->
+<div class="modal fade" id="SimpleStepsDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- [if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "e43e78f9-18ae-49d7-94ae-c814574b628a"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="py-6">
+    <div class="container">
+        <div class="row d-flex flex-row-reverse">
+
+            <div class="col-lg-3 d-flex flex-lg-column flex-wrap justify-content-around justify-content-lg-start">
+    
+                <div>
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../vendor-risk-management-checklist/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/image-10.png"
+                                alt="Blog image 1 alt">
+                            <p>
+                                <strong>Vendor Risk Management Checklist</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../compliance-risks/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/compliance-risk-101.png"
+                                alt="Blog image 2 alt">
+                            <p>
+                                <strong>Compliance Risk 101</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../it-risk-management/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/it-risk-management-strategies-best-practices.png"
+                                alt="Blog image 3 alt">
+                            <p>
+                                <strong>IT Risk Management: Strategies & Best Practices</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <div style="background-color: #4779A8; width: 150px; height: 186px; border-radius: 10px; 
+                                    background-image: url('../../../assets/img/start-images/logo-gradient.svg');
+                                    background-size: 150px" class="d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn btn-sm btn-primary lift mx-4 p-0" data-toggle="modal"
+                                data-target="#TalkToAnExpertModal">
+                                Talk To An Expert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-9">
+                <p class="mb-5 lead">The benefits of outsourcing business functions to third parties are undeniable,
+                    such as lower operational costs, enhanced supply chain stability, smoother entry into new markets.
+                    But relationships with third-party vendors, contract manufacturers, traditional suppliers, agents,
+                    distributors, technology providers, and more are inherently risky. And as the third-party networks
+                    that companies rely on grow larger and more complex, identifying and mitigating the associated
+                    third-party risks becomes more challenging.
+                </p>
+
+                <p class="mb-5">Third parties seem to be one of the weakest links in companies' security policy, so
+                    vendor risk mitigation is crucial for each organization. It's a process in which organizations take
+                    steps to reduce adverse effects. It can involve accepting a particular risk, aiming for a peaceful
+                    co-existence, or ignoring it altogether. Risk mitigation strategies can also involve proactively
+                    thwarting identified risks from materializing by using controls or proactively responding in the
+                    face of a risk event.Understanding the nature of vendor risks and identifying them is an essential
+                    component of effective vendor risk management, which starts with adequate regular due diligence on
+                    all your vendors.
+                </p>
+
+                <h2 class="mb-5">Third-Party Risk Mitigation: Best Practices
+                </h2>
+
+                <p class="mb-5">Monitoring and managing third-party vendors are critical components of an organization's
+                    security. That's why companies that deal with third-party service providers, vendors, and suppliers
+                    need to develop a comprehensive <a href="../vendor-management-program/index.html"
+                        target="_blank">vendor management program</a> that will make it easier to work with
+                    vendors and manage different <a href="../types-vendor-risk/index.html" target="_blank">types
+                        of vendor risks</a>.</p>
+
+                <div class="p-5 mb-5">
+                    <div class="row p-5" style="box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.15);">
+                        <div class="col-lg-6 d-flex flex-column justify-content-around">
+                            <p class="mb-8 font24">
+                                <strong>Download our free vendor risk assessment template to ensure you understand how
+                                    much risk you'll take on when working with a specific vendor and mitigate potential
+                                    risks as much as possible.</strong>
+                            </p>
+
+                            <p>
+                                <button type="button" class="btn btn-primary lift px-8" data-toggle="modal"
+                                    data-target="#VendorRiskAssessmentTemplateDownloadModal">
+                                    Download Now
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <img class="img-fluid"
+                                src="../../../assets/img/start-images/book/Vendor-risk-assessment-template.png"
+                                alt="Vendor Risk assessment template pdf book">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mb-5">Companies should take a holistic approach to manage risks across their business and
+                    vendor networks and use best practices. Third-party vendor risk management programs should consider
+                    all the inherent vendor risks posed to the business and follow essentially the same action plan:
+                    <a href="../third-party-risk-assessment/index.html" target="_blank">third-party risk
+                        assessment</a>, prioritization, mitigation, and monitoring. The centerpiece of any VRM
+                    program is a carefully planned third-party vendor risk mitigation process.
+                </p>
+
+                <p class="mb-5">Every company needs to identify the third-party risk mitigation strategies that are most
+                    appropriate for it. Such risk mitigation strategies are designed to eliminate, reduce, or control
+                    the impact of known risks throughout the entire <a
+                        href="../third-party-risk-management-lifecycle/index.html" target="_blank">third-party
+                        risk management lifecycle</a>
+                    injury or fiasco. With these strategies in place, risks can be foreseen and dealt with.
+                    Each company has its approach and comfort level when it comes to risk. So first, you'll need to
+                    determine your company's risk appetite and tolerance to guide your vendor management program.
+                    Specifically, your leadership team has to decide which types of risks and the amount of each risk
+                    the company is willing to accept.
+                </p>
+
+                <p class="mb-5">Each third-party vendor opens your company to potential risk, and that risk increases as
+                    their access to your systems and data increases, so you must do your <a
+                        href="../vendor-due-diligence/index.html" target="_blank">due diligence</a>. Determine
+                    how
+                    critical the vendor is to the success of your business and what potential risks they could pose.
+                </p>
+
+                <p class="mb-5">Categorize and assess each vendor, services provider, and supplier based on their level
+                    of access to your systems and information. This assessment should also review each vendor's
+                    third-party risk based on their supply chains. By understanding and acknowledging the risks that
+                    third-party vendors can present to your company, you can work to address, reduce and/or eliminate
+                    those risks proactively.
+                </p>
+
+                <div class="p-5">
+                    <div class="mb-6 row ise-blue-container">
+                        <div class="col-xl-8 p-5">
+                            <p class="pb-3 font24">If you need to assess hundreds of vendors, doing manual due diligence
+                                checks can be very time-consuming.
+                            </p>
+
+                            <p class="font24">But with START, you'll be able to organize and automate your VRM program
+                                and streamline assessments, making the process more efficient.</p>
+                        </div>
+                        <div class="col-xl-4 d-flex align-items-end justify-content-center">
+                            <button type="button" class="btn btn-primary lift m-5" data-toggle="modal"
+                                data-target="#TalkToAnExpertModal">
+                                Talk To An Expert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mb-5">Outline KPIs for critical risks, for example, cybersecurity, data security, and
+                    operational resilience for each vendor. Then, create strong vendor contracts that set out the
+                    <a href="../vendor-risk-management-metrics/index.html" target="_blank">vendor risk
+                        management metrics</a>
+                    your company can use to terminate a relationship if KPIs for critical risks are not met.
+                </p>
+
+                <p class="mb-5">It's also essential to continuously monitor third parties in real-time to ensure that
+                    you catch and address any new risks. Continuous monitoring allows risk managers to identify changes
+                    and take immediate action to protect your company or work with the vendor to remediate
+                    vulnerabilities.
+                </p>
+
+                <h2 class="mb-5">How to Mitigate Third-Party Risk
+                </h2>
+
+                <p class="mb-5">When mitigating third-party risk, it's crucial to develop a mitigation strategy based on
+                    the cost/benefit analysis of possible mitigations and which closely relates to and matches your
+                    company's profile. The best mitigation strategy may lower the probability of risk and the outcome's
+                    severity or reduce the organization's exposure to the risk. It's possible to employ more than one
+                    vendor risk mitigation strategy to attain optimal results.
+                </p>
+
+                <p class="mb-5">So how to mitigate third-party risk? There are several common third-party risk
+                    mitigation strategies, including risk avoidance, acceptance, transference, and limitation.
+                </p>
+
+                <p class="mb-5">
+                <ul>
+                    <li><strong>Risk acceptance</strong>. With some risks, the expenses involved in mitigating the risk
+                        are more than the cost of tolerating the risk. If the probability of occurrence or impact is
+                        low, the risks should be accepted and carefully monitored.
+                    </li>
+                    <li><strong>Risk avoidance. In general</strong>, risks that involve a high probability impact for
+                        both financial loss and damage should be avoided.
+                    </li>
+                    <li><strong>Risk transfer</strong>. Risks that may have a low probability of taking place but have a
+                        sizeable financial impact should be mitigated by being shared or transferred, for example, by
+                        purchasing insurance.
+                    </li>
+                    <li><strong>Risk reduction</strong>. The most common mitigation strategy is risk limitation.
+                        Businesses take some action to address a perceived risk and regulate their exposure. Risk
+                        limitation usually employs some risk acceptance and some risk avoidance.
+                    </li>
+                </ul>
+                </p>
+
+                <p class="mb-5">Vendor risk management isn't a task to check off your list. Risk management is an
+                    ongoing effort that cannot stop after the risk identification phase or a qualitative risk
+                    assessment. When not managed properly, vendor risk can lead to security breaches, financial loss,
+                    reputation damage, lost business, and in some industries, regulatory penalties. But cyber risks and
+                    other third-party-related risks can be mitigated by developing, implementing, and maintaining a
+                    strong and comprehensive vendor risk management program.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/start/blog/vendor-risk-mitigation/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:06 GMT -->
+</html>

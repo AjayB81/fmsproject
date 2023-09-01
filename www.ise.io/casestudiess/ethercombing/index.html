@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/casestudies/ethercombing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:27:54 GMT -->
+<head>
+    <title>Ethercombing: Finding Secrets in Popular Places - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="In this paper we examine how, even when faced with this statistical improbability, ISE discovered 732 private keys as well as their corresponding public keys that committed 49,060 transactions to the Ethereum blockchain. Additionally, we identified 13,319 Ethereum that was transferred to either invalid destination addresses, or wallets derived from weak keys that at the height of the Ethereum market had a combined total value of $18,899,969. In the process, we discovered that funds from these weak-key addresses are being pilfered and sent to a destination address belonging to an individual or group that is running active campaigns to compromise/gather private keys and obtaisdfdsn thesasdfse funds. On January 13, 2018, this “blockchainbandit” held a balance of 37,926 ETH valued at $54,343,407." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Ethercombing: Finding Secrets in Popular Places" />
+	<meta property="og:description" content="In this paper we examine how, even when faced with this statistical improbability, ISE discovered 732 private keys as well as their corresponding public keys that committed 49,060 transactions to the Ethereum blockchain. Additionally, we identified 13,319 Ethereum that was transferred to either invalid destination addresses, or wallets derived from weak keys that at the height of the Ethereum market had a combined total value of $18,899,969. In the process, we discovered that funds from these weak-key addresses are being pilfered and sent to a destination address belonging to an individual or group that is running active campaigns to compromise/gather private keys and obtaisdfdsn thesasdfse funds. On January 13, 2018, this “blockchainbandit” held a balance of 37,926 ETH valued at $54,343,407." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+
+<section class="py-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12" id="content">
+                
+
+<article class="post-1451 casestudies type-casestudies status-publish has-post-thumbnail entry">
+	<header class="entry-header">
+		<h1 class="entry-title">Ethercombing: Finding Secrets in Popular Places</h1>
+		<p class="entry-meta"><time class="entry-time">April 23, 2019</time> </p>
+	</header>
+	<div class="entry-content">
+		<div id="pl-1451" class="panel-layout">
+			<div id="pg-1451-0" class="panel-grid panel-no-style">
+				<div id="pgc-1451-0-0" class="panel-grid-cell">
+					<div id="panel-1451-0-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="0">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<p class="text-center video-container"><iframe src="https://www.youtube.com/embed/3H25k5lUi1Q"
+										frameborder="0"
+										allowfullscreen="allowfullscreen"></iframe></p>
+								<p>&nbsp;</p>
+								<h3 class="text-center"><a
+										href="https://blog.securityevaluators.com/blogchain/home" target="_blank"
+										rel="noopener">Read our other work about blockchain and security</a></h3>
+								<p>&nbsp;</p>
+								<h2><strong>Abstract:</strong></h2>
+								<p>Blockchains are public ledgers of transactions verified through the use of public and
+									private keys to sign and prove ownership of transaction data. Popular blockchains
+									have hundreds of millions of transactions which include some of the most popular --
+									Bitcoin, Waves, Ripple, ZCash, Monero and Ethereum. Currently, on the Ethereum
+									blockchain there are 345 million transactions [1] across 47 million [2] key pairs.
+									The chance of generating a private key already used on the blockchain is around 1 in
+									2<sup>256</sup> – all but impossible.</p>
+								<p>In this paper we examine how, even when faced with this statistical improbability,
+									ISE discovered 732 private keys as well as their corresponding public keys that
+									committed 49,060 transactions to the Ethereum blockchain. Additionally, we
+									identified 13,319 Ethereum that was transferred to either invalid destination
+									addresses, or wallets derived from weak keys that at the height of the Ethereum
+									market had a combined total value of $18,899,969. In the process, we discovered that
+									funds from these weak-key addresses are being pilfered and sent to a destination
+									address belonging to an individual or group that is running active campaigns to
+									compromise/gather private keys and obtain these funds. On January 13, 2018, this
+									“blockchainbandit” held a balance of 37,926 ETH valued at $54,343,407.</p>
+								<p>Keywords: Blockchain, Public key, Private key Encryption, Ethereum, Cryptography,
+									Brute force, Entropy, Key truncation</p>
+								<p>&nbsp;</p>
+								<h2><strong>Introduction:</strong></h2>
+								<p>This paper focuses on our discovery of private keys used to commit Ethereum
+									blockchain transactions. The probability of encountering a private key that
+									corresponds to someone else’s Ethereum address is around 1 in 2<sup>256</sup>. To
+									cover just 1% of that key space, even if we used computing resources that would
+									allow us to generate 100 trillion keys per second, it would take us roughly  years.
+									However, instead of attempting to brute force search random private keys, we devised
+									ways to discover keys that may have been generated using faulty code, faulty random
+									number generators, or a combination of both. The following sections outline how an
+									Ethereum address is generated and our approach to discover those private keys that
+									were generated in suboptimal ways.</p>
+								<p>&nbsp;</p>
+								<h2><strong>Background:</strong></h2>
+								<p>The Ethereum project uses elliptic curve cryptography to generate the public/private
+									key pair. The 256-bit private key is used to compute a point on the secp256k1 ECDSA
+									curve to generate the public key. The public key is then hashed using keccak256.
+									That hash is truncated to the lower 160 bits to produce the public Ethereum address.
+									The Ethereum address cannot be reversed back into a public key, nor can the Ethereum
+									address be used in any way to derive the underlying private key that was used to
+									generate it.</p>
+								<p>Given a randomly generated private key, , that is within the valid range of one to
+									the maximum value defined by the secp256k1 curve,
+									<span style="overflow-wrap: break-word;">0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140</span>,</p>
+								<p>we can calculate the public Ethereum address by taking the lower (right most) 160
+									bits of the keccack256 hash of the public key, as defined by:</p>
+								<p><img class="aligncenter img-fluid wp-image-1466"
+										src="../../wp-content/uploads/2019/04/00.jpg" alt="Figure 1 illustrates the workflow to derive an Ethereum address from a randomly
+										generated 256-bit private key." width="526" height="44"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/00.jpg 526w, https://www.ise.io/wp-content/uploads/2019/04/00-300x25.jpg 300w"
+										sizes="(max-width: 526px) 100vw, 526px" /></p>
+								<p>Figure 1 illustrates the workflow to derive an Ethereum address from a randomly
+									generated 256-bit private key.</p>
+								<p><img class="aligncenter img-fluid wp-image-1465"
+										src="../../wp-content/uploads/2019/04/1.jpg" alt="Figure 1.Example flow of deriving an Ethereum address
+										from a private key." width="998" height="420"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/1.jpg 998w, https://www.ise.io/wp-content/uploads/2019/04/1-300x126.jpg 300w, https://www.ise.io/wp-content/uploads/2019/04/1-768x323.jpg 768w"
+										sizes="(max-width: 998px) 100vw, 998px" /></p>
+								<p class="text-center"><em>Figure 1.Example flow of deriving an Ethereum address
+										from a private key.</em></p>
+								<p>Knowing this algorithm, the goal of our research was to find Ethereum addresses that
+									could not have plausibly been generated by a correct implementation of the
+									algorithm, or, that were correctly derived from non-random private keys.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Experiment Design:</strong></h2>
+								<p>The Ethereum blockchain allows anyone to query an address for information<a
+										href="#_ftn1" name="_ftnref1"><sup>[1]</sup></a>, such as balances, transfers,
+									and committed transactions. This is done by querying an Ethereum node which can be
+									run locally or remotely. Or for ease of use, several online services encapsulate the
+									underlying data via web interfaces. One such tool, Etherscan [1], can be used to
+									query the public Ethereum address from the above example:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">A99FDD90FF61DD08CF049155D18E086F7806641B</li>
+								</ul>
+								<p style="overflow-wrap: break-word;">One can navigate to
+									https://etherscan.io/address/A99FDD90FF61DD08CF049155D18E086F7806641B and see that,
+									not surprisingly, there are 0 transactions for this address<a href="#_ftn2"
+										name="_ftnref2">[2]</a>.</p>
+								<p><img class="aligncenter img-fluid wp-image-1452"
+										src="../../wp-content/uploads/2019/04/2.png" alt="Figure 2. Etherscan.io lookup of
+										A99FDD90FF61DD08CF049155D18E086F7806641B." width="251" height="141" />
+								</p>
+								<p class="text-center" style="overflow-wrap: break-word;"><em>Figure 2. Etherscan.io lookup of
+										A99FDD90FF61DD08CF049155D18E086F7806641B.</em></p>
+								<p><a href="#_ftnref1" name="_ftn1"><sup>[1]</sup></a>
+									https://web3js.readthedocs.io/en/1.0/</p>
+								<p><a href="#_ftnref2" name="_ftn2">[2]</a> At the time of this writing, there were no
+									transactions at this address. However, as the key is now disclosed in this paper,
+									the address is public and may have since then been used for transactions. This key
+									and Ethereum address should no longer be used for performing Ethereum transactions!
+								</p>
+								<p>With nearly 50 million public Ethereum addresses having recorded transactions on the
+									Ethereum blockchain, it is likely that we may encounter keys that are weak or lack
+									randomness, due to several possible factors. An obvious one is key truncation. That
+									is, where a random 256-bit private key is generated but only a small subset is used
+									due to coding/complier/framework or other unknown errors.</p>
+								<p>For example, a 256-bit private key with the value of:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">0x47579DA2BEA463533DBFAD6FCF8E90876C2FE9760DC1162ACC4059EE37BDDB5C</li>
+								</ul>
+								<p>If truncated to 32 bits, would result in the following key:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">0x0000000000000000000000000000000000000000000000000000000037BDDB5C</li>
+								</ul>
+								<p>In an experiment, we picked a private key of 1, for no reason other than that it is
+									the lower bound of a possible private key for secp256k1 and it also lies within the
+									1 to 2<sup>32</sup>-1 range of a 32-bit truncated key. We use the private key
+									<span style="overflow-wrap: break-word;">0x0000000000000000000000000000000000000000000000000000000000000001</span> to derive the
+									public Ethereum address <span style="overflow-wrap: break-word;">0x7e5f4552091a69125d5dfcb7b8c2659029395bdf</span>.</p>
+								<p>As previously discussed, recall the infinitesimal probability of two Ethereum users
+									generating the same private key—assuming at least one user is generating them
+									randomly. It should not matter whether we explore the key space from the lower
+									bound, upper bound, keys using the digits of pi, randomly, or so on—there should be
+									no coincidences with another Ethereum user’s randomly generated key. Instead, using
+									Etherscan.io to query transaction data on the above public address derived from a
+									private key of 0x01 we are presented with the following evidence of a collision with
+									our intentionally generated key (i.e., the key is or was in use):</p>
+								<p><img class="aligncenter img-fluid wp-image-1453"
+										src="../../wp-content/uploads/2019/04/3.png" alt="Figure 3. Etherscan.io lookup of
+										7e5f4552091a69125d5dfcb7b8c2659029395bdf." width="532" height="155"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/3.png 532w, https://www.ise.io/wp-content/uploads/2019/04/3-300x87.png 300w"
+										sizes="(max-width: 532px) 100vw, 532px" /></p>
+								<p class="text-center"><em>Figure 3. Etherscan.io lookup of
+										7e5f4552091a69125d5dfcb7b8c2659029395bdf.</em></p>
+								<p>ISE revealed that there are 592 transactions on an Ethereum address derived from a
+									private key of 0x01, and no Ether currently stored at that address. If a private key
+									is chosen at random then the chances of someone else generating that same key are
+									approximately 1 in 2<sup>256</sup>, which is for all practical purposes a 0% chance.
+									Since a private key of 0x01 has approximately zero percent chance of occurring
+									randomly, we must assume this value was either chosen on purpose or due to an error.
+									The following sections detail our search to understand and examine how widespread
+									the generation of weak keys is in the Ethereum blockchain.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Scope of Research:</strong></h2>
+								<p>Our research sought to locate Ethereum addresses based on the use of weak keys, and
+									to examine how those addresses are used. While it is improbable that a weak key
+									would ever be generated under legitimate circumstances using the appropriate code
+									paths, we hypothesized that weak private keys may still be generated by coding
+									mistakes, or operating system, device, and execution environment errors, and that
+									these issues are common. Aside from key truncation, some other common mistakes that
+									could weaken 256-bit keys are:</p>
+								<ul>
+									<li>Code logic errors</li>
+									<li>Type confusion</li>
+									<li>Entropy errors</li>
+									<li>Random device errors</li>
+									<li>Poorly handled exceptions</li>
+									<li>Memory reference errors</li>
+									<li>Memory corruption</li>
+									<li>Seed Re-use</li>
+									<li>Malware compromise</li>
+								</ul>
+								<p>Due to limited computing resources, it is not feasible to enumerate all keys even in
+									a much smaller 64-bit key space. So, instead we focus on the achievable: enumerating
+									keys that would appear in a smaller 32-bit subset of the 256-bit private key. This
+									amounts to 4,294,967,295 private keys for which we will need to calculate the
+									corresponding public Ethereum address for and query the blockchain.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Methodology:</strong></h2>
+								<p>To perform bulk scanning of potential Ethereum addresses, it is impractical, and even
+									abusive in terms of resource usage, to query an online service like Etherscan.
+									Instead, we generated an in-memory hash map of all public Ethereum addresses and
+									queried this in-memory data structure for each enumerated key. On a local mid-range
+									laptop this resulted in a performance of  roughly 15,000 key generations and lookups
+									per second, per CPU core, with the bottleneck being the ECDSA private to public key
+									generation portion.</p>
+								<p>We focus on eight 32-bit “sub-regions” in the 256-bit key space where we are likely
+									to observe Ethereum addresses in use that have resulted from a weak private key. We
+									expected that the lower 32-bit portion of the key space would be most likely to
+									contain weak keys; to account for endianness, we also scanned the upper 32-bit
+									portion, and for thoroughness we tested each distinct section of the 256-bit key
+									space with a 32-bit window which may yield keys. To illustrate the regions we
+									scanned, Figure 4, below, depicts each region we have identified for enumeration.
+									While enumerating the 32-bit key space of each region (A through H) we leave the
+									remaining 224 bits of the 256-bit key set to 0x00.</p>
+								<p><img class="aligncenter img-fluid wp-image-1454"
+										src="../../wp-content/uploads/2019/04/4.png" alt="Figure 4. 256-bit key space represented by parts H
+										through A." width="841" height="107"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/4.png 841w, https://www.ise.io/wp-content/uploads/2019/04/4-300x38.png 300w, https://www.ise.io/wp-content/uploads/2019/04/4-768x98.png 768w"
+										sizes="(max-width: 841px) 100vw, 841px" /></p>
+								<p class="text-center"><em>Figure 4. 256-bit key space represented by parts H
+										through A.</em></p>
+								<p>This gives us eight regions with a possible 2<sup>32</sup> -1 (i.e., ~4.3 billion)
+									combinations per region. Translating the region definitions into explicit private
+									key ranges, we scanned and tested these key ranges for transaction activity on the
+									Ethereum blockchain:</p>
+								<p>&nbsp;</p>
+								<span style="overflow-wrap: break-word;">
+								<p>Group A</p>
+								<p>0000000000000000000000000000000000000000000000000000000000000001 to</p>
+								<p>00000000000000000000000000000000000000000000000000000000FFFFFFFF</p>
+								<p>&nbsp;</p>
+								<p>Group B</p>
+								<p>0000000000000000000000000000000000000000000000000000000100000000 to</p>
+								<p>000000000000000000000000000000000000000000000000FFFFFFFF00000000</p>
+								<p>&nbsp;</p>
+								<p>Group C</p>
+								<p>0000000000000000000000000000000000000000000000010000000000000000 to</p>
+								<p>0000000000000000000000000000000000000000FFFFFFFF0000000000000000</p>
+								<p>&nbsp;</p>
+								<p>Group D</p>
+								<p>0000000000000000000000000000000000000001000000000000000000000000 to</p>
+								<p>00000000000000000000000000000000FFFFFFFF000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>Group E</p>
+								<p>0000000000000000000000000000000100000000000000000000000000000000 to</p>
+								<p>000000000000000000000000FFFFFFFF00000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>Group F</p>
+								<p>0000000000000000000000010000000000000000000000000000000000000000 to</p>
+								<p>0000000000000000FFFFFFFF0000000000000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>Group G</p>
+								<p>0000000000000001000000000000000000000000000000000000000000000000 to</p>
+								<p>00000000FFFFFFFF000000000000000000000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>Group H</p>
+								<p>0000000100000000000000000000000000000000000000000000000000000000 to</p>
+								<p>FFFFFFFF00000000000000000000000000000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								</span>
+								<p>The above key space ranges, while making up an infinitesimal part of the 256-bit key
+									space, are some areas that private keys might exist in due to errors or other
+									factors compromising randomness of a 256-bit key. The following section outlines our
+									results for each of the eight key space ranges.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Results:</strong></h2>
+								<p>We discovered 49,060 transactions spread over 732 public keys for which we have the
+									private key, with a total transfer amount of more than 32 Ethereum. The present-day
+									balance across these keys was 0 Ethereum, however that balance is volatile since
+									there are daily transfers in and out of those addresses.</p>
+								<p>Present day balances for other types of cryptocurrency across these 732 public keys
+									amounted to 60,286,012 ERC-20<a href="#_ftn3" name="_ftnref1">[3]</a> based tokens.
+									Tokens exist on Ethereum via smart contracts. However, enumerating all ERC-20 based
+									transactions and the sum of those transactions is beyond scope of this research and
+									may be included in follow up future work.</p>
+								<p>The figure below, Figure 5, is a graphical depiction of the 732 private keys we
+									discovered that were used for blockchain transactions. The y-axis is the value of a
+									key at its corresponding group offset, and the keys are plotted from left to right
+									in order of increasing Ethereum address. For example, in group A, the bulk of
+									discovered keys existed below the 255 or 0x000000FF boundary</p>
+								<p><a href="#_ftnref3" name="_ftn1">[3]</a> https://eips.ethereum.org/EIPS/eip-20</p>
+								<p><img class="aligncenter img-fluid wp-image-1455"
+										src="../../wp-content/uploads/2019/04/5.png" alt="Figure 5. Tally of all private/public keypairs we
+										have access to from Groups A through H." width="625" height="313"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/5.png 625w, https://www.ise.io/wp-content/uploads/2019/04/5-300x150.png 300w"
+										sizes="(max-width: 625px) 100vw, 625px" /></p>
+								<p class="text-center"><em>Figure 5. Tally of all private/public keypairs we
+										have access to from Groups A through H.</em></p>
+								<p>For each group we list the key range scanned, number of keys found, number of total
+									transactions, total amount for those transactions, and the combined present balance
+									of the addresses. Groups B, C, D, E, F, G are combined into one section since there
+									were only 4 keys found amongst those regions.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><em><strong>Group A:</strong></em></h2>
+								<p><img class="aligncenter img-fluid wp-image-1456"
+										src="../../wp-content/uploads/2019/04/6.png" alt="Figure 6. Group A." width="841" height="92"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/6.png 841w, https://www.ise.io/wp-content/uploads/2019/04/6-300x33.png 300w, https://www.ise.io/wp-content/uploads/2019/04/6-768x84.png 768w"
+										sizes="(max-width: 841px) 100vw, 841px" /></p>
+								<p class="text-center"><em>Figure 6. Group A.</em></p>
+								<p>&nbsp;</p>
+								<p>Group A spans the key range of:</p>
+								<p style="overflow-wrap: break-word;">0000000000000000000000000000000000000000000000000000000000000001 to</p>
+								<p style="overflow-wrap: break-word;">00000000000000000000000000000000000000000000000000000000FFFFFFFF</p>
+								<p>&nbsp;</p>
+								<p>Scanning this region of the key space yielded 8,920 transactions through 464 private
+									keys. The total value of transactions using these weak private keys was 28.9456
+									Ethereum. While transactions are common in this range, there is currently a balance
+									of 0 ETH. Figure 7, below depicts private keys and their offset of this group.</p>
+								<p><img class="aligncenter img-fluid wp-image-1458"
+										src="../../wp-content/uploads/2019/04/8.png" alt="Figure 7.  Group A. 8920 transactions spread amongst
+										464 private keys totaling 28.9456 in Ethereum." width="977" height="489"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/8.png 977w, https://www.ise.io/wp-content/uploads/2019/04/8-300x150.png 300w, https://www.ise.io/wp-content/uploads/2019/04/8-768x384.png 768w"
+										sizes="(max-width: 977px) 100vw, 977px" /></p>
+								<p class="text-center"><em>Figure 7.  Group A. 8920 transactions spread amongst
+										464 private keys totaling 28.9456 in Ethereum.</em></p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong><em>Groups B, C, D, E, F, G:</em></strong></h2>
+								<p><img class="aligncenter img-fluid wp-image-1459"
+										src="../../wp-content/uploads/2019/04/9.png" alt="Figure 8. Groups B, C, D, E, F, G." width="841" height="91"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/9.png 841w, https://www.ise.io/wp-content/uploads/2019/04/9-300x32.png 300w, https://www.ise.io/wp-content/uploads/2019/04/9-768x83.png 768w"
+										sizes="(max-width: 841px) 100vw, 841px" /></p>
+								<p class="text-center"><em>Figure 8. Groups B, C, D, E, F, G.</em></p>
+								<p>&nbsp;</p>
+								<p>Groups B, C, D, E, F, G span the ranges of:</p>
+								<span style="overflow-wrap: break-word;">
+								<p>0000000000000000000000000000000000000000000000000000000100000000 to</p>
+								<p>000000000000000000000000000000000000000000000000FFFFFFFF00000000</p>
+								<p>&nbsp;</p>
+								<p>0000000000000000000000000000000000000000000000010000000000000000 to</p>
+								<p>0000000000000000000000000000000000000000FFFFFFFF0000000000000000</p>
+								<p>&nbsp;</p>
+								<p>0000000000000000000000000000000000000001000000000000000000000000 to</p>
+								<p>00000000000000000000000000000000FFFFFFFF000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>0000000000000000000000000000000100000000000000000000000000000000 to</p>
+								<p>000000000000000000000000FFFFFFFF00000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>0000000000000000000000010000000000000000000000000000000000000000 to</p>
+								<p>0000000000000000FFFFFFFF0000000000000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								<p>0000000000000001000000000000000000000000000000000000000000000000 to</p>
+								<p>00000000FFFFFFFF000000000000000000000000000000000000000000000000</p>
+								<p>&nbsp;</p>
+								</span>
+								<p>Groups B through G are merged into a single section since they only yielded 4 private
+									keys that committed 29 transactions on the blockchain. The total amount of ETH
+									transferred was &lt;0. This result was not surprising as we expected to find a
+									majority of our findings to be in either end of the 256-bit key space via our narrow
+									32-bit window. Interestingly, one key in these groups, key value of 0x0a000000 in
+									group B had an outgoing transfer to an address that currently holds 44,744 ETH, more
+									on that later. Figure 9 illustrates these 4 keys and their respective offset of
+									their color-coded group.</p>
+								<p><img class="aligncenter img-fluid wp-image-1460"
+										src="../../wp-content/uploads/2019/04/10.png" alt="Figure 9. Groups B through G. 29 transactions via 4
+										keys." width="977" height="489"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/10.png 977w, https://www.ise.io/wp-content/uploads/2019/04/10-300x150.png 300w, https://www.ise.io/wp-content/uploads/2019/04/10-768x384.png 768w"
+										sizes="(max-width: 977px) 100vw, 977px" /></p>
+								<p class="text-center"><em>Figure 9. Groups B through G. 29 transactions via 4
+										keys.</em></p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong><em>Group H:</em></strong></h2>
+								<p><img class="aligncenter img-fluid wp-image-1461"
+										src="../../wp-content/uploads/2019/04/11.png" alt="Figure 10. Group H." width="841" height="92"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/11.png 841w, https://www.ise.io/wp-content/uploads/2019/04/11-300x33.png 300w, https://www.ise.io/wp-content/uploads/2019/04/11-768x84.png 768w"
+										sizes="(max-width: 841px) 100vw, 841px" /></p>
+								<p class="text-center"><em>Figure 10. Group H.</em></p>
+								<p>Group H spans the key range of:</p>
+								<span style="overflow-wrap: break-word;">
+								<p>0000000100000000000000000000000000000000000000000000000000000000 to</p>
+								<p>FFFFFFFF00000000000000000000000000000000000000000000000000000000</p>
+								</span>
+								<p>&nbsp;</p>
+								<p>Scanning this region of the key space yielded 40,111 transactions through 264 private
+									keys. The total value of transactions using weak private keys was 3.38 Ethereum.
+									Like group A, transactions are common in this range so the balance in this group
+									fluctuates, however there is currently a balance of 0 ETH. The figure below, Figure
+									11, depicts private keys and their offset (y-axis) of this group.</p>
+								<p><img class="aligncenter img-fluid wp-image-1462"
+										src="../../wp-content/uploads/2019/04/12.png" alt="Figure 11. Group H. 40,111 transactions over 264
+										private keys totaling 3.380 Ethereum." width="623" height="313"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/12.png 623w, https://www.ise.io/wp-content/uploads/2019/04/12-300x151.png 300w"
+										sizes="(max-width: 623px) 100vw, 623px" /></p>
+								<p class="text-center"><em>Figure 11. Group H. 40,111 transactions over 264
+										private keys totaling 3.380 Ethereum.</em></p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Analysis and Observations:</strong></h2>
+								<p>Fortunately, using weak private keys is not a widespread problem. However, it was
+									surprising to encounter 732 private keys that we could access. It is also surprising
+									to see a combined transaction volume of 49,060. Apparently, there are transactions
+									committed to these weak keys every day, and potentially new weak keys being
+									introduced as time goes on. The total computing time to scan 8 regions of the
+									256-bit key space via 32-bit windows, or regions, was ~128 CPU hours per region or
+									1024 hours total. Luckily, this task can be split up and run in parallel and we were
+									able divide and scan all 8 32-bit regions which resulted in generating and checking
+									~34.3 billion keys in an 8-hour period. So, it is feasible to run periodic checks to
+									identify new private keys that have been introduce in future works.</p>
+								<p><em>“Blockchainbandit”</em></p>
+								<p>Previously, we noted an address in group B at offset 0x04000000 that was interacted
+									with via an outbound transaction to a destination address of
+									0x957cd4ff9b3894fc78b5134a8dc72b032ffbc464, an individual we refer to as the
+									‘blockchainbandit’. After a cursory examination of this transaction, we discovered
+									that the destination address belongs to an individual or group that is running
+									active campaigns to compromise/gather private keys and take these funds. Since the
+									price of Ethereum varies wildly over time, this group or individual has held at
+									most,  $54,343,407 worth of ETH, and currently, due to a major market correction,
+									$6.1 million through a present balance of 44,744 ETH.</p>
+								<p>Noting that the ‘blockchainbandit’ has amassed millions worth of Ethereum through
+									~5,400 transactions, we wanted to see how quickly funds would be looted if we
+									populated an Ethereum address we hold common knowledge of the private key to.</p>
+								<p>Both ISE and the ‘blockchainbandit’ have knowledge of the following private key:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">0x0000000000000000000000000000000000000000000000000a00000000000000</li>
+								</ul>
+								<p>Which is represented by the following derived Ethereum address:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">0x4c636a08fdf3692a9bca111e8a7f4a0e28eb4457</li>
+								</ul>
+								<p>ISE sent ~1$ worth of Ethereum to 0x4c636a08fdf3692a9bca111e8a7f4a0e28eb4457, an
+									address that was last interacted with over 285 days ago on June 7, 2018. The
+									‘blockchain’ bandit instantly sent an outbound transaction from this address to
+									their holding address of  0x957cd4ff9b3894fc78b5134a8dc72b032ffbc464. Figure 12, is
+									an excerpt from Etherscan.io detailing these series of events<a href="#_ftn4"
+										name="_ftnref1">[4]</a>.</p>
+								<p style="overflow-wrap: break-word;"><a href="#_ftnref4" name="_ftn1">[4]</a>
+									https://etherscan.io/address/0x4c636a08fdf3692a9bca111e8a7f4a0e28eb4457</p>
+								<p><img class="aligncenter img-fluid wp-image-1463"
+										src="../../wp-content/uploads/2019/04/13.png" alt="Figure 12. 'Blockchainbandit' loots ~1$ worth of ETH
+										immidetly after ISE deposits it to a weak private key." width="765" height="128"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/13.png 765w, https://www.ise.io/wp-content/uploads/2019/04/13-300x50.png 300w"
+										sizes="(max-width: 765px) 100vw, 765px" /></p>
+								<p class="text-center"><em>Figure 12. 'Blockchainbandit' loots ~1$ worth of ETH
+										immidetly after ISE deposits it to a weak private key.</em></p>
+								<p>While performing additional research to get a grasp on why or how these weak keys are
+									being generated, we also encountered additional, more devastating issues dealing
+									with passphrase wallets, faulty address generation, and faulty destination address
+									targets that are outlined in the sections below.</p>
+								<p><em>Parity Wallet with Empty Passphrase</em></p>
+								<p>The Ethereum address <span style="overflow-wrap: break-word;">0x00a329c0648769a73afac7f9381e08fb43dbea72</span> is derived from a
+									private key of <span style="overflow-wrap: break-word;">0x4d5db4107d237df6a3d58ee5f70ae63d73d7658d4026f2eefd2f204c81682cb7</span>
+									which is generated from an empty recovery phrase (“”) using the Parity wallet. There
+									have been 8772 transactions on this address with a total of 5215.586 Ethereum
+									transferred. This address is very active and being monitored for inbound
+									transactions which are immediately transferred out by one of many private key
+									holders watching this address. The below figure (Figure 13) illustrates a monthly
+									transaction count since this address was first used on the Ethereum blockchain in
+									March of 2017.</p>
+								<p><img class="aligncenter img-fluid wp-image-1464"
+										src="../../wp-content/uploads/2019/04/14.png" alt="Figure 13. Transaction volume over a “” Passphrase
+										parity wallet." width="754" height="269"
+										srcset="https://www.ise.io/wp-content/uploads/2019/04/14.png 754w, https://www.ise.io/wp-content/uploads/2019/04/14-300x107.png 300w"
+										sizes="(max-width: 754px) 100vw, 754px" /></p>
+								<p class="text-center"><em>Figure 13. Transaction volume over a “” Passphrase
+										parity wallet.</em></p>
+								<p><em>Ethereum Address Corresponding to Null Public Key</em></p>
+								<p>The Ethereum address of 0xdcc703c0e500b653ca82273b7bfad8045d85a470 (PubHashEmptyStr)
+									is derived from a keccak256 hash performed on an empty “” string, instead of an
+									ECDSA public key<a href="#_ftn5" name="_ftnref1">[5]</a>. This address has had
+									815.643 ETH transferred to it over 28 transactions spanning roughly 3 years that is
+									irrecoverably lost.</p>
+								<p style="overflow-wrap: break-word;"><a href="#_ftnref5" name="_ftn1">[5]</a>
+									https://twitter.com/cyrus/status/978775247334748160?lang=en</p>
+								<p><em>All-Zero Ethereum Address</em></p>
+								<p>The Ethereum address <span style="overflow-wrap: break-word;">0x0000000000000000000000000000000000000000</span> (EthAddrNull) has had
+									Ethereum erroneously transferred to it. It is all but certain that this was due to
+									user or code error where a null destination address was provided. This address has
+									had 7289.472 Ethereum transferred to it over 1169 transactions spanning roughly
+									three years that is irrecoverably lost.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Conclusion:</strong></h2>
+								<p>Through the enumeration of select areas in the 256-bit private key space where errors
+									are likely result in the use of weak keys, we have discovered 49,060 transactions
+									spread over 732 public keys for which we have the corresponding private keys, with a
+									total transfer amount of over 32 Ethereum.</p>
+								<p>Additionally, we found other addresses that exist and have been erroneously used when
+									transferring Ethereum, the most damaging, in terms of ETH potentially exposed to
+									theft, is the Parity derived Ethereum address that is based on an empty string
+									passphrase (e.g. “”). This address has had 5215.586 Ethereum transferred to it which
+									as of March 2019 is worth 730,182 USD. Any Ethereum transferred to this address can
+									be transferred out by individual in possession of the Ethereum private key that was
+									derived from an empty Parity passphrase.</p>
+								<p>Moreover, there have been a combined total of 8,105 Ethereum transferred to the
+									following two addresses:</p>
+								<ul>
+									<li style="overflow-wrap: break-word;">0x0000000000000000000000000000000000000000 (PubAddrNull)</li>
+									<li style="overflow-wrap: break-word;">0xdcc703c0e500b653ca82273b7bfad8045d85a470 (PubHashEmptyStr)</li>
+								</ul>
+								<p>The above addresses had over 1197 transactions spanning over three years. Any
+									Ethereum transferred to these addresses are irrevocably lost as there are no known
+									private keys that correspond to them. It is beyond current computing resources to
+									try to enumerate private keys in order to locate the correct corresponding public
+									keys. It is worth noting that in a large-scale event where large sums of Ethereum
+									are erroneously lost or transferred it may be possible to lobby the Ethereum
+									governing body, made up of node operators, to perform a hard fork. That is, to
+									create a new version of the blockchain that would reverse any effects of the error.
+									One such event happened in 2016 when a hard fork was performed on the Ethereum
+									blockchain to reverse the effects of the DAO attack [3].</p>
+								<p>At the height of the Ethereum market, when 1 Ethereum had a market value of
+									approximately 1432.00 USD, on January 13 2018, the combined losses of either using
+									erroneous destination addresses or using wallets derived from weak or known keys
+									amounted to 13,319 Ethereum valued at $18.8 million, and the address behind the
+									active hacking campaign we stumbled onto, at the height of the Ethereum market was
+									holding $54.3 million.</p>
+								<p>Due to the popularity and easy monetization of cryptocurrencies combined with the
+									evidence that there are highly successful hacking campaigns ongoing to steal these
+									virtual currencies, it should be concluded that any systems that handle private keys
+									will be at an increased threat for targeted attacks. Software developers that design
+									software or systems that interact with highly valuable private keys should
+									incorporate all available defense in depth principles to counter present threats and
+									use innovative measures to counter advanced present and future threats against these
+									high value assets.</p>
+								<h2></h2>
+								<p>&nbsp;</p>
+								<h2><strong>Future Work:</strong></h2>
+								<p>Any implementation that uses public key signing based on ECDSA or similar
+									cryptographic algorithms can be examined for key generation errors. The obvious
+									examples would be other blockchain implementations such as Bitcoin, Waves, Ripple,
+									ZCash, Monero, among others.</p>
+								<p>It may also be worth exploring source code repositories and/or analyzing
+									Android/iOS/Windows applications for use of hard coded private keys. Additionally,
+									there may be cases where weak or manually generated test keys used on test
+									blockchain networks may have migrated to production code.</p>
+								<p>While the legality of transferring crypto currency tokens from addresses that are
+									stumbled upon through the enumeration of private keys is uncertain, it may be worth
+									exploring activities surrounding the keys discovered in our research. However, it
+									appears that the pilfering or camping on a private or group of private keys to watch
+									inbound transactions and immediately issue an outbound transaction is very
+									profitable (at least in one instance we identified). Investigating the interactions
+									between poorly generated private keys and their destinations may reveal patterns
+									that may allude to larger scale activities that are currently not well understood or
+									documented. Law enforcement or individuals wishing to pursue civil action to reclaim
+									crypto currency tokens may have an interest in such research or tools to help
+									identify patterns and destination addresses used by individuals or organizations
+									involved in the theft of these virtual currencies.</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<h2><strong>References</strong></h2>
+								<table width="100%">
+									<tbody>
+										<tr>
+											<td width="1%">[1]</td>
+											<td>"etherscan.io," [Online]. Available: https://etherscan.io/.</td>
+										</tr>
+										<tr>
+											<td width="1%">[2]</td>
+											<td>"etherscan.io," [Online]. Available: https://etherscan.io/chart/address.
+											</td>
+										</tr>
+										<tr>
+											<td width="1%">[3]</td>
+											<td>"wikipedia," [Online]. Available:
+												https://en.wikipedia.org/wiki/The_DAO_(organization).</td>
+										</tr>
+										<tr>
+											<td width="1%">[4]</td>
+											<td>D. G. Wood. [Online]. Available:
+												https://ethereum.github.io/yellowpaper/paper.pdf.</td>
+										</tr>
+										<tr>
+											<td width="1%">[5]</td>
+											<td>S. S. Stuart Haber. [Online]. Available:
+												https://www.anf.es/pdf/Haber_Stornetta.pdf.</td>
+										</tr>
+										<tr>
+											<td width="1%">[6]</td>
+											<td>J. Stretch, "packetelife.net," [Online]. Available:
+												http://packetlife.net/blog/2010/nov/23/symmetric-asymmetric-encryption-hashing/.
+											</td>
+										</tr>
+										<tr>
+											<td width="1%">[7]</td>
+											<td>J. Stanley, "TechSpot," [Online]. Available:
+												https://www.techspot.com/article/1567-blockchain-explained/.</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="entry-footer"></footer>
+</article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/casestudies/ethercombing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:01 GMT -->
+</html>
