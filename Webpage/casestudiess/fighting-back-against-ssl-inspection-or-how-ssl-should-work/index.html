@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/casestudies/fighting-back-against-ssl-inspection-or-how-ssl-should-work/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:47 GMT -->
+<head>
+    <title>FIGHTING BACK AGAINST SSL INSPECTION, OR HOW SSL SHOULD WORK - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="ISE security analysts considered the increasing prevalence of SSL inspection on corporate networks, threats to the certificate authority model that could allow SSL inspection to spread to other types of networks in the future, and how built-in browser key generation capabilities could be leveraged to achieve mutual authentication and greatly frustrate, if not prevent, mass-scale, automated SSL inspection." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="FIGHTING BACK AGAINST SSL INSPECTION, OR HOW SSL SHOULD WORK" />
+	<meta property="og:description" content="ISE security analysts considered the increasing prevalence of SSL inspection on corporate networks, threats to the certificate authority model that could allow SSL inspection to spread to other types of networks in the future, and how built-in browser key generation capabilities could be leveraged to achieve mutual authentication and greatly frustrate, if not prevent, mass-scale, automated SSL inspection." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+
+<section class="py-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12" id="content">
+                
+<article class="post-376 casestudies type-casestudies status-publish entry">
+	<header class="entry-header">
+		<h1 class="entry-title">FIGHTING BACK AGAINST SSL INSPECTION, OR HOW SSL SHOULD WORK</h1>
+		<p class="entry-meta"><time class="entry-time">July 12, 2017</time> </p>
+	</header>
+	<div class="entry-content">
+		<div id="pl-376" class="panel-layout">
+			<div id="pg-376-0" class="panel-grid panel-no-style">
+				<div id="pgc-376-0-0" class="panel-grid-cell">
+					<div id="panel-376-0-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0">
+						<div id="border-heading" class="panel-widget-style panel-widget-style-for-376-0-0-0">
+							<div class="so-widget-sow-editor so-widget-sow-editor-base">
+								<div class="siteorigin-widget-tinymce textwidget">
+									<p>Jacob Thompson, Independent Security Evaluators</p>
+									<p> Enterprise networks increasingly intercept and inspect SSL-protected employee
+										web traffic—often without adequate understanding on the employee's behalf—and
+										almost certainly without the consent of the entity operating the server. The
+										cases of Trustwave, TURKTRUST, and ANSSI illustrate how the confidentiality of
+										client-server communications is further threatened by the mounting abuse,
+										misuse, incompetence, and compromise of trusted certificate authorities. Prior
+										notice and the need to install custom root certificates are no longer technical
+										hurdles impeding SSL interception, and security professionals should fear the
+										possibility that SSL interception could expand beyond enterprises in the near
+										future. Much previous work has focused on detecting this interception at the
+										client; we discuss how to leverage built-in browser and server capabilities,
+										well understood in academia but rarely used in practice, to achieve mutual
+										authentication, moving the decision of whether to allow SSL interception and
+										inspection from the client to the server.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-376-1" class="panel-grid panel-no-style">
+				<div id="pgc-376-1-0" class="panel-grid-cell">
+					<div id="panel-376-1-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="1">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Introduction</h2>
+								<p>Internet users, including many security professionals, often blindly rely on SSL/TLS
+									to provide the confidentiality and integrity of our personal data, at least when
+									using our web browsers. We expect SSL/TLS to do so even in the face of attackers
+									with the ability to hijack and redirect our network connections and DNS traffic
+									(i.e., a man-in-the-middle attack). To resist these attacks, our browsers rely on a
+									list of trusted certificate authorities to authenticate server certificates. Browser
+									vendors audit these certificate authorities, but must presume that neither the
+									trusted root authorities nor any intermediate authorities chaining to a trusted root
+									will sign a certificate for an entity without first verifying that the entity
+									controls the domain name listed in the certificate.</p>
+								<p>Unfortunately, our faith in SSL/TLS is increasingly misplaced. Accompanying the
+									string of severe security vulnerabilities affecting SSL/TLS libraries in recent
+									years are three specific issues that undermine our browsers' ability to verify a
+									server's certificate:</p>
+								<ul>
+									<li>The list of trusted certificate authorities on a client device can be
+										customized. This is an issue in any situation where the user of a device is not
+										also the administrator. Corporate enterprises often use this ability to add a
+										custom, internally controlled CA to the list, used solely to sign phony
+										certificates for the purpose of SSL interception [1].</li>
+									<li>Some certificate authorities have allowed devices to be constructed, containing
+										an intermediate CA chaining to a trusted root, for the explicit purpose of
+										producing phony certificates on-the-fly to perform SSL interception while
+										avoiding certificate warnings or the need to install a custom CA into each
+										client device [2].</li>
+									<li>Large organizations can obtain and internally operate a sub-CA chaining to a
+										trusted root, allowing them to issue certificates to their servers in bulk,
+										rather than submit an individual requests to the CA for each server [3].
+										Frequently, no technical constraints prevent an organization from using the
+										sub-CA to issue certificates for domains they do not own. Though legal
+										agreements may preclude it, these organizations can and at times do, without the
+										root CA's permission, load their sub-CA into an interception device to perform
+										man-in-the-middle attacks with phony certificates that appear legitimate to
+										browsers [4, 5].</li>
+								</ul>
+								<p> </p>
+								<p>In light of these issues, and the inability of browser vendors to effectively police
+									certificate authorities that fail to fulfill their important responsibilities in the
+									Internet security infrastructure, technical solutions have been proposed to
+									supplement or replace the traditional CA-based model. Of those solutions that
+									augment the existing CA infrastructure, rather than replace it, nearly all are fully
+									client based (e.g., certificate pinning). The server still has no way to detect and
+									block attempted SSL/TLS interception attacks.</p>
+								<p>For some time, all significant web browsers have had the built-in capability to
+									generate public-private key pairs. Long known in academia but rarely used in
+									practice, this can be leveraged to achieve mutual client-server authentication. The
+									server acts as its own certificate authority for the purpose of authenticating the
+									client. In doing so, we replace an SSL interception device's problem of producing a
+									phony server certificate to suppress warnings on the client with the harder problem
+									of fraudulently obtaining a client certificate from the server. With a sufficiently
+									secure process in place for obtaining the client certificate, we allow the server to
+									resist, if not prevent, automated interception, or at least require an interception
+									device to perform attacks that may cross legal boundaries in order to obtain the
+									client certificate, such as phishing.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-376-2" class="panel-grid panel-no-style">
+				<div id="pgc-376-2-0" class="panel-grid-cell">
+					<div id="panel-376-2-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="2">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>SSL/TLS Interception</h2>
+								<p>Routine SSL/TLS interception is rarely performed outside of enterprise networks
+									today. Still, just as hijacking failed DNS queries [6], imposing opt-out content
+									filtering [7], and injecting JavaScript advertisement code [8] have become routine
+									and accepted behavior among ISPs, we fear that interception could reach public
+									networks in the future, in light of certificate authorities' demonstrated
+									willingness to assist in performing it. Just as these three examples are touted by
+									ISPs as "helping" their users, SSL/TLS interception could be cast in a positive
+									light as an anti-malware or content filtering feature.</p>
+								<p>In this section, we provide enterprises' motivations to perform interception and an
+									overview of how it occurs, explore three recent examples demonstrating public
+									certificate authorities' role in interception, and review the inability of browser
+									vendors to effectively prevent the authorities from doing so.</p>
+								<h3>Corporate Interception</h3>
+								<p>Large enterprises are justifiably concerned with the risk that Internet connectivity
+									presents. Potential unauthorized data egress could lead to financial and
+									reputational harm. In order to monitor for this, many large corporations implement
+									data loss prevention (DLP) systems, which put proxy servers in place to monitor
+									traffic for sensitive data or malware.</p>
+								<p>In the past, many websites used HTTPS in exceptional cases, such as the transmission
+									of the password from a login page, or receiving credit card information. Thus, the
+									end-to-end security provided by SSL/TLS was not a major issue for the DLP system.
+									More recent web applications use HTTPS to protect the entire site. The pervasive use
+									of HTTPS for webmail, social networking sites, forums, and chat clients introduces a
+									significant attack surface allowing incoming malware or outgoing confidential data
+									to travel through the network without detection. Data loss prevention systems now
+									include SSL/TLS inspection as a feature; some vendors of these applicances claim
+									that an organization cannot be HIPAA or Sarbanes-Oxley (SOX) compliant without SSL
+									inspection [9].</p>
+								<p>The advent of bring your own device (BYOD) environments is challenging and raises
+									many questions. The use of SSL interception against these devices, and the presence
+									of mobile device management (MDM) in general, mean that from security and privacy
+									perspectives the device is, for all intents and purposes, company owned. Particular
+									issues include:</p>
+								<ul>
+									<li>How is personal and business use of the device distinguished to ensure that only
+										business traffic is intercepted and monitored?</li>
+									<li>Who ensures that the interception stops if a user leaves the company?</li>
+									<li>What stops the interception if a user gives a device to a family member as a
+										hand-me-down and buys another?</li>
+									<li>Misunderstandings about the role of the device (treated as personal by the
+										employee outside of work hours, but as company by the enterprise) could lead to
+										significant issues, e.g., if confidential employee communications with OHSA, the
+										EEOC, the NLRB, or other regulatory agencies is inadvertently monitored and
+										captured by the employer.</li>
+								</ul>
+								<p> </p>
+								<p>We concede that SSL interception in a business environment may be a case of making
+									the best of a bad situation, under certain conditions: (1) the interception is
+									facilitated using an internal certificate authority that does not chain to a
+									publicly trusted root, to preserve the security model of public certificate
+									authorities, (2) the interception is performed only against company-owned or
+									controlled (BYOD) devices, and (3) users expressly consent to the monitoring (e.g.,
+									through a network usage agreement) <i>and</i> truly understand its implications. But
+									corporate employees are just beginning to become aware of the privacy implications
+									of business security controls [10], and thus we believe that an entity operating a
+									web server should be able to protect its users by detecting SSL/TLS interception, if
+									desired.</p>
+								<h3>CA-Assisted Interception</h3>
+								<p>As long as publicly-trusted root certificate authorities (and all intermediate
+									certificate authorities chaining to those roots) fulfill their role in the web's
+									security model by refusing to provide signed certificates to anyone other than a
+									domain's owner, wide-scale, robust SSL/TLS interception is not possible in the
+									absence of unrelated security vulnerabilities. Without the ability to produce
+									trusted yet phony certificates for servers while performing interception, a system
+									must use its own custom certificate authority to produce those certificates, with
+									one of two consequences: (1) the need to install the custom authority as trusted on
+									all machines affected by the interception, or (2) the need to override certificate
+									warnings on all affected devices.</p>
+								<p>An important concept in the certificate authority industry is the concept of a
+									subordinate certificate authority (sub-CA), also known as an external CA. Sub-CAs
+									allow businesses who are not in the CA business to act as a CA regardless, by
+									obtaining a sub-CA that chains to a trusted root. The purpose of sub-CAs is to allow
+									businesses with the need to issue large numbers of certificates to their own devices
+									to manage this process on their own, rather than interacting with a public CA each
+									time a certificate is needed. GeoTrust is one certificate authority that issues
+									sub-CAs; in order to obtain one, an organization must have a five-million dollar net
+									worth [11]. Many large companies own sub-CAs, including Aetna, EarthLink, Dell,
+									Ford, Fuji Xerox, General Electric, Google, and Wachovia [12].</p>
+								<p>The problem with sub-CAs is in preventing an entity with a sub-CA from signing
+									certificates for domains that it does not own. The X.509 field used to restrict the
+									scope of domain names that a CA can sign, name constraints, is not widely supported
+									[13]. In fact, a survey of the entire IPv4 address space found 1,832 trusted
+									(intermediate or root) CAs, of which only 7 had name constraints imposed [14].</p>
+								<p>Consider how three recent examples involving sub-CAs being used to produce phony
+									certificates show that the classical root certificate authority-based trust model is
+									breaking down:</p>
+								<ol>
+									<li><b>Trustwave.</b> In 2012, Trustwave issued a sub-CA to a private organization
+										[2]. This sub-CA was to be loaded into a device performing a man-in-the-middle
+										attack, and its sole purpose was to allow that device to generate trusted
+										certificates for arbitrary domains, allowing interception against all devices on
+										the network. This approach avoided the need to install a custom root certificate
+										across all device, and also prevented certificate warnings, by chaining the
+										phony certificates to Trustwave.</li>
+									<li><b>TURKTRUST.</b> In 2013, a sub-CA issued by TURKTRUST, a root certificate
+										authority based in Turkey, issued a phony certificate for the
+										<tt>google.com</tt> domain. The certificate pinning capabilities added to Chrome
+										by Google detected this certificate in the wild [4].
+									</li>
+									<li><b>ANSSI.</b> Also in 2013, ANSSI, a root certificate authority controlled by
+										the French government, issued a sub-CA to the French treasury department, IGC/A,
+										and IGC/A in turn used the sub-CA to intercept and monitor employee web traffic
+										[15].</li>
+								</ol>
+								<p> </p>
+								<h3>Failure to Effectively Police Certificate Authorities</h3>
+								<p>When failures in the certificate authority trust model keep occurring each year, what
+									consequences or penalties apply to the certificate authorities? A legal analysis of
+									certificate authorities found that certificate authorities often use legal language
+									to disclaim any warranty for a party relying on one of their certificates, and the
+									case of an end user relying on a false certificate is untested in court [16]. Thus,
+									the only effective recourse against misbehaving certificate authorities is for
+									browser vendors to remove those authorities from the list of trusted CAs distributed
+									with browsers.</p>
+								<p>As removing a trusted CA from browsers in response to a handful of invalid
+									certificates causes collateral damage (all sites using valid certificates issued by
+									that CA would begin receiving certificate warnings), the browser vendors have been
+									reluctant to do so. The only prominent example was DigiNotar, whose trust was
+									revoked only after DigiNotar itself was compromised [17].</p>
+								<p>A review of Mozilla's security policy newsgroup [18, 19] illustrates the frustration
+									that many in the Mozilla security community have with the inability to effectively
+									police certificate authorities. Despite the fact that ANSSI was non-compliant with
+									Mozilla and CA/Browser Forum policies, and the fact that both the TURKTRUST and
+									ANSSI compromises had to be detected by third parties, rather than caught and
+									self-reported by the CAs themselves, Mozilla determined that removing these CAs from
+									the trusted list would be too disruptive. It is clear that there is little incentive
+									for certificate authorities to make the investment in improving their practices as
+									long as even the CAs with the poorest practices remain trusted.</p>
+								<p>When a compromise or abuse of a certificate authority does occur, blacklisting the
+									affected certificates on client devices may happen only after a lengthy delay, if at
+									all. The DigiNotar CA compromise was detected on August 27, 2011 [20], but the first
+									iOS release to remove DigiNotar from the trusted store occurred on October 13,
+									2011—nearly three months later. On some older Android devices, the end user could
+									not control the built-in trusted certificate store at all; a certificate blacklist
+									feature was not added until the Jellybean release (4.2) [21].</p>
+								<h3>Prior Work</h3>
+								<p>Since it is evident that the integrity of root certificate authorities as a whole is
+									unlikely to improve in the near future, many have worked on developing solutions.
+									Some propose to replace the CA trust model entirely, such as the Convergence system
+									by Marlinspike [22]. Others, such as Google, seek to build more defense-in-depth
+									security checks into the existing model.</p>
+								<p>Certificate pinning as implemented by Google Chrome [23] and Mozilla Firefox [24]
+									allows the browser to maintain a pre-loaded list of acceptable public keys for a
+									handful of high-profile websites, such as Google, Twitter, and Facebook. This
+									feature has already detected real-world attacks [25]. The limitation of certificate
+									pinning (as of this writing) is that each protected site must be explicitly built
+									into the browser, and requires cooperation with the browser vendors in order to add
+									a new site, so it is not scalable to any but the highest-profile websites at this
+									time. Other solutions, such as the Certificate Transparency initiative [26], aim to
+									improve certificate authorities by having the authorities make a public log
+									available containing their signing actions.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-376-3" class="panel-grid panel-no-style">
+				<div id="pgc-376-3-0" class="panel-grid-cell">
+					<div id="panel-376-3-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="3">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Mutual Authentication and SSL Interception</h2>
+								<p>A solution for resisting SSL interception without breaking compatibility or requiring
+									cooperation with third parties is needed. The SSL/TLS protocol allows not only
+									servers to authenticate themselves using certificates, but clients as well. Client
+									certificates are widely popular in some government agencies and countries, such as
+									Estonia [27], but are not used by websites catering to the general (US) public.
+									Interestingly, client certificates allow us to sidestep the interception problem.
+								</p>
+								<p>First, enterprises have absolutely no control over the list of trusted client
+									certificate authorities present on third-party web servers. Second, web servers can
+									be set up to issue their own certificates, rather than rely on a third party CA.
+									Since an interception device has no way to produce an acceptable client certificate
+									on its own, it can only obtain one by extracting the certificate and key from an end
+									user's device, or by subverting the process used by a legitimate client to obtain a
+									certificate in order to frauduluently obtain one.</p>
+								<p>In fact, all web browsers include support for generating RSA key pairs in order to
+									facilitate the issuing of client certificates, and have for many years. The HTML
+									<tt>keygen</tt> tag causes the browser to generate a key pair, retain the private
+									key, and transfer the public key to a server as part of a form submission. This tag
+									is supported by Chrome, Firefox, and Safari; Internet Explorer offers similar
+									functionality through the certificate enrollment control. After receiving the public
+									key, the server can generate a signed certificate and return it to the browser.
+									Then, the browser immediately adds the certificate to its store of client
+									certificates and allows it to be used for authentication to the server.
+								</p>
+								<p>How should the server verify a user's identity before issuing a certificate? As in
+									any PKI system, this is a difficult problem. Since we are leveraging client
+									certificate authentication only to frustrate man-in-the-middle attacks, and not to
+									truly verify a client's identity, we could ignore this issue, and allow the server
+									to blindly sign any certificate requests that it receives. In fact, this would be
+									similar to the level of security provided by SSH: as long as the very first
+									connection to a server is not intercepted, a user would receive and retain a valid
+									certificate. The user would never again need to go through the enrollment process
+									unless the certificate were deleted, the user moved to a different device, or the
+									certificate expired.</p>
+								<p>Instead, we have built a limited amount of identity verification into our proposed
+									solution. We simply have the server generate a 128-bit enrollment key, and send it
+									to the user through an out-of-band channel. Then, as long as either the public key
+									is encrypted with this key before it is sent to the server, or the signed
+									certificate is encrypted with this key before it is returned to the client, a
+									man-in-the-middle cannot complete the enrollment process without possessing the key.
+									Thus, the man-in-the-middle must obtain the key from the user, e.g. through
+									phishing.</p>
+								<p>For Firefox and Safari, the solution works as follows:</p>
+								<ol>
+									<li>The user access the website in its original form, e.g., <a
+											href="https://mutual.www.ise.io/" target="_blank"
+											rel="noopener">mutual.www.ise.io</a>, which does not require client
+										authentication.</li>
+									<li>The resulting page tests for the presence of a client certificate by attempting
+										to load an iframe from a mutually-authenticated server, in this case, <a
+											href="https://www.mutual.www.ise.io/" target="_blank"
+											rel="noopener">www.mutual.www.ise.io</a>.</li>
+									<li>If the iframe load succeeds, then the user must already have a client
+										certificate, and JavaScript code within the iframe redirects the user to the
+										mutually-authenticated website.</li>
+									<li>If the redirection has not occurred within a few seconds, then the iframe load
+										must have failed. Therefore, the user must not have a certificate, and we begin
+										the enrollment process.
+										<ol>
+											<li>The user enters an e-mail address and CAPTCHA in order to receive the
+												out-of-band key.</li>
+											<li>The <tt>keygen</tt> tag is used to generate a certificate request and
+												send it to the server.</li>
+											<li>The server signs a certificate, encrypts it using the out-of-band key,
+												and returns the encrypted certificate back to the client.</li>
+											<li>JavaScript code prompts the user for the out-of-band key, and then uses
+												it to decrypt and install the received certificate (entirely at the
+												client side).</li>
+											<li>The user can then access the mutually-authenticated server.</li>
+										</ol>
+									</li>
+								</ol>
+								<p>The process for Chrome is similar, but as limitations in Chrome prevent a certificate
+									from being decrypted and then installed using JavaScript, the certificate request is
+									encrypted, instead. We acknowledge that a MAC is a more correct solution for this
+									purpose.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pg-376-4" class="panel-grid panel-no-style">
+				<div id="pgc-376-4-0" class="panel-grid-cell">
+					<div id="panel-376-4-0-0"
+						class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+						data-index="4">
+						<div class="so-widget-sow-editor so-widget-sow-editor-base">
+							<div class="siteorigin-widget-tinymce textwidget">
+								<h2>Example</h2>
+								<p>An example server implementing this solution is available at <a
+										href="https://mutual.www.ise.io/" target="_blank"
+										rel="noopener">mutual.www.ise.io</a>.</p>
+								<h3>Attribution and Acknowledgements</h3>
+								<p>This research was conducted by Jacob Thompson and directed by Stephen Bono.</p>
+								<h3>References</h3>
+								<p>[1] <a
+										href="https://media.blackhat.com/bh-eu-12/Jarmoc/bh-eu-12-Jarmoc-SSL_TLS_Interception-Slides.pdf"
+										target="_blank" rel="noopener">Jarmoc, Jeff. SSL Interception Proxies and
+										Transitive Trust. Black Hat Europe 2012, Amsterdam, Netherlands.</a></p>
+								<p>[2] <a href="http://www.theregister.co.uk/2012/02/14/trustwave_analysis/"
+										target="_blank" rel="noopener"> Trustwave to escape 'death penalty' for SSL
+										skeleton key</a></p>
+								<p>[3] <a
+										href="https://www.sslshopper.com/article-trusted-root-signing-certificates.html"
+										target="_blank" rel="noopener"> Trusted Root Signing Certificates</a></p>
+								<p>[4] <a
+										href="http://googleonlinesecurity.blogspot.com/2013/01/enhancing-digital-certificate-security.html"
+										target="_blank" rel="noopener">Enhancing digital certificate security</a></p>
+								<p>[5] <a
+										href="http://googleonlinesecurity.blogspot.ro/2013/12/further-improving-digital-certificate.html"
+										target="_blank" rel="noopener">Further improving digital certificate
+										security</a></p>
+								<p>[6] <a href="http://en.wikipedia.org/wiki/DNS_hijacking#Manipulation_by_ISPs"
+										target="_blank" rel="noopener"> DNS Hijacking - Manipulation by ISPS</a></p>
+								<p>[7] <a href="http://www.engadget.com/2013/07/22/cameron-adult-filter/"
+										target="_blank" rel="noopener"> UK government to activate adult content filters
+										by default</a></p>
+								<p>[8] <a
+										href="http://arstechnica.com/tech-policy/2014/09/why-comcasts-javascript-ad-injections-threaten-security-net-neutrality/"
+										target="_blank" rel="noopener"> Comcast Wi-Fi serving self-promotional ads via
+										JavaScript injection</a></p>
+								<p>[9] <a
+										href="https://www.bluecoat.com/documents/download/a9d0843e-85be-4ff1-b871-cbcb5b2d7ad6/157a3493-0468-46ff-a065-aa7e4dc7e471"
+										target="_blank" rel="noopener">Managing Encrypted Traffic With Blue Coat
+										Solutions</a></p>
+								<p>[10] <a
+										href="http://www.cio.com/article/2456112/byod/mobile-workers-i-want-my-blackberry-back.html"
+										target="_blank" rel="noopener"> Mobile Workers: 'I Want My BlackBerry Back'</a>
+								</p>
+								<p>[11] <a href="http://www.trustico.com/material/DS_GeoRoot_0205.pdf" target="_blank"
+										rel="noopener"> GeoRoot</a></p>
+								<p>[12] <a href="https://www.eff.org/files/colour_map_of_CAs.pdf" target="_blank"
+										rel="noopener"> EFF SSL Observatory Map of CAs</a></p>
+								<p>[13] <a
+										href="http://blog.codekills.net/2012/04/08/adventures-in-x509-the-utterly-ignored-nameconstraints/"
+										target="_blank" rel="noopener"> Adventures in X.509: The Utterly Ignored
+										nameConstraints</a></p>
+								<p>[14] <a
+										href="http://conferences.sigcomm.org/imc/2013/papers/imc257-durumericAemb.pdf"
+										target="_blank" rel="noopener"> Analysis of the HTTPS Certificate Ecosystem</a>
+								</p>
+								<p>[15] <a
+										href="http://www.theregister.co.uk/2013/12/10/french_gov_dodgy_ssl_cert_reprimand/"
+										target="_blank" rel="noopener"> French gov used fake Google certificate to read
+										its workers' traffic</a></p>
+								<p>[16] <a
+										href="http://citpsite.s3.amazonaws.com/publications/Roosa_Schultze_CA_Trust_Model.pdf"
+										target="_blank" rel="noopener"> The "Certificate Authority" Trust Model for SSL:
+										A Defective Foundation for Encrypted Web Traffic and a Legal Quagmire</a></p>
+								<p>[17] <a
+										href="https://blog.mozilla.org/security/2011/09/02/diginotar-removal-follow-up/"
+										target="_blank" rel="noopener"> DigiNotar Removal Follow Up</a></p>
+								<p>[18] <a
+										href="https://groups.google.com/forum/#%21topic/mozilla.dev.security.policy/uCZi6Ua-uPA"
+										target="_blank" rel="noopener">Revoking Trust in one ANSSI Certificate</a></p>
+								<p>[19] <a
+										href="https://groups.google.com/forum/#%21topic/mozilla.dev.security.policy/zgXqG_P3RIg"
+										target="_blank" rel="noopener">Netcraft blog, violations of CABF Baseline
+										Requirements, any consequences?</a></p>
+								<p>[20] <a href="https://productforums.google.com/d/msg/gmail/3J3r2JqFNTw/oHHZLJeedHMJ"
+										target="_blank" rel="noopener"> Is This MITM Attack to Gmail's SSL?</a> [sic]
+								</p>
+								<p>[21] <a
+										href="http://nelenkov.blogspot.com/2012/07/certificate-blacklisting-in-jelly-bean.html"
+										target="_blank" rel="noopener"> Certificate Blacklisting in Jelly Bean</a></p>
+								<p>[22] <a href="http://convergence.io/" target="_blank" rel="noopener"> Convergence</a>
+								</p>
+								<p>[23] <a
+										href="http://blog.chromium.org/2011/06/new-chromium-security-features-june.html"
+										target="_blank" rel="noopener"> New Chromium security features, June 2011</a>
+								</p>
+								<p>[24] <a href="https://wiki.mozilla.org/SecurityEngineering/Public_Key_Pinning"
+										target="_blank" rel="noopener"> Public Key Pinning</a></p>
+								<p>[25] <a
+										href="http://googleonlinesecurity.blogspot.com/2011/08/update-on-attempted-man-in-middle.html"
+										target="_blank" rel="noopener"> An update on attempted man-in-the-middle
+										attacks</a></p>
+								<p>[26] <a href="http://www.certificate-transparency.org/" target="_blank"
+										rel="noopener"> Certificate Transparency</a></p>
+								<p>[27] <a href="https://eprint.iacr.org/2013/538.pdf" target="_blank" rel="noopener">
+										Practical Issues with TLS Client Certificate Authentication</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="entry-footer"></footer>
+</article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/casestudies/fighting-back-against-ssl-inspection-or-how-ssl-should-work/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:47 GMT -->
+</html>

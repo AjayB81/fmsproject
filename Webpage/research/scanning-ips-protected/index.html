@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/research/scanning-ips-protected/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:51 GMT -->
+<head>
+    <title>Scanning IPS-Protected Networks with Nessus - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="SCANNING IPS-PROTECTED NETWORKS WITH NESSUSJacob Thompson, Independent Security Evaluators A Nessus vulnerability scan is one component of an overall network-level security assessment. Frequently, networks are." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Scanning IPS-Protected Networks with Nessus" />
+	<meta property="og:description" content="SCANNING IPS-PROTECTED NETWORKS WITH NESSUSJacob Thompson, Independent Security Evaluators A Nessus vulnerability scan is one component of an overall network-level security assessment. Frequently, networks are." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<section class="pt-12 pt-md-12 pb-6 pb-md-6 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <article class="post-342 page type-page status-publish entry">
+                    <header class="entry-header"></header>
+                    <div class="entry-content">
+                        <div id="pl-342" class="panel-layout">
+                            <div id="pg-342-0" class="panel-grid panel-no-style">
+                                <div id="pgc-342-0-0" class="panel-grid-cell">
+                                    <div id="panel-342-0-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child"
+                                        data-index="0">
+                                        <div id="border-heading"
+                                            class="panel-widget-style panel-widget-style-for-342-0-0-0">
+                                            <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                                <div class="siteorigin-widget-tinymce textwidget">
+                                                    <h2 class="text-center">SCANNING IPS-PROTECTED NETWORKS WITH NESSUS
+                                                    </h2>
+                                                    <p>Jacob Thompson, Independent Security Evaluators</p>
+                                                    <p> A Nessus vulnerability scan is one component of an overall
+                                                        network-level
+                                                        security assessment. Frequently, networks are protected by an
+                                                        intrusion
+                                                        prevention system (IPS). IPS rules may block traffic when
+                                                        throughput, packet
+                                                        counts, or connection counts cross a predefined threshold, or
+                                                        when packets are
+                                                        sent to blacklisted ports. Nessus provides neither a facility to
+                                                        restrict the
+                                                        scan rate, nor any reliable method to restrict the TCP and UDP
+                                                        ports to which it
+                                                        sends traffic. This paper describes the difficulties encountered
+                                                        in controlling
+                                                        these aspects of Nessus scans and a workaround ISE developed
+                                                        using
+                                                        virtualization, packet filters, and traffic control.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="pg-342-1" class="panel-grid panel-no-style">
+                                <div id="pgc-342-1-0" class="panel-grid-cell">
+                                    <div id="panel-342-1-0-0"
+                                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child widgetopts-SO"
+                                        data-index="1">
+                                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                            <div class="siteorigin-widget-tinymce textwidget">
+                                                <h2>Introduction</h2>
+                                                <p>An early step in most network security assessments involves
+                                                    reconnaissance probes to
+                                                    identify the hosts and services accessible on the target network.
+                                                    Just as a real
+                                                    attacker would try to avoid detection, for various reasons so should
+                                                    the security
+                                                    analyst performing an assessment. Intrusion Prevention Systems (IPS)
+                                                    with port scan
+                                                    or threshold detection mechanisms, slow or congested networks, and
+                                                    even system
+                                                    administrators who may notice a declining network performance could
+                                                    both detect and
+                                                    block, rate-limit, filter, redirect, or otherwise screw up
+                                                    reconnaissance probes.
+                                                    Inaccurate probes can result in vulnerable services left
+                                                    undiscovered, and an
+                                                    overall inaccurate assessment. To avoid detection and its associated
+                                                    pitfalls, it is
+                                                    useful to limit the scan rate and breadth of hosts and services
+                                                    targetted.</p>
+                                                <p>The capabilities to both limit scan rates and to restrict the target
+                                                    destination
+                                                    ports are found in most free and commercial scans. For the most
+                                                    part, these
+                                                    implementations are effective, but Tenable's Nessus and possibly
+                                                    others, despite
+                                                    having the configuration options that appear to limit scan rates and
+                                                    restrict
+                                                    destination ports, do not work reliably. Security analysts who
+                                                    blindly trust these
+                                                    options are performing more intrusive scans than they may realize or
+                                                    intend. In this
+                                                    paper, ISE describes a workaround for controlling scan traffic that
+                                                    extends to any
+                                                    scanner.</p>
+                                                <h2>Effective Rate Limiting Example</h2>
+                                                <p>The Nmap scanner, a well-known, freely-available tool for discovering
+                                                    running hosts
+                                                    on networks and enumerating the network services running on them,
+                                                    provides some
+                                                    IPS-evasion functionality. Its documentation<sup>1</sup> suggests
+                                                    using the
+                                                    <small><i>--scan-delay</i></small> flag to introduce a delay between
+                                                    successive
+                                                    packets. Further, the <small><i>-p</i></small> flag restricts the
+                                                    scanned ports to
+                                                    only those listed. Thus, a rate-limited scan of HTTP and HTTPS, with
+                                                    version
+                                                    detection, may be run with the following command:
+                                                </p>
+                                                <p><small><i>nmap ‐sV ‐Pn ‐n ‐p 80,443 --scan-delay 0.5s
+                                                            target</i></small></p>
+                                                <p>The <small><i>--scan-delay</i></small> and <small><i>-p</i></small>
+                                                    options
+                                                    accomplish the two goals:</p>
+                                                <ul>
+                                                    <li>Nmap always waits one-half second between successive probes, and
+                                                    </li>
+                                                    <li>since OS fingerprinting is disabled, Nmap restricts its probes
+                                                        to only the ports
+                                                        specified by the <small><i>-p</i></small> option.</li>
+                                                </ul>
+                                                <p>Nessus, a commercial scanner, uses more powerful and more frequently
+                                                    updated plugins
+                                                    to identify specific service-level vulnerabilities. Unfortunately,
+                                                    in contrast to
+                                                    Nmap, Nessus has no facility to limit the scan rate in the form of
+                                                    "t seconds
+                                                    between probes," and its plugins often ignore the scan policy and
+                                                    generate traffic
+                                                    to ports that were specified to be ignored.</p>
+                                                <h2>Nessus Limitations</h2>
+                                                <p>Ideally, Nessus scan policies would support the constraints of adding
+                                                    a delay between
+                                                    successive probes and preventing traffic to all ports except an
+                                                    explicitly allowed
+                                                    white-list. First, we describe the configuration options available
+                                                    in Nessus that
+                                                    control the scan rate and ports to scan, and explain why these
+                                                    settings fail to
+                                                    impose those constraints. As of this writing, version 6.3.3 and
+                                                    plugin set
+                                                    201503240515 is the latest version and plugin set of the Nessus
+                                                    scanner. This
+                                                    configuration was used to evaluate the limitations.</p>
+                                                <h3>Issues Rate Limiting Scans</h3>
+                                                <p>The Performance section of the scan policy contains the following
+                                                    settings:</p>
+                                                <ul>
+                                                    <li><small><i>Max Checks Per Host</i></small>, which limits the
+                                                        number of checks
+                                                        that can execute simultaneously against a single host;</li>
+                                                    <li><small><i>Max Hosts Per Scan</i></small> which limits the number
+                                                        of hosts that
+                                                        can be scanned simultaneously;</li>
+                                                    <li><small><i>Network Receive Timeout</i></small>, which specifies
+                                                        the number of
+                                                        seconds Nessus will wait for a response to a probe unless
+                                                        overridden by a
+                                                        plugin;</li>
+                                                    <li><small><i>Max Simultaneous TCP Sessions Per Host</i></small>,
+                                                        which limits the
+                                                        maximum number of established TCP sessions on one host;</li>
+                                                    <li><small><i>Max Simultaneous TCP Sessions Per Scan</i></small>,
+                                                        which limits the
+                                                        maximum number of established TCP sessions (not effective when
+                                                        Max Hosts Per
+                                                        Scan is 1);</li>
+                                                </ul>
+                                                <p>By setting the <i>Max Checks Per Host</i>, <i>Max Hosts Per Scan</i>,
+                                                    <i>Max
+                                                        Simultaneous TCP Sessions Per Host</i>, <i>and Max Simultaneous
+                                                        TCP Sessions Per
+                                                        Scan</i> options all to 1, Nessus performs the slowest scan
+                                                    possible. However,
+                                                    there is no control over the actual scan rate, and some plugins may
+                                                    be faster than
+                                                    others. Some of these settings, such as Network Receive Timeout, can
+                                                    be overridden
+                                                    and ignored by plugins entirely.</p>
+                                                <h3>Issues Restricting Scanned Ports</h3>
+                                                <p>The Nessus documentation<sup>2</sup> suggests two scan policy options
+                                                    that might
+                                                    prevent the scanner from sending traffic to any ports other than
+                                                    those specified:
+                                                </p>
+                                                <ul>
+                                                    <li><small><i>Port Scan Range</i></small>; and</li>
+                                                    <li><small><i>Consider Unscanned Ports as Closed.</i></small></li>
+                                                </ul>
+                                                <p>The presumptive purpose of combining these options is to prevent the
+                                                    vulnerability
+                                                    scanner from sending traffic to any ports other than those listed
+                                                    under
+                                                    <small><i>Port Scan Range</i></small>. However, restricting the port
+                                                    scan range to
+                                                    80, 443 and enabling <small><i>Consider Unscanned Ports as
+                                                            Closed</i></small> still
+                                                    sends traffic to other ports.
+                                                </p>
+                                                <p>Another possibility, suggested in a Tenable forum post<sup>3</sup>,
+                                                    is to add reject
+                                                    rules to the <small><i>nessusd.rules</i></small> file for all ports
+                                                    other than those
+                                                    desired. That also fails.</p>
+                                                <p>Figure 1 shows the <small><i>tcpdump</i></small> logs traffic
+                                                    generated to ports
+                                                    other than 80 and 443, despite both of these configuration methods
+                                                    used to restrict
+                                                    Nessus's port range.</p>
+                                                <pre>  # sudo tcpdump -i tap0 -p -n -q 'dst 10.0.1.194 and not dst port 80 and not dst port 443'
+	   tcpdump: verbose output suppressed, use -v or -vv for full protocol decod
+	   listening on tap0, link-type EN10MB (Ethernet), capture size 65535 byte
+	   15:04:16.641700 IP 172.16.0.2.68 &gt; 10.0.1.194.67: UDP, length 341
+	   15:04:19.686034 IP 172.16.0.2.520 &gt; 10.0.1.194.520: UDP, length 2
+	   15:04:19.686249 IP 172.16.0.2.520 &gt; 10.0.1.194.520: UDP, length 2
+	   15:04:19.692011 IP 172.16.0.2 &gt;10.0.1.194: ICMP type-#37, length 
+	   15:04:20.706797 IP 172.16.0.2 &gt; 10.0.1.194: ICMP address mask request, length 12
+	   15:04:23.772784 IP 172.16.0.2 &gt; 10.0.1.194: ICMP address mask request, length 1
+	   15:04:26.884169 IP 172.16.0.2 &gt; 10.0.1.194: ICMP address mask request, length 1
+	   15:04:29.949591 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 1416
+	   15:04:50.044859 IP 172.16.0.2.500 &gt;10.0.1.194.500: UDP, length 46
+	   15:05:10.124860 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 49
+	   15:05:30.209046 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 55
+	   15:05:50.294137 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 620
+	   15:06:10.383545 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 74
+	   15:06:30.475396 IP 172.16.0.2.500 &gt; 10.0.1.194.500: UDP, length 87
+	   15:06:50.571382 IP 172.16.0.2.56923 &gt; 10.0.1.194.69: UDP, length 27
+	   15:06:51.586310 IP 172.16.0.2.56923 &gt; 10.0.1.194.69: UDP, length 2
+	   15:06:52.600532 IP 172.16.0.2.56923 &gt; 10.0.1.194.69: UDP, length 2
+	   15:06:53.615139 IP 172.16.0.2.64052 &gt; 10.0.1.194.69: UDP, length 2
+	   15:06:54.629797 IP 172.16.0.2.64052 &gt; 10.0.1.194.69: UDP, length 24
+	   15:06:55.644433 IP 172.16.0.2.64052 &gt; 10.0.1.194.69: UDP, length 2
+	   15:06:56.660460 IP 172.16.0.2.43722 &gt; 10.0.1.194.6969: UDP, length 1
+	   15:07:11.679232 IP 172.16.0.2.3133 &gt; 10.0.1.194.25771: tcp 
+	   15:07:14.722295 IP 172.16.0.2.3133 &gt; 10.0.1.194.25771: tcp 1
+	   15:07:17.773582 IP 172.16.0.2.53448 &gt; 10.0.1.194.0: tcp 
+	   15:07:19.801784 IP 172.16.0.2.53448 &gt; 10.0.1.194.0: tcp 
+	   15:07:21.830032 IP 172.16.0.2.53448 &gt; 10.0.1.194.0: tcp 
+	   15:07:23.864593 IP 172.16.0.2.20 &gt; 10.0.1.194.8888: tcp 0
+	   15:07:23.876154 IP 172.16.0.2.35277 &gt; 10.0.1.194.1900: UDP, length 25
+	   15:07:24.176791 IP 172.16.0.2 &gt; 10.0.1.194: ICMP time stamp query id 1 seq 1, length 3
+</pre>
+                                                <p>
+                                                    <center><b> Figure 1. Unwanted traffic generated by a Nessus scan
+                                                            despite setting
+                                                            both the scan policy and nessusd.rules file to scan only
+                                                            ports 80 and
+                                                            443.</b></center>Aside from manually disabling plugins that
+                                                    generate
+                                                    unwanted traffic, there does not seem to be a way to reconfigure
+                                                    Nessus to reliably
+                                                    stop the traffic. Even if it were feasible to disable
+                                                    plugin-by-plugin, new plugins
+                                                    could be introduced that generate additional unwanted traffic.
+                                                </p>
+                                                <h3>Issues Employing Local Firewall</h3>
+                                                <p>Since there is no simple, reliable way to prevent Nessus from
+                                                    generating the unwanted
+                                                    traffic, the alternative is to drop that traffic before it leaves
+                                                    the host using a
+                                                    firewall on the local machine. The operating system should first
+                                                    block all traffic
+                                                    to the target, and then explicitly allow only the desired ports. ISE
+                                                    tested this
+                                                    scenario using an <small><i>iptables</i></small> rule blocking the
+                                                    destination host
+                                                    entirely, but the traffic of Figure 1 was still generated. In
+                                                    particular, traffic
+                                                    still reaches other ports, including 67/udp (DHCP), 69/udp (TFTP),
+                                                    500/tcp (ISAKMP),
+                                                    and 1900/udp (UPnP), as well as various ICMP requests.</p>
+                                                <p>The reason for the persistent, unwanted traffic is that Nessus uses
+                                                    the Linux packet
+                                                    socket interface to craft and deliver custom packets directly to the
+                                                    networking
+                                                    device. Packet sockets are created by calling
+                                                    <small><i>socket</i></small> with a
+                                                    first argument of <small><i>PF_PACKET</i></small>. As documented,
+                                                    "Packet sockets
+                                                    are not subject to the input or output firewall chains." Thus,
+                                                    iptables rules on the
+                                                    host machine are ineffective methods to prevent any Nessus plugins
+                                                    that use packet
+                                                    sockets from sending the unwanted packets.</p>
+                                                <pre>	  # strace -f -e socket -p 633 2&gt;&amp;1 | grep PF_PACKET
+		  [pid 10972] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10972] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 1
+		  [pid 10939] socket(PF_PACKET, SOCK_RAW, 768) = 15
+</pre>
+                                                <p>
+                                                    <center><b> Figure 2. The strace command shows system calls that
+                                                            Nessus makes to
+                                                            create a packet socket.</b></center>
+                                                </p>
+                                                <h2>Virtualization Solution</h2>
+                                                <p>An easy way to get around the fact that Linux will not filter packet
+                                                    sockets is to
+                                                    run the scanner on a guest virtual machine (VM), and filter and
+                                                    shape the traffic on
+                                                    the VM host. Using qemu, network traffic passes between the guest
+                                                    VM's eth0
+                                                    interface and the host's tap0 interface, as depicted in Figure 3.
+                                                </p>
+                                                <p><img src="../knowledge/papers/nessus/connection.html"
+                                                        alt="Internet Access Route" />
+                                                </p>
+                                                <p>
+                                                    <center><b> Figure 3. Diagram showing how Nessus accesses the
+                                                            Internet from a guest
+                                                            VM through a host, allowing the host system to filter
+                                                            traffic, even if it is
+                                                            generated using a packet socket. </b></center>In this
+                                                    configuration, the
+                                                    guest performs no firewalling or filtering of its traffic. The guest
+                                                    (172.16.0.2)
+                                                    uses the host (172.16.0.1) as its default gateway. As network
+                                                    traffic originating
+                                                    from the guest is forwarded through the host, the host performs
+                                                    traffic shaping,
+                                                    forwarding, and masquerading (NAT) on that traffic. Traffic shaping
+                                                    slows down guest
+                                                    traffic to the desired rate, and by only selectively forwarding
+                                                    guest traffic, the
+                                                    host prevents Nessus from connecting to undesired ports. The VM host
+                                                    system
+                                                    configuration is given in the next two sections, and source code for
+                                                    a wrapper
+                                                    program that configures the tap interface and avoids the need to run
+                                                    qemu as root,
+                                                    as well as a shell script for running it, are given in the appendix.
+                                                </p>
+                                                <h3>Traffic Control</h3>
+                                                <p>To achieve the constraint of at least a one-half second delay between
+                                                    probes, we use
+                                                    the Linux <small><i>Token Bucket Filter</i></small> queue discipline
+                                                    with the
+                                                    following parameters:</p>
+                                                <ul>
+                                                    <li><small><i>peakrate</i></small> of 24000 bits per second, or two
+                                                        1500-byte
+                                                        packets,</li>
+                                                    <li><small><i>mtu</i></small> of 1500 bytes, matching the MTU of the
+                                                        Ethernet
+                                                        interface,</li>
+                                                    <li><small><i>latency</i></small> of 5 seconds, so that packets that
+                                                        would be
+                                                        delayed by more than 5 seconds are instead dropped,</li>
+                                                    <li><small><i>burst</i></small> of 1500 bytes, to prevent bursts of
+                                                        traffic,</li>
+                                                    <li><small><i>mpu</i></small> of 1500 bytes, treating all packets as
+                                                        if they were
+                                                        1500 bytes, so that the limit is two packets per second, rather
+                                                        than 24000 bits
+                                                        per second, and</li>
+                                                    <li><small><i>rate</i></small> of 23999 bits per second, the token
+                                                        creation rate.
+                                                        This must be strictly less than peakrate to be accepted by the
+                                                        kernel.</li>
+                                                </ul>
+                                                <p>The resulting rules are shown in Figure 4.</p>
+                                                <pre>	tc qdisc add dev eth0 handle 1:0 root prio priomap 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+	tc qdisc add dev eth0 parent 1:1 handle 10:0 pfifo
+	tc qdisc add dev eth0 parent 1:2 handle 20:0 pfifo
+	tc qdisc add dev eth0 parent 1:3 handle 30:0 tbf rate 23999 mpu 1500 burst 1500 latency \ 
+		   5s peakrate 24000 minburst 15000
+	tc filter add dev eth0 protocol ip parent 1:0 prio 3 u32 match ip dst target/32 flowid 1:3
+</pre>
+                                                <p>
+                                                    <center><b> Figure 4. Linux Traffic Control rules to introduce an
+                                                            approximate
+                                                            one-half second delay between packets. </b></center>
+                                                </p>
+                                                <h3>Firewall</h3>
+                                                <p>The host machine operates as a normal Linux-based router. Traffic
+                                                    originating from
+                                                    the guest VM is subject to iptables firewall rules on the VM host --
+                                                    even if
+                                                    generated by a packet socket. The commands shown in Figure 5
+                                                    configure the host to
+                                                    forward traffic from the guest (172.16.0.2) if it is destined to TCP
+                                                    ports 80 or
+                                                    443. UDP traffic, and TCP traffic to other ports, is dropped.</p>
+                                                <pre>          iptables ‐P FORWARD DROP
+          iptables ‐P FORWARD DROP
+          iptables ‐A FORWARD ‐s 172.16.0.2 ‐d target ‐p tcp --dport 80 -j ACCEPT
+          iptables ‐A FORWARD ‐s 172.16.0.2 ‐d target ‐p tcp --dport 443 -j ACCEPT
+          iptables ‐A FORWARD ‐s 172.16.0.2 ‐d target ‐j REJECT
+          iptables ‐A FORWARD ‐s 172.16.0.2 ‐j ACCEPT
+          iptables ‐A FORWARD ‐d 172.16.0.2 ‐j ACCEPT
+          iptables ‐t nat ‐A POSTROUTING ‐s 172.16.0.2 ‐j MASQUERADE
+          sysctl net.ipv4.ip_forward=1
+</pre>
+                                                <p>
+                                                    <center><b>Figure 5. iptables firewall rules restricting traffic
+                                                            from the VM to
+                                                            ports 80 and 443 of a target.</b></center>
+                                                </p>
+                                                <h2>Appendix</h2>
+                                                <h3>Qemu Startup Scirpt</h3>
+                                                <pre>#!/bin/sh
+
+DIR=`dirname $0`
+exec $DIR/qemu-tap-wrapper -hda $DIR/hda.qcow2 -m 1024 -usb 
+-usbdevice tablet -net nic -enable-kvm</pre>
+                                                <h3>Qemu Tap Wrapper Program</h3>
+                                                <pre
+                                                    id="line1">&lt;<span class="start-tag">iframe</span> <span class="attribute-name">src</span>="<a class="attribute-value" href="view-source_https_/www.ise.io/knowledge/papers/nessus/qemu-tap-wrapper.html">qemu-tap-wrapper.c</a>" <span class="attribute-name">width</span>="<a class="attribute-value">80%</a>"&gt;&lt;/<span class="end-tag">iframe</span>&gt;</pre>
+                                                <h3>References</h3>
+                                                <p>[1] <a href="https://nmap.org/book/man.html" target="_blank"> Nmap's
+                                                        Documentation</a></p>
+                                                <p>[2] <a
+                                                        href="http://static.tenable.com/documentation/nessus_6.3_user_guide.pdf"
+                                                        target="_blank"> Tenable's 6.3 User Guide</a></p>
+                                                <p>[3] <a href="https://discussions.nessus.org/message/10512"
+                                                        target="_blank">
+                                                        Nessusd.rules File Failing to Apply Reject Port Rule Correctly
+                                                        Discussion</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/research/scanning-ips-protected/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:53 GMT -->
+</html>

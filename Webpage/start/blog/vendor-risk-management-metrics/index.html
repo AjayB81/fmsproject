@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/start/blog/vendor-risk-management-metrics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:06 GMT -->
+<head>
+    <title>Vendor Risk Management Metrics | START - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="Vendor risk management metrics are important for monitoring vendor risks over time. Learn how to choose the right metrics for your organization." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Vendor Risk Management Metrics | START" />
+	<meta property="og:description" content="Vendor risk management metrics are important for monitoring vendor risks over time. Learn how to choose the right metrics for your organization." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../../assets/img/start-images/blog-img/vendor-risk-management-metrics.png" />
+	<meta name="twitter:card" content="summary" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+
+    <!-- Hotjar Tracking Code for https://www.ise.io/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2535641,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="../../../../js.hs-scripts.com/7197110.js"></script>
+    <!-- End of HubSpot Embed Code --> 
+
+
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../../index.html">
+          <img src="../../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../../../research/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../../research/index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../../../research/podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<section class="pt-12">
+    <div class="container">
+        <div class="d-flex">
+            <a href="../../index.html">
+            <img class="img-fluid" width="230px"
+                src="../../../assets/img/start-images/START-logo.svg" alt="START logo">
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Vendor Risk Management Metrics You Should Be Tracking</h1>
+
+                <img src="../../../assets/img/start-images/blog-img/vendor-risk-management-metrics.png"
+                    style="width: 100%" alt="Vendor Risk Management Metrics You Should Be Tracking">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Book A Demo Modal -->
+<div class="modal fade" id="BookADemoModal" tabindex="-1" role="dialog" aria-labelledby="BookADemoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Book a Demo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "7f59018d-21b4-4782-a77b-a86aee2dfa7f"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Download Modal -->
+<div class="modal fade" id="DownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "d5f0b5f2-cddc-4200-83ce-2032b9fc8a80"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Talk to An Expert -->
+<div class="modal fade" id="TalkToAnExpertModal" tabindex="-1" role="dialog" aria-labelledby="BookADemoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Talk To An Expert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        region: "na1",
+                        portalId: "7197110",
+                        formId: "7f59018d-21b4-4782-a77b-a86aee2dfa7f"
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor Risk Assessment Template -->
+<!-- Download Modal -->
+<div class="modal fade" id="VendorRiskAssessmentTemplateDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "fdb5810c-757a-47fb-a7f8-35d3742e13f0"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor Risk Management Checklist -->
+<!-- Download Modal -->
+<div class="modal fade" id="VendorRiskManagementChecklistDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--[if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "2f65ddd7-ccc3-4010-8514-a89546c14b77"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 7 Steps to Success -->
+<!-- Download Modal -->
+<div class="modal fade" id="SimpleStepsDownloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Download</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- [if lte IE 8]>
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                <![endif]-->
+                <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+                <script>
+                hbspt.forms.create({
+                    region: "na1",
+                    portalId: "7197110",
+                    formId: "e43e78f9-18ae-49d7-94ae-c814574b628a"
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="py-6">
+    <div class="container">
+        <div class="row d-flex flex-row-reverse">
+
+            <div class="col-lg-3 d-flex flex-lg-column flex-wrap justify-content-around justify-content-lg-start">
+    
+                <div>
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../vendor-risk-management-checklist/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/image-10.png"
+                                alt="Blog image 1 alt">
+                            <p>
+                                <strong>Vendor Risk Management Checklist</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../compliance-risks/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/compliance-risk-101.png"
+                                alt="Blog image 2 alt">
+                            <p>
+                                <strong>Compliance Risk 101</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="wid-150">
+                            <a href="../it-risk-management/index.html">
+                            <img class="img-fluid squarethumb" src="../../../assets/img/start-images/blog-img/it-risk-management-strategies-best-practices.png"
+                                alt="Blog image 3 alt">
+                            <p>
+                                <strong>IT Risk Management: Strategies & Best Practices</strong>
+                            </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <div style="background-color: #4779A8; width: 150px; height: 186px; border-radius: 10px; 
+                                    background-image: url('../../../assets/img/start-images/logo-gradient.svg');
+                                    background-size: 150px" class="d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn btn-sm btn-primary lift mx-4 p-0" data-toggle="modal"
+                                data-target="#TalkToAnExpertModal">
+                                Talk To An Expert
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-9">
+                <p class="mb-5 lead">Third-party risk management is one of the most challenging areas to quantify and
+                    manage. The large size of third-party ecosystems, constant changes among suppliers, and
+                    scale-related challenges make it hard to manage TPRM. And when it comes to third-party risk
+                    management reporting, it can be difficult even to figure out where to start.
+                </p>
+
+                <p class="mb-5">That's why you need meaningful vendor risk management metrics that can help you clearly
+                    define a consolidated set of key performance indicators (KPIs) and key risk indicators (KRIs) that
+                    will allow you to get a better look at your vendors' security posture. These important metrics will
+                    help you monitor where your company stands now and what you need to reach your goals if you are
+                    looking to improve the efficiency of your <a href="../vendor-management-program/index.html" target="_blank">vendor management program</a>.
+                </p>
+
+                <h2 class="mb-5">Vendor Risk Assessment Criteria for KPIs
+                </h2>
+
+                <p class="mb-5">While the KRIs are used to indicate potential risks, KPIs provide a high-level overview
+                    of VRM program performance. And while these metrics may not adequately offer early warning signals
+                    of developing vendor risk, they are essential to analyze trends and monitor performance.
+                </p>
+
+                <p class="mb-5">Setting KPIs for vendors should be based on your company's internal risk assessment. You
+                    need to decide which third parties in your supply chain place your company at most risk. Then you
+                    can rank vendor risk considering the following aspects:
+                </p>
+
+                <p class="mb-5">
+                <ul>
+                    <li>What business information are your vendors permitted to access?
+                    </li>
+                    <li>Which systems within your organization they can access?
+                    </li>
+                    <li>How important is each vendor to your business operations?
+                    </li>
+                </ul>
+                </p>
+
+                <p class="mb-5">Now, let's look at vendor risk assessment criteria for setting KPIs. They include:
+                </p>
+
+                <p class="mb-5"><strong>Compliance requirements.</strong> Your vendor may need to meet particular
+                    compliance standards or <a href="../third-party-risk-management-regulations/index.html" target="_blank">third-party risk management regulations</a>. In this case, you should check
+                    recent security audits or Systems and Organizational Controls for Service Organizations (SOC)
+                    reports to understand how well they manage their compliance.
+                </p>
+
+                <p class="mb-5"><strong>Cybersecurity incidents.</strong> You need to know whether a vendor has
+                    experienced a data breach or data event. You should require the vendor to notify you when an
+                    incident happens in your contract. Besides, you must also double-check for incidents if the vendor
+                    doesn't disclose them.
+                </p>
+
+                <p class="mb-5"><strong>Staff training.</strong> You need to review the vendor's training records to get
+                    insights into how well its employees understand their responsibilities. It is also essential to
+                    learn about the vendor's <a href="../it-risk-management/index.html" target="_blank">IT risk management</a> and cybersecurity culture overall. If the employees have
+                    low scores on tests, and the vendor's team is not cyber aware, it could increase the risks to your
+                    information.
+                </p>
+
+                <p class="mb-5"><strong>Security patch management.</strong> Review each vendor's security patch
+                    management policies and procedures and its patch management logs to ensure that all patches are
+                    installed and updated in a timely manner.</p>
+
+                <div class="p-5 mb-5">
+                    <div class="row p-5" style="box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.15);">
+                        <div class="col-lg-6 d-flex flex-column justify-content-around">
+                            <p class="mb-8 font24">
+                                <strong>Download our free vendor risk management checklists to ensure you don't miss any
+                                    criteria when doing your due diligence.</strong>
+                            </p>
+
+                            <p>
+                                <button type="button" class="btn btn-primary lift px-8" data-toggle="modal"
+                                    data-target="#VendorRiskManagementChecklistDownloadModal">
+                                    Download Now
+                                </button>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <img class="img-fluid"
+                                src="../../../assets/img/start-images/book/Vendor-risk-management-checklist.svg"
+                                alt="Vendor Risk management checklist template pdf book">
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="mb-5">Establishing Third-party Risk Management Metrics
+                </h2>
+
+                <p class="mb-5">Establishing vendor risk management metrics is critical to the success of your vendor
+                    risk management program. Without third-party risk management metrics, you cannot truly make a
+                    process efficient because there is no reliable data, and you will base your decisions on gut
+                    instinct. And when it comes to dealing with vendor risk, poor decisions during a 
+                    <a href="../third-party-risk-management-lifecycle/index.html" target="_blank">third-party riskmanagement lifecycle</a> 
+                    can put your company in a tough spot.
+                </p>
+
+                <p class="mb-5">Here are some important metrics that help measure vendor risk management process
+                    inefficiencies and track improvements:
+                </p>
+
+                <p class="mb-5"><strong>Resource Efficiency</strong> is the measurement of resources (not just people)
+                    involved in a process. This metric can be measured for any task to optimize costs. And you can
+                    measure it at both the micro and macro level, such as per onsite or per vendor. You can use two
+                    formulas that work well for this metric: the ratio of time to completed assessments; or the ratio of
+                    total costs to the time needed to complete the assessments.
+                </p>
+
+                <p class="mb-5"><strong>Process Efficiency</strong> is the measurement of value-added activities
+                    compared to the total time to complete the task or assessment. In many vendor risk management
+                    assessments, there can be a lot of time used to complete the assessments that don't add value. It's
+                    possible to reduce this wasted time if you adhere to an issues and escalations process. The formula
+                    for measuring process efficiency is the ratio of value-add time to the total time needed to complete
+                    the assessments.
+                </p>
+
+                <p class="mb-5"><strong>Throughput</strong> is the output of a process for a unit of time. This metric
+                    can be used to measure bottlenecks because the steps with the lowest values have the lowest
+                    throughput and are bottlenecks. An example formula to calculate throughput would be the ratio of
+                    completed tasks to time.
+                </p>
+
+                <p class="mb-5"><strong>Team Productivity</strong> is the output of a process for each hour worked. This
+                    metric is not intended to focus on a particular employee, but instead, it can show how process
+                    improvements are cutting down the overall time to complete specific tasks. The formula to measure
+                    vendor risk management team productivity would be the ratio of completed tasks to hours worked. And
+                    remember that this ratio is amplified when your team spends time on resolving issues instead of
+                    compiling sporadic data.</p>
+
+                <div class="p-5">
+                    <div class="mb-6 row ise-blue-container">
+                        <div class="col-xl-8 p-5">
+                            <p class="pb-3 font24">START enables your team to manage all vendors' data in one platform
+                                and instantly generate reports.</p>
+
+                            <p class="font24">
+                                As a result, START helps increase your team's productivity, making the vendor risk
+                                management process more efficient and effective.</p>
+                        </div>
+                        <div class="col-xl-4 d-flex align-items-end justify-content-center">
+                            
+                        <a href="https://offers.ise.io/watch-demo" target="_blank" rel="noopenner noreferrer" class="btn btn-primary lift px-8 mb-5" >
+                            Watch A Demo
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <p class="mb-0 pb-0">When it comes to business process efficiency, you can use the following KPIs:
+                    <ul class="pt-0 mt-0">
+                        <li>Number of staff involved
+                        </li>
+                        <li>Volume of tasks per staff member
+                        </li>
+                        <li>Percentage of assessments where completion falls within +/- X% of the estimated completion
+                        </li>
+                        <li>Average time to complete assessment
+                        </li>
+                        <li>Average process or task age
+                        </li>
+                        <li>Cycle time from start to delivery
+                        </li>
+                        <li>Average cycle time from request to delivery
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+
+                <h2 class="mb-5">Third-party Key Risk Management Indicators
+                </h2>
+
+                <p class="mb-5">Both KPIs and KRIs are part of the company's performance management. These concepts are
+                    similar, and sometimes, they are confused as the same thing, but they are two completely different
+                    metrics. KPIs help track and improve the company's productivity and effectiveness, and KRIs help
+                    organizations monitor and remove barriers to achieving KPIs. Effective KRIs and KPIs can improve the
+                    decision-making of vendor risk management teams and help them create practical action plans against
+                    the root causes of risks. That reduces the company's overall risk exposure.
+                </p>
+
+                <p class="mb-5">Let's take a closer look at third-party key risk management indicators because they are
+                    critical predictors of unfavorable events that can adversely impact organizations. They allow
+                    companies to monitor changes in the levels of risk exposure and help determine the early warning
+                    signs that enable organizations to identify different <a href="../types-vendor-risk/index.html" target="_blank">types of vendor risk</a>, prevent crises, and
+                    mitigate them in time.
+                </p>
+
+                <p class="mb-5">You should select KRIs that are measurable, meaningful, and predictive. You shouldn't
+                    choose too many KRIs because, in such a case, managing them becomes problematic. It's better to
+                    select only those that offer factual information.
+                </p>
+
+                <p class="mb-5">Due to the changing third-party risk landscape, simply establishing KRIs within the
+                    third-party risk management program may not be enough. Safeguarding your organization from security,
+                    operational, reputational, and other vendor risks requires periodic and regular reviews of these key
+                    risk indicators.
+                </p>
+
+                <p class="mb-5">Keep in mind that key risk indicators monitor risks to a company's strategic plan and
+                    the company's particular needs, and each business is unique. That's why KRIs that help one company
+                    may not necessarily be appropriate for another.
+                </p>
+
+                <p class="mb-5">Still, KRIs can be divided into three main categories:
+                </p>
+
+                <p class="mb-5">
+                <ul>
+                    <li>Operational indicators that identify a set of risks arising from day-to-day activities
+                    </li>
+                    <li>People indicators that help evaluate the satisfaction of employees and customers, the retention
+                        of talent within the organization, etc.
+                    </li>
+                    <li>Financial metrics that help calculate market risk, competition, or regulatory changes.
+                    </li>
+                </ul>
+                </p>
+
+                <p class="mb-5">
+                    Some KPIs can be used across a wide range of businesses, for example:
+                </p>
+
+                <p class="mb-5">
+                <ul>
+                    <li>Financial metrics that can be KRIs—invoices paid on time, days payable outstanding, value at
+                        risk
+                    </li>
+                    <li>KRIs related to risk management of operations—a percentage of delayed projects in progress,
+                        number of regulator's notifications
+                    </li>
+                    <li>KRIs to track technical operational risks—mean time between failure (MTBF), mean time to repair
+                        (MTTR), number of system capacity overloads
+                    </li>
+                </ul>
+                </p>
+
+                <h2 class="mb-5">Final Thought
+                </h2>
+
+                <p class="mb-5">Vendor risk management metrics (KPIs and KRIs) are an important way to measure
+                    effectiveness, and they should be defined according to the company's particular needs. They are
+                    essential for the vendor risk management strategy of organizations. The traditional way of
+                    monitoring the VRM process with emails and spreadsheets is very arduous and requires a lot of
+                    resources. That's why you should consider automation that plays a crucial role in analyzing and
+                    reporting KRIs and makes this process efficient.
+                </p>
+
+                <p class="mb-5">Tools like START can reduce the workload of vendor risk management teams. You can use
+                    START even if you have to manage thousands of partners to gain a comprehensive vendor lifecycle and
+                    stay in control.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../../../research/index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/start/blog/vendor-risk-management-metrics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:29:07 GMT -->
+</html>

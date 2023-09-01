@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ise.io/research/our-link-clicking-csrf-victim-robot/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:49 GMT -->
+<head>
+    <title>OUR LINK-CLICKING CSRF VICTIM ROBOT - Independent Security Evaluators</title>
+    <meta charset="utf-8">
+	<meta name="description" content="OUR LINK-CLICKING CSRF VICTIM ROBOT Jacob Thompson, Independent Security Evaluators Over the past year, ISE has brought our SOHOpelessly Broken router hacking contest to DEF." />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="index.html" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="OUR LINK-CLICKING CSRF VICTIM ROBOT" />
+	<meta property="og:description" content="OUR LINK-CLICKING CSRF VICTIM ROBOT Jacob Thompson, Independent Security Evaluators Over the past year, ISE has brought our SOHOpelessly Broken router hacking contest to DEF." />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:site_name" content="Independent Security Evaluators" />
+	<meta property="og:image" content="../../assets/img/logo_white_square.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ahrefs-site-verification" content="79c692fee3854586781d3f86d234931ba3f5a12705c23db76407351e42aa6757">
+
+    <!-- fonts preload -->
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+    <link rel="preload" href="../../assets/fonts/HK%20Grotesk%20Pro/HKGroteskPro-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="../../assets/fonts/Feather/feather.css">
+    <link rel="stylesheet" href="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/libs/aos/dist/aos.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/font-awesome/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="../../../unpkg.com/flickity%402.3.0/dist/flickity.min.css">
+    <script src="../../../unpkg.com/flickity%402.3.0/dist/flickity.pkgd.min.js"></script>
+    <!-- <link rel="stylesheet" href="../../assets/libs/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity-fade/flickity-fade.css">
+    <link rel="stylesheet" href="../../assets/libs/flickity/dist/flickity.min.css">
+    <link rel="stylesheet" href="../../assets/libs/highlightjs/styles/vs2015.css">
+    <link rel="stylesheet" href="../../assets/libs/jarallax/dist/jarallax.css">
+    <link rel="stylesheet" href="../../assets/libs/quill/dist/quill.core.css" /> -->
+
+
+    <!-- Font awesome animations -->
+    <script src="../../../kit.fontawesome.com/275cf458c9.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css" integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/theme.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ2ZZMHS4S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HZ2ZZMHS4S');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../../../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TW7J76M');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    
+    <!-- NAVBAR
+    ================================================== -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../../assets/img/brand.svg" class="navbar-brand-img" alt="...">
+        </a>
+
+        <!-- Buttons-->
+        <div>
+          <!-- Start Page Book a Demo Button -->         <!-- Only shows on screen sizes between extra small to medium -->
+          <!--
+          <a class="btn btn-primary btn-sm lift btn-pd-sm d-xs-block d-lg-none" id="navbar-demo-btn" style="display: none;" rel="noopener">
+          Book a Demo</a>-->
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+          <!-- Toggler -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fe fe-x"></i>
+          </button>
+
+          <!-- Navigation -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarAbout" data-hover="dropdown" href="../../about/values/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                About
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarAbout">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-8">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      About ISE
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../about/values/index.html" title="Integrity, Quality, Dedication, Education">
+                      Company Values
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../about/methodology/index.html" title="Learn how we deliver reports">
+                      Methodology
+                    </a>      
+
+                    <a class="dropdown-item" href="../../about/leadership/index.html" title="Independent Security Evaluators">
+                      Leadership
+                    </a>      
+
+                    <a class="dropdown-item" href="../../news/index.html" title="Stay up to date">
+                      News
+                    </a>      
+
+                    <a class="dropdown-item" href="../../careers/index.html" title="Join our team">
+                      Careers
+                    </a>      
+
+                  </div>
+                </div>
+              </div>
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarServices" data-hover="dropdown" href="../../services/vulnerability-assessments/index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg" aria-labelledby="navbarServices">
+                <div class="row no-gutters">
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Assessments
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/vulnerability-assessments/index.html">
+                      Vulnerability Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/application-security-assessment/index.html">
+                      Application Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/cloud-security-assessment/index.html">
+                      Cloud Security Assessments
+                    </a>
+                    <a class="dropdown-item" href="../../services/penetration-testing/index.html">
+                      Penetration Testing
+                    </a>
+                    <a class="dropdown-item" href="../../services/network-penetration-testing/index.html">
+                      Network Penetration Testing
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/managed-vulnerability-scanning/index.html">
+                      Vulnerability Scanning
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Hacking Events
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item mb-5" href="https://www.iotvillage.org/" target="_blank" rel="noopener">
+                      IoT Village <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                  <div class="col-12 col-lg-6">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Consulting
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/security-consulting-services/index.html">
+                      Security Consulting
+                    </a>
+                    <a class="dropdown-item" href="../../services/independent-verification-and-validation/index.html">
+                      Independent Verification & Validation
+                    </a>
+                    <a class="dropdown-item" href="../../services/secure-design-analysis/index.html">
+                      Secure Design Analysis
+                    </a>
+                    <a class="dropdown-item mb-5" href="../../services/it-consulting-services/index.html">
+                      IT Consulting
+                    </a>
+                
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Training
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../../services/training/index.html">
+                      Security Training
+                    </a>
+
+                    <a class="dropdown-item mb-5" href="https://offers.ise.io/ise-application-security-training-workshop" rel="noopener noreferrer" target="_blank">
+                      Hackalong <span class="fe fe-external-link"></span>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarResearch" data-hover="dropdown" href="../index.html" aria-haspopup="true"
+                aria-expanded="false">
+                Research
+              </a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarResearch">
+
+                    <!-- Heading -->
+                    <h6 class="dropdown-header">
+                      Research
+                    </h6>
+
+                    <!-- List -->
+                    <a class="dropdown-item" href="../index.html" title="Papers & Studies">
+                      Papers & Studies
+                    </a>                                
+
+                    <a class="dropdown-item" href="../../talks/index.html" title="Talks">
+                      Talks
+                    </a>      
+
+                    <a class="dropdown-item" href="../../blog/index.html" title="Hackers Blog">
+                      Hackers Blog
+                    </a>      
+
+                    <a class="dropdown-item" href="https://blog.ise.io/blog" title="Industry Blog" rel="noopener noreferrer" target="_blank">
+                      Industry Blog <span class="fe fe-external-link"></span>
+                    </a>      
+
+                    <a class="dropdown-item" href="../../start/blog/index.html" title="Join our team">
+                      VRM/TPRM Articles
+                    </a>  
+
+                    <a class="dropdown-item" href="../podcast/index.html" title="Join our team">
+                      Podcast
+                    </a>   
+       
+                </div>
+            </li>
+
+            <!-- Start-->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarStart" data-hover="dropdown" href="../../start/" aria-haspopup="true"
+                aria-expanded="false">
+                START VRM
+              </a>
+              <div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarStart">
+                <div class="list-group list-group-flush p-4">
+
+                  <a class="list-group-item" href="../../start/blog/">
+                    <div class="ml-4">
+                      <h6 class="font-weight-bold text-uppercase text-primary mb-0">
+                        Blog
+                      </h6>
+                    </div>
+
+                  </a>
+
+                </div>
+              </div>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="navbarStart" href="../../start/index.html">
+                START - Vendor Risk Management
+              </a>
+            </li>
+
+
+          </ul>
+      
+          <a class="navbar-btn btn btn-sm btn-primary lift ml-auto"
+            href="https://offers.ise.io/ask-an-expert" target="_blank" rel="noopener">
+            Ask an Expert
+          </a>
+
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT
+    ================================================== -->
+    
+<section class="pt-12 pt-md-12 pb-6 pb-md-6 border-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+<article class="post-341 page type-page status-publish entry">
+    <header class="entry-header"></header>
+    <div class="entry-content">
+        <div id="pl-341" class="panel-layout">
+            <div id="pg-341-0" class="panel-grid panel-no-style">
+                <div id="pgc-341-0-0" class="panel-grid-cell">
+                    <div id="panel-341-0-0-0"
+                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0">
+                        <div id="border-heading" class="panel-widget-style panel-widget-style-for-341-0-0-0">
+                            <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                <div class="siteorigin-widget-tinymce textwidget">
+                                    <h2 class="text-center">OUR LINK-CLICKING CSRF VICTIM ROBOT</h2>
+                                    <p>Jacob Thompson, Independent Security Evaluators</p>
+                                    <p>Over the past year, ISE has brought our SOHOpelessly Broken router hacking
+                                        contest to DEF CON, DerbyCon, Toorcon, and BSides DC. ISE started the contest to
+                                        shine light on the need for manufacturers to better secure small office/home
+                                        office (SOHO) devices; our thought was that by demonstrating the vulnerabilities
+                                        first-hand, we could help manufacturers recognize that SOHO devices are highly
+                                        vulnerable to malicious compromise, thus inspiring action and change. Among the
+                                        contest’s tracks is a live capture-the-flag competition, in which contestants
+                                        research known vulnerabilities and use them to attack real routers running on a
+                                        test network. Cross-site request forgery (CSRF) is a common attack against the
+                                        web interfaces of embedded devices. CSRF occurs when an adversary tricks the
+                                        victim into clicking a link that leads to an attack page while simultaneously
+                                        logged in to the vulnerable device. The attack page generates and sends
+                                        malicious HTTP requests to the device, reconfiguring it without the victim’s
+                                        knowledge or authorization. For the contest to be successful, we needed to
+                                        automate the process of tricking a user into becoming a victim of a CSRF attack;
+                                        the result is our link-clicking CSRF victim robot. This white paper describes
+                                        the design and implementation of the resulting software.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="pg-341-1" class="panel-grid panel-no-style">
+                <div id="pgc-341-1-0" class="panel-grid-cell">
+                    <div id="panel-341-1-0-0"
+                        class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="1">
+                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                            <div class="siteorigin-widget-tinymce textwidget">
+                                <h2>Introduction</h2>
+                                <p>In 2014, ISE started the SOHOpelessly Broken router hacking contest to shine light on
+                                    the need for manufacturers to better secure small office/home office (SOHO) devices;
+                                    our thought was that by demonstrating the vulnerabilities first-hand, we could help
+                                    manufacturers recognize that SOHO devices are highly vulnerable to malicious
+                                    compromise, thus inspiring action change.</p>
+                                <p>To facilitate the router hacking contest, we needed to find a way to allow our
+                                    participants to launch cross-site request forgery (CSRF) attacks. Our ultimate goal
+                                    was to develop an automated program that simulated the act of a hypothetical
+                                    LAN-side router user clicking malicious links. CSRF occurs when a Web page loaded
+                                    from one domain controlled by the attacker sends a malicious HTTP request to another
+                                    domain, such as a router’s administration interface. While the browser’s same-origin
+                                    policy does prevent the attacker’s code from obtaining the response to this request
+                                    (as the attacker’s and router’s origins are different), the router nonetheless
+                                    receives the request. If the user is actively logged in, and the router’s Web
+                                    interface code has specifically been designed to detect and block CSRF, the router
+                                    acts upon this fraudulent request. Depending upon other defenses present in the
+                                    router, if any, CSRF can be used to change the administrator’s password, enable
+                                    remote administration, or add new port forwarding entries to the router’s
+                                    configuration.</p>
+                                <p>We set up our contest network by assigning each router’s administrative interface a
+                                    password unknown to the contestants, and then connecting one LAN port of each router
+                                    to a central switch. The contestants, as well as our CSRF victim machine, were also
+                                    connected to the same switch. The goal was to allow the contestants to trick a
+                                    “user” into clicking an arbitrary link while logged into all of the routers’
+                                    interfaces and simultaneously preserving the secrecy of the router passwords, as
+                                    well as the success or failure of the attack—much like a real-world scenario. To
+                                    accomplish this, we needed the CSRF victim machine to provide the following
+                                    functionality:</p>
+                                <ol>
+                                    <li>Keep the Firefox Web browser open and logged in to each router’s administrative
+                                        interface. As some of the interfaces were set to time out automatically after
+                                        login, this includes periodically reloading each interface to prevent the
+                                        inactivity timer from expiring.</li>
+                                    <li>Provide a Web interface to which the contestants could submit their malicious
+                                        links.</li>
+                                    <li>Keep the Firefox Web browser open and logged in to each router’s administrative
+                                        interface. As some of the interfaces were set to time out automatically after
+                                        login, this includes periodically reloading each interface to prevent the
+                                        inactivity timer from expiring.</li>
+                                    <li>Upon receiving a malicious link, open the link in the same browser session in
+                                        which the "user" is logged in to each router.</li>
+                                    <li>After a reasonable interval, close the malicious page and wait for the next link
+                                        to be submitted.</li>
+                                </ol>
+                                <p>We accomplished this using a laptop running CentOS 6. Below, we describe each goal,
+                                    discuss how we accomplished them, and provide sample code.</p>
+                                <h2>Maintain Logged-In Sessions to Each Router</h2>
+                                <p>Our contest contained 10 routers, and we needed to set up a browser session that
+                                    simulated what would occur if a user manually opened 10 separate windows and logged
+                                    in to one router’s administrative interface in each window. A handful of routers
+                                    turned out to perform authentication at the client side, so we did not need to take
+                                    any steps to log in to routers (lucky for us, unfortunate for the users of those
+                                    routers). Most routers use HTTP Basic authentication to secure access to their
+                                    administrative interfaces.</p>
+                                <p>The routers employing HTTP Basic authentication require the browser to submit an
+                                    Authorization header with each request containing a base64-encoded username and
+                                    password, and if this header is missing or incorrect, they return an HTTP 401
+                                    Unauthorized error. Normally, this causes the browser to issue an authorization
+                                    dialog box, which we wanted to avoid, as we were trying to automate the process of
+                                    remaining logged in to all of the routers. In fact, HTTP Basic authentication
+                                    credentials can also be encoded in a URL (in the form
+                                    http://username:password@domain.example.com/page.html), a feature rarely used today
+                                    outside of phishing attacks. We leveraged this fact to create a page, one .html
+                                    (shown in Figure 1), which, when displayed in the browser, causes the user to be
+                                    automatically logged in to the router 192.168.10.1 with the username admin and
+                                    password RouterOnePassword.</p>
+                                <p>A few routers used more sophisticated techniques for authentication, such as an HTTP
+                                    POST form submission, that, when received, causes the router to issue a session
+                                    cookie (assuming the credentials are valid). After designing one HTML page per
+                                    router, we then created a page (see Figure 2) that loads each of these per-router
+                                    pages. It also automatically refreshes every 300 seconds (5 minutes) in an attempt
+                                    to avoid any timeout features in the routers’ interfaces.</p>
+                                <div>
+                                    <pre>1: &lt;img src="http://admin:RouterOnePassword@192.168.10.1/adm/status.asp"&gt;
+</pre>
+                                </div>
+                                <p>Figure 1. When the browser encounters this IMG tag, it automatically attempts to log
+                                    in to the router 192.168.10.1 using Basic authentication with our supplied
+                                    credentials.</p>
+                                <div>
+                                    <pre> 1: &lt;html&gt;
+ 2: &lt;head&gt;
+ 3: &lt;title&gt;KeepLoggedIn&lt;/title&gt;
+ 4: &lt;meta http-equiv="Refresh" content="300"&gt;
+ 5: &lt;/head&gt;
+ 6: &lt;body&gt;
+ 7: &lt;iframe src="1.html"&gt;&lt;/iframe&gt;
+ 8: &lt;iframe src="2.html"&gt;&lt;/iframe&gt;
+ 9: &lt;iframe src="6.html"&gt;&lt;/iframe&gt;
+10: &lt;iframe src="7.html"&gt;&lt;/iframe&gt;
+11: &lt;iframe src="8.html"&gt;&lt;/iframe&gt;
+12: &lt;iframe src="10.html"&gt;&lt;/iframe&gt;
+13: &lt;/body&gt;
+14: &lt;/html&gt;
+15: 
+</pre>
+                                </div>
+                                <p>Figure 2. Our per-router authentication pages are all automatically loaded and
+                                    refreshed every five minutes.</p>
+                                <h2>Accepting Malicious Link Submissions from the Contestants</h2>
+                                <p>We used a bare-bones PHP Web application to accept malicious link submissions from
+                                    our contestants. It consists of a static HTML page as shown in Figure 3. The page
+                                    shows a single field, which allows the attacker to specify any link he/she desires
+                                    to open in a browser session while simultaneously logged in to each router.</p>
+                                <p>When the user submits the form, it is sent to a back-end PHP page (see Figure 4).
+                                    This back end simply opens a pre-created FIFO (named pipe) on the file system,
+                                    writes the link to the FIFO, closes it, and then returns a status back to the user.
+                                    Our link-clicking script listens on the far end of the FIFO and performs the actual
+                                    clicking of the link. We split the components in this way so that the server-side
+                                    PHP code and the link-clicking script could run under separate user accounts.</p>
+                                <div>
+                                    <pre> 1: &lt;html&gt;
+ 2: &lt;head&gt;
+ 3: &lt;title&gt;Link Clicker&lt;/title&gt;
+ 4: &lt;/head&gt;
+ 5: 
+ 6: &lt;body&gt;
+ 7: &lt;form id="link_submission" action="click.php" method="post"&gt;
+ 8: &lt;table&gt;
+ 9:   &lt;tr&gt;
+10:     &lt;td style="vertical-align:text-top;"&gt;Link:&lt;/td&gt;
+11:     &lt;td&gt;
+12:       &lt;input form="link_submission" rows="7" cols="45" id="link" 
+13:              name="link" value="http://"&gt;
+14:     &lt;/td&gt;
+15:   &lt;/tr&gt;
+16:   &lt;tr&gt;
+17:     &lt;td colspan=2 height=50 style="text-align:center;"&gt;
+18:       &lt;input style="width:150; height:25;" type="submit" value="Submit"&gt;
+19:     &lt;/td&gt;
+20: &lt;/tr&gt;
+21: &lt;/table&gt;
+22: &lt;/form&gt;
+23: &lt;/body&gt;
+24: &lt;/html&gt;
+</pre>
+                                </div>
+                                <p>Figure 3. Link submission page front end.</p>
+                                <div>
+                                    <pre> 1: &lt;?php
+ 2:         
+ 3:         $fifo_file = "/usr/local/share/routers/fifo";
+ 4:         $fifo_handle = fopen($fifo_file, "a");
+ 5:         $link = $_POST["link"] . "\n";
+ 6: 
+ 7:         fwrite($fifo_handle, $link);
+ 8:         fclose($fifo_handle);
+ 9:         
+10: ?&gt;
+11: Link clicked
+12: 
+</pre>
+                                </div>
+                                <p>Figure 4. Link submission page back end.</p>
+                                <h2>Link-Clicking Script</h2>
+                                <p>Our Web application performs the work of collecting malicious links from contestants,
+                                    but the contest needs a simulated user to follow the link. The link-clicking script
+                                    receives links from the Web application and opens them one-by-one inside a browser
+                                    session in which the “user” is also logged in to each router. The script (shown in
+                                    Figure 5) reads URLs from a pre-created FIFO, one per line, and then uses Firefox’s
+                                    remote option to open a new browser window to display the specified link.</p>
+                                <p>To make it easier to track when a malicious link is currently open, we previously
+                                    reconfigured Firefox browser preferences to disable the option “Open new windows in
+                                    a new tab instead.” After opening the malicious link, the script waits 30 seconds
+                                    and then launches our window-closing program to close the attack window. Closing any
+                                    newly opened windows between each attack helps to ensure that only one attack is
+                                    underway at any time, and it reduces clutter on the victim machine screen.</p>
+                                <div>
+                                    <pre> 1: #!/bin/bash
+ 2: 
+ 3: IFS=''
+ 4: FIFO_FILE=/usr/local/share/routers/fifo
+ 5: 
+ 6: while read url &lt; $FIFO_FILE; do
+ 7:         firefox -remote "openurl($url)"
+ 8:         sleep 30
+ 9:         ./closer
+10: done 
+</pre>
+                                </div>
+                                <p>Figure 5. Link-clicking shell script.</p>
+                                <h2>Window-Closing Program</h2>
+                                <p>The final component of our CSRF attack victim is a program that cleans up any Firefox
+                                    windows left open after our 30 seconds of attack time has expired. The main window,
+                                    which keeps the user logged in to each router (Figure 2), must remain open. The
+                                    resulting C program (shown in Figure 6) uses window titles to track our
+                                    “KeepLoggedIn” page and closes all others.</p>
+                                <p>The program uses libX11, a low-level X Window System library, to locate windows to be
+                                    closed and to generate and send the event messages to close those windows. It begins
+                                    by opening a connection to the X server in lines 88–93. Next, in lines 96–98, it
+                                    traverses all open windows. The X Window System organizes the open windows in a tree
+                                    structure beginning with the root; the recursive process of visiting each window
+                                    occurs in the traverse function in lines 66–81. The actual work of examining window
+                                    titles and closing appropriate windows occurs in the process_window function in
+                                    lines 32–64. Windows with a class of Navigator – Firefox are checked to see if their
+                                    titles contain KeepLoggedIn. If so, they are “spared,” and if not, they are
+                                    “closed;” the close_window function, in lines 10–30, generates the event needed to
+                                    delete (close) the selected window.</p>
+                                <div>
+                                    <table class="plane">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre>
+                                                </td>
+                                                <td>
+                                                    <pre> /* link with -lX11 */
+ 
+ #include &lt;X11/Xatom.h&gt;
+ #include &lt;X11/Xlib.h&gt;
+ #include &lt;stdio.h&gt;
+ #include &lt;stdlib.h&gt;
+ #include &lt;string.h&gt;
+ 
+ static void close_window(Display *display, Window window)
+ {
+    static Atom wm_protocols = 0, wm_delete_window = 0;
+    XClientMessageEvent event;
+
+    if (wm_protocols == 0)
+       wm_protocols = XInternAtom(display, "WM_PROTOCOLS", False);
+    if (wm_delete_window == 0)
+       wm_delete_window = XInternAtom(display, "WM_DELETE_WINDOW", False);
+ 
+    memset(&amp;event, 0, sizeof event);
+    event.type = ClientMessage;
+    event.display = display;
+    event.window = window;
+    event.message_type = wm_protocols;
+    event.format = 32;
+    event.data.l[0] = wm_delete_window;
+    event.data.l[1] = CurrentTime;
+ 
+    XSendEvent(display, window, False, 0L, (XEvent *) &amp;event);
+ }
+
+ static void process_window(Display *display, Window window)
+ {
+    static const char firefox_class[] = "Navigator\0Firefox";
+    Atom actualType = 0;
+    int actualFormat = 0;
+    unsigned long nitems = 0;
+    unsigned long bytes_after = 0;
+    unsigned char *prop = NULL;
+
+    XGetWindowProperty (display, window, XA_WM_CLASS, 0, 65535, 0, 
+                       XA_STRING, &amp;actualType, &amp;actualFormat,
+                       &amp;nitems, &amp;bytes_after, &amp;prop);
+    if (prop == NULL)
+       return;
+    if (memcmp(prop, firefox_class, sizeof firefox_class))
+       return;
+    XFree (prop);
+
+    XGetWindowProperty (display, window, XA_WM_NAME, 0, 65535, 0,
+                       XA_STRING, &amp;actualType, &amp;actualFormat,
+                       &amp;nitems, &amp;bytes_after, &amp;prop);
+
+    if (prop == NULL)
+       return;
+    if (strstr ((char *) prop, "KeepLoggedIn"))
+       printf ("%lx spared\n", window);
+    else
+    {
+       printf ("%lx closed\n", window);
+       close_window (display, window);
+     }
+    XFree (prop);
+ }
+
+ static void traverse(Display *display, Window window)
+ {
+    Window root = 0, parent = 0, *children = NULL;
+    unsigned int nchildren, i;
+   
+    process_window(display, window);
+ 
+    XQueryTree(display, window, &amp;root, &amp;parent, &amp;children, &amp;nchildren);
+    
+    if (children != NULL)
+     {
+       for (i = 0; i &lt; nchildren; ++i)
+          traverse(display, children[i]);
+       XFree(children);
+    }
+ }
+
+ int main (void)
+ {
+    Display *display;
+    Window window;
+ 
+    display = XOpenDisplay(NULL);
+    if (display == NULL)
+    {
+       fputs("cannot open display\n", stderr);
+       return EXIT_FAILURE;
+    }
+ 
+ 
+    window = DefaultRootWindow (display);
+    traverse(display, window);   
+    XCloseDisplay(display);
+    return EXIT_SUCCESS;
+ }
+</pre>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Figure 6. Window-closing program that closes any Firefox windows that do not contain
+                                    “KeepLoggedIn” in the title.</p>
+                                <h2>Conclusion</h2>
+                                <p>By stitching together a short HTML document, PHP file, shell script, and C program,
+                                    we designed a CSRF victim link-clicking robot with minimal effort. A logical
+                                    extension to the robot would be to add support for Flash, Java, and other attack
+                                    vectors; to add operating system or browser-specific attacks; or to require
+                                    attackers to bypass anti-malware software of some form.</p>
+                                <p>Note that these scripts and programs have not been thoroughly audited for security
+                                    issues. Before modifying or using this code,we recommend that you carefully consider
+                                    the security impact of accepting and handling link inputs from third parties and
+                                    that you ensure that the inputs are validated and sanitized correctly before they
+                                    are passed to shell scripts, Firefox, or other programs.</p>
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- SHAPE
+    ================================================== -->
+    <div class="position-relative">
+    <div class="shape shape-bottom shape-fluid-x svg-shim text-gray-200">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 48h2880V0h-720C1442.5 52 720 0 720 0H0v48z" fill="currentColor"/></svg>
+    </div>
+    </div>
+
+    <!-- FOOTER
+    ================================================== -->
+    <footer class="py-8 py-md-11 bg-gray-200">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2">
+
+            <!-- Brand -->
+            <img src="../../assets/img/brand-text.svg" alt="..." class="footer-brand img-fluid mb-2">
+
+
+            <!-- Social -->
+            <ul class="list-unstyled list-inline list-social mb-6 mb-md-0">
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://www.linkedin.com/company/independent-security-evaluators" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/linkedin.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://facebook.com/ISE.infosec" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/facebook.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+              <li class="list-inline-item list-social-item mr-3">
+                <a href="https://twitter.com/ISEsecurity" class="text-decoration-none" rel="noopener">
+                  <img src="../../assets/img/icons/social/twitter.svg" class="list-social-icon" alt="...">
+                </a>
+              </li>
+            </ul>
+
+            <div class="py-4">
+
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../contact/index.html">Contact Us</a>
+              </h6>
+  
+            </div>
+  
+            <div>
+  
+              <!-- Heading -->
+              <h6 class="font-weight-bold text-uppercase text-gray-700">
+                <a href="../../privacy-policy/index.html">Privacy Policy</a>
+              </h6>
+  
+            </div>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              About
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../about/values/index.html" class="text-reset">
+                  Company Values
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/methodology/index.html" class="text-reset">
+                  Methodology
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../about/leadership/index.html" class="text-reset">
+                  Leadership
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../news/index.html" class="text-reset">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="../../careers/index.html" class="text-reset">
+                  Careers
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Services
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
+              <li class="mb-3">
+                <a href="../../services/vulnerability-assessments/index.html" class="text-reset">
+                  Assessments
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../services/security-consulting-services/index.html" class="text-reset">
+                  Consulting
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="https://www.iotvillage.org/" target="_blank" class="text-reset" rel="noopener">
+                  IoT Village <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li">
+                <a href="../../services/training/index.html" class="text-reset" rel="noopener">
+                  Training
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-6 col-md-2">
+
+            <!-- Heading -->
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Research
+            </h6>
+
+            <!-- List -->
+            <ul class="list-unstyled text-muted mb-0">
+              <li class="mb-3">
+                <a href="../index.html" class="text-reset">
+                  Studies & Papers
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../talks/index.html" class="text-reset">
+                  Talks
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../blog/index.html" class="text-reset" rel="noopener">
+                  Blog <span class="fe fe-external-link"></span>
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="../../start/blog/index.html" class="text-reset" rel="noopener">
+                  VRM/TPRM Articles
+                </a>
+
+            </ul>
+
+          </div>
+
+          <div class="col-12 col-md-4">
+            <h6 class="font-weight-bold text-uppercase text-gray-700">
+              Stay up to date on the latest research and industry trends. Sign up for our newsletter
+            </h6>
+            <!-- Heading -->
+            <!--[if lte IE 8]>
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+            <![endif]-->
+            <script charset="utf-8" type="text/javascript" src="../../../js.hsforms.net/forms/v2.js"></script>
+            <script>
+            hbspt.forms.create({
+            region: "na1",
+            portalId: "7197110",
+            formId: "e868052f-9574-4c5b-a8e0-6233b8b6b6d2"
+            });
+            </script>
+
+          </div>
+
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </footer>
+
+    <!-- JAVASCRIPT
+    ================================================== -->
+    <!-- Libs JS -->
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/%40fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/libs/aos/dist/aos.js"></script>
+
+    <!-- <script src="../../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script> -->
+    <!-- <script src="../../assets/libs/countup.js/dist/countUp.min.js"></script> -->
+    <!-- <script src="../../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+    <!-- <script src="../../assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
+    <script src="../../assets/libs/flickity-fade/flickity-fade.js"></script>
+    <script src="../../assets/libs/highlightjs/highlight.pack.min.js"></script> -->
+    <script src="../../assets/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-video.min.js"></script> -->
+    <!-- <script src="../../assets/libs/jarallax/dist/jarallax-element.min.js"></script> -->
+    <!-- <script src="../../assets/libs/quill/dist/quill.min.js"></script> -->
+    <!-- <script src="../../assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script> -->
+     <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
+
+    <!-- Map -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script> -->
+
+    <!-- Theme JS -->
+    <script src="../../assets/js/theme.min.js"></script>
+
+
+</body>
+
+
+<!-- Mirrored from www.ise.io/research/our-link-clicking-csrf-victim-robot/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 31 Aug 2023 07:28:49 GMT -->
+</html>
